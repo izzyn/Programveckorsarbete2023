@@ -71,7 +71,7 @@ public class TerrainGenerator : MonoBehaviour
 
                 float noiseNumber = NoiseFunctions.ridgedFractalNoise(x, y, seed, waterNoise, waterGenerationDepth, waterPointyness); //Generates a random perlin value for every cordinate
                 Vector3Int tilePosition = new Vector3Int((mapSize / 2) * -1 + x, (mapSize / 2) * -1 + y, 0); //Sets the position so that the map is centered on 0, 0
-                if(noiseNumber > waterThreshold) //Sets the water depending on the threshhold
+                if(noiseNumber > waterThreshold && !(y < 5 + mapSize/2 && y > -5 + mapSize/2 && x < 5 + mapSize/2 && x > -5 + mapSize/2)) //Sets the water depending on the threshhold and makes sure there is an area for the player to spawn in
                 {
                     tilemap.SetTile(tilePosition, water); //sets the tiles
                 }
