@@ -48,8 +48,6 @@ public class PlayerMovement : MonoBehaviour
         moveDir.Normalize();
         
         //Move the player to new position for it's frame
-        
-        transform.position += moveDir * (walkSpeed * Time.deltaTime);
         if (isColliding)
         {
            rigidBody.MovePosition(moveDir * (walkSpeed * Time.deltaTime));
