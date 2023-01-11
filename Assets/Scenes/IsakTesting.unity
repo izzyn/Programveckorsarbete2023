@@ -171,8 +171,10 @@ MonoBehaviour:
   tilemap: {fileID: 793584996}
   ground: {fileID: 11400000, guid: 20e507cb63927ca489b7c59cae0d4129, type: 2}
   water: {fileID: 11400000, guid: 2b4e7944b3ac0784d9b1ce52e18ee963, type: 2}
-  waterThreshold: 0.636
-  waterNoise: 0.2
+  waterThreshold: 0.705
+  waterNoise: 0.114
+  waterPointyness: 2
+  waterGenerationDepth: 4
   seed: 0
   treeNoise: 0.116
   treeThreshold: 0.628

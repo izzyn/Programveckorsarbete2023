@@ -20,6 +20,10 @@ public class TerrainGenerator : MonoBehaviour
     float waterThreshold; //The threshold for the value so that the water can spawn (higher number = less water)
     [SerializeField, Range(0f, 1f)]
     float waterNoise; //dictates the amount of noise  (higher number = more differance) 
+    [SerializeField, Range(1, 10)]
+    int waterPointyness;
+    [SerializeField, Range(1, 10)]
+    int waterGenerationDepth;
     [SerializeField, Range(0f, 100000)]
     int seed; //Dictates everything except for offsets
     [SerializeField, Range(0f, 1f)]
@@ -65,7 +69,7 @@ public class TerrainGenerator : MonoBehaviour
             for(int x = 0; x < mapSize; x++)
             {
 
-                float noiseNumber = Math.Clamp(Mathf.PerlinNoise(x * waterNoise + seed, y * waterNoise + seed), 0, 1); //Generates a random perlin value for every cordinate
+                float noiseNumber = NoiseFunctions.ridgedFractalNoise(x, y, seed, waterNoise, waterGenerationDepth, waterPointyness); //Generates a random perlin value for every cordinate
                 Vector3Int tilePosition = new Vector3Int((mapSize / 2) * -1 + x, (mapSize / 2) * -1 + y, 0); //Sets the position so that the map is centered on 0, 0
                 if(noiseNumber > waterThreshold) //Sets the water depending on the threshhold
                 {
@@ -80,6 +84,7 @@ public class TerrainGenerator : MonoBehaviour
         GenerateObjects(treePrefab, treeNoise, treeOffset,  treeThreshold, seed); //Generates the objects that we desire on the map
         GenerateObjects(bushObject, bushNoise, bushOffset, bushRange, seed);
     }
+
     void GenerateObjects(GameObject spawnObject, float noise, float offset, float threshold, int presetSeed = 0)
     {
         int seed;
