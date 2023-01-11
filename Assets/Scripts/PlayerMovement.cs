@@ -52,20 +52,10 @@ public class PlayerMovement : MonoBehaviour
         transform.position += moveDir * (walkSpeed * Time.deltaTime);
         if (isColliding)
         {
-            transform.position -= moveDir * (walkSpeed * Time.deltaTime);
+           rigidBody.MovePosition(moveDir * (walkSpeed * Time.deltaTime));
         }
         
         
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        isColliding = true;
-    }
-    
-    private void OnCollisionExit2D(Collision2D col)
-    {
-        isColliding = false;
-    }
-    
 }
