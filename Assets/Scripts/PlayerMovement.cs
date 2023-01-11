@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Vector3 pos = transform.position;
-        transform.position = new Vector3(pos.x, pos.y, pos.y*0.01f);
+        transform.position = new Vector3(pos.x, pos.y, pos.y*0.1f - transform.localScale.y*0.1f);
         
         //Get what direction the player is moving in(8 directions, up down left, right and all diagonals in between)
         Vector3 moveDir = new Vector3();
@@ -48,10 +48,7 @@ public class PlayerMovement : MonoBehaviour
         moveDir.Normalize();
         
         //Move the player to new position for it's frame
-        if (isColliding)
-        {
-           rigidBody.MovePosition(moveDir * (walkSpeed * Time.deltaTime));
-        }
+        rigidBody.MovePosition(transform.position + moveDir * (walkSpeed/200f));
         
         
     }
