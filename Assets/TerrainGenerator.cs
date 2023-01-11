@@ -38,6 +38,8 @@ public class TerrainGenerator : MonoBehaviour
     GameObject treeGroup;
     [SerializeField]
     GameObject bushObject;
+    [SerializeField]
+    GameObject nestObject;
     [SerializeField, Range(0f, 1f)]
     float bushRange;
     [SerializeField, Range(0f, 1f)]
@@ -74,6 +76,7 @@ public class TerrainGenerator : MonoBehaviour
                 if(noiseNumber > waterThreshold && !(y < 5 + mapSize/2 && y > -5 + mapSize/2 && x < 5 + mapSize/2 && x > -5 + mapSize/2)) //Sets the water depending on the threshhold and makes sure there is an area for the player to spawn in
                 {
                     tilemap.SetTile(tilePosition, water); //sets the tiles
+                    occupiedTiles.Add(y * mapSize + x);
                 }
                 else
                 {
@@ -85,7 +88,7 @@ public class TerrainGenerator : MonoBehaviour
         GenerateObjects(bushObject, bushNoise, bushOffset, bushRange, seed);
     }
 
-    void GenerateObjects(GameObject spawnObject, float noise, float offset, float threshold, int presetSeed = 0)
+    void GenerateObjects(GameObject spawnObject, float noise, float offset, float threshold, int presetSeed = 0, float distance = 0)
     {
         int seed;
         if (presetSeed < 100)
@@ -106,8 +109,9 @@ public class TerrainGenerator : MonoBehaviour
                 Vector3 treePosition = new Vector3((mapSize / 2) * -1 + x + offsetX - 0.5f, (mapSize / 2) * -1 + y + offsetY, ((mapSize / 2) * -1 + y + offsetY)*0.1f);
                 Vector3Int positionRoundedDown = new Vector3Int((int)Math.Floor(treePosition.x), (int)Math.Floor(treePosition.y), 0); //Checks the adjacent tiles so trees don't spawn on water
                 Vector3Int positionRoundedUp = new Vector3Int((int)Math.Ceiling(treePosition.x), (int)Math.Ceiling(treePosition.y), 0);
+                float originDistance = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(treePosition.x), 2) + Mathf.Pow(Mathf.Abs(treePosition.y), 2)); //Gets the distance from 0, 0 (doesn't need subtraction since the co-ordinates are 0, 0)
 
-                if (noiseNumber > threshold && tilemap.GetTile(positionRoundedUp) == ground && tilemap.GetTile(positionRoundedDown) == ground && !occupiedTiles.Contains(y*mapSize + x))
+                if (noiseNumber > threshold && tilemap.GetTile(positionRoundedUp) == ground && tilemap.GetTile(positionRoundedDown) == ground && !occupiedTiles.Contains(y*mapSize + x) && originDistance >= distance)
                 {
                     GameObject placedTree = GameObject.Instantiate(spawnObject, treePosition, Quaternion.identity, treeGroup.transform);
                     occupiedTiles.Add(y * mapSize + x); //Indexes the placed objects so it doesn't cause objects piling on the same tile

@@ -35,6 +35,6 @@ public class NoiseFunctions : MonoBehaviour
         {
             noise += ridge(Mathf.Clamp(Mathf.PerlinNoise(x * Mathf.Pow(2, i) * scale + seed, y * Mathf.Pow(2, i) * scale + seed), 0, 1), power) * Mathf.Pow(2, -i); //Combines both fractal noise and the ridge function to create ridged noise
         }
-        return noise / (2 - Mathf.Pow(2, 1 - depth));
+        return noise / (2 - Mathf.Pow(2, 1 - depth)); //Adjusts for how the maximum value changes depending on the depth variable due to it's incrementing nature
     }
 }
