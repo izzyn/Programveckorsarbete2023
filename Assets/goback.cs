@@ -7,7 +7,7 @@ public class goback : MonoBehaviour
 {
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Backspace))
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
