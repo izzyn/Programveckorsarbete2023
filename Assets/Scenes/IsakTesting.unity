@@ -167,17 +167,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea75ab0b09848341b8ede87d2d9ea14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSize: 420
+  mapSize: 100
   tilemap: {fileID: 793584996}
   ground: {fileID: 11400000, guid: 20e507cb63927ca489b7c59cae0d4129, type: 2}
   water: {fileID: 11400000, guid: 2b4e7944b3ac0784d9b1ce52e18ee963, type: 2}
   waterThreshold: 0.636
-  waterNoise: 0.02
+  waterNoise: 0.2
   seed: 0
-  treeNoise: 0.076
-  treeThreshold: 0.48
+  treeNoise: 0.116
+  treeThreshold: 0.628
+  treeOffset: 0.13
   treePrefab: {fileID: 2668615662889740532, guid: e99f2d532f139b648ab493d8247d26ab, type: 3}
   treeGroup: {fileID: 886473610}
+  bushObject: {fileID: 1027983698613110178, guid: 364de05dedf6aa94db164fb45abc119d, type: 3}
+  bushRange: 0.771
+  bushNoise: 0.892
+  bushOffset: 0.096
 --- !u!1 &793584993
 GameObject:
   m_ObjectHideFlags: 0
