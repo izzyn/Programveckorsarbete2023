@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +12,8 @@ public class GameManager : MonoBehaviour
     public int nightLength = 90;
 
     public static bool isNight;
-    public static item scrap = new item();
-    public static item wood = new item();
+    public static Item scrap = new Item(ItemType.Scrap);
+    public static Item wood = new Item(ItemType.Wood);
 
 
 
@@ -42,10 +43,5 @@ public class GameManager : MonoBehaviour
         Invoke("MakeDay", nightLength);
     }
 
-    public class item
-    {
-        int amount;
-        public int GetAmount => amount;
-        public void SetAmount(int amount) => this.amount = amount;
-    }
+   
 }
