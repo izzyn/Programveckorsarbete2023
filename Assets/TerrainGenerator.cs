@@ -99,8 +99,8 @@ public class TerrainGenerator : MonoBehaviour
         int attempts = 0;
         while(nestGroup.transform.childCount < 1 && attempts < 100)
         {
-            GenerateObjects(treePrefab, treeNoise, treeOffset, treeThreshold, treeGroup.transform, seed); //Generates the objects that we desire on the map
-            GenerateObjects(bushObject, bushNoise, bushOffset, bushRange, treeGroup.transform, seed);
+            GenerateObjects(treePrefab, treeNoise, treeOffset, treeThreshold, treeGroup.transform, seed, 0, 0.5f); //Generates the objects that we desire on the map
+            GenerateObjects(bushObject, bushNoise, bushOffset, bushRange, treeGroup.transform, seed, 0, 0.5f);
             GenerateObjects(nestObject, nestDensity, 0, nestAmount, nestGroup.transform, seed, nestDistance, 0.5f);
             if(nestGroup.transform.childCount < 1)
             {
@@ -138,15 +138,20 @@ public class TerrainGenerator : MonoBehaviour
                 float offsetY = UnityEngine.Random.Range(-offset, offset);
                 float noiseNumber = Math.Clamp(Mathf.PerlinNoise(x * noise + seed*2, y * noise + seed*2), 0, 1); //Generates a random perlin value for every cordinate
                 Vector3Int tilePosition = new Vector3Int((mapSize / 2) * -1 + x, (mapSize / 2) * -1 + y, 0); //Sets the position so that the map is centered on 0, 0
-                Vector3 treePosition = new Vector3((mapSize / 2) * -1 + x + offsetX - 0.5f, (mapSize / 2) * -1 + y + offsetY + constantOffset, ((mapSize / 2) * -1 + y + offsetY)*0.1f);
+                Vector3 treePosition = new Vector3((mapSize / 2) * -1 + x, (mapSize / 2) * -1 + y + offsetY - constantOffset  + 0.5f, ((mapSize / 2) * -1 + y - offsetY - 0.5f)*0.1f);
                 Vector3Int positionRoundedDown = new Vector3Int((int)Math.Floor(treePosition.x), (int)Math.Floor(treePosition.y), 0); //Checks the adjacent tiles so trees don't spawn on water
                 Vector3Int positionRoundedUp = new Vector3Int((int)Math.Ceiling(treePosition.x), (int)Math.Ceiling(treePosition.y), 0);
+                Vector3Int XRoundedUp = new Vector3Int((int)Math.Ceiling(treePosition.x), (int)Math.Floor(treePosition.y), 0);
+                Vector3Int YRoundedUp = new Vector3Int((int)Math.Floor(treePosition.x), (int)Math.Ceiling(treePosition.y), 0);
+
                 float originDistance = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(treePosition.x), 2) + Mathf.Pow(Mathf.Abs(treePosition.y), 2)); //Gets the distance from 0, 0 (doesn't need subtraction since the co-ordinates are 0, 0)
 
-                if (noiseNumber > threshold && tilemap.GetTile(positionRoundedUp) == ground && tilemap.GetTile(positionRoundedDown) == ground && !occupiedTiles.Contains(y*mapSize + x) && originDistance >= distance * 0.01f * (mapSize/2))
+                if (noiseNumber > threshold &&  !waterLoggedTiles.Contains(y * mapSize + x)  && !occupiedTiles.Contains(y*mapSize + x) && originDistance >= distance * 0.01f * (mapSize/2))
                 {
                     GameObject placedTree = GameObject.Instantiate(spawnObject, treePosition, Quaternion.identity, parentObject);
                     occupiedTiles.Add(y * mapSize + x); //Indexes the placed objects so it doesn't cause objects piling on the same tile
+                    placedTree.GetComponent<ObjectData>().id = y * mapSize + x;
+                    placedTree.transform.position = new Vector3(placedTree.transform.position.x + 0.5f + offsetX, placedTree.transform.position.y + 0.5f + offsetY, (placedTree.transform.position.y + 0.5f + offsetY) * 0.1f);
                 }
             }
         }

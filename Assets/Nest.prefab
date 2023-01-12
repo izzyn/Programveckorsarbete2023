@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1699295875410667135}
   - component: {fileID: 2765921066877519770}
   - component: {fileID: -4274495843063938780}
+  - component: {fileID: -304837670851400001}
   m_Layer: 0
   m_Name: Nest
   m_TagString: Untagged
@@ -97,3 +98,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5451f6bd0bf4eb43b7e88b6d81eb85f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-304837670851400001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390032032621341780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec64a1d75119c364ea863714bb3526d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0

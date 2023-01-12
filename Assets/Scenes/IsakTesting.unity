@@ -148,7 +148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660573893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5707467, y: -0.9845399, z: 0.008782265}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -171,17 +171,17 @@ MonoBehaviour:
   tilemap: {fileID: 793584996}
   ground: {fileID: 11400000, guid: 20e507cb63927ca489b7c59cae0d4129, type: 2}
   water: {fileID: 11400000, guid: 2b4e7944b3ac0784d9b1ce52e18ee963, type: 2}
-  waterThreshold: 0.72
+  waterThreshold: 0.752
   waterNoise: 0.114
   waterPointyness: 2
   waterGenerationDepth: 4
   seed: 0
   treeNoise: 0.116
-  treeThreshold: 0.628
-  treeOffset: 0.13
-  nestDensity: 0.852
-  nestDistance: 80
-  nestAmount: 0.666
+  treeThreshold: 0.67
+  treeOffset: 0.106
+  nestDensity: 0.764
+  nestDistance: 61
+  nestAmount: 0.79
   treePrefab: {fileID: 2668615662889740532, guid: e99f2d532f139b648ab493d8247d26ab, type: 3}
   treeGroup: {fileID: 886473610}
   bushObject: {fileID: 1027983698613110178, guid: 364de05dedf6aa94db164fb45abc119d, type: 3}
@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ad1fb8c97643d48aaa6bd2549a52d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnSpeed: 2
+  spawnSpeed: 1
   enemyTypes:
   - {fileID: 5505045686717455731, guid: c254faff387805a4f9bf17a523faa8d8, type: 3}
 --- !u!1 &1524302395
