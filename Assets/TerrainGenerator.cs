@@ -138,6 +138,7 @@ public class TerrainGenerator : MonoBehaviour
                 float offsetY = UnityEngine.Random.Range(-offset, offset);
                 float noiseNumber = Math.Clamp(Mathf.PerlinNoise(x * noise + seed*2, y * noise + seed*2), 0, 1); //Generates a random perlin value for every cordinate
                 Vector3Int tilePosition = new Vector3Int((mapSize / 2) * -1 + x, (mapSize / 2) * -1 + y, 0); //Sets the position so that the map is centered on 0, 0
+                //Sets the position, not sure about the random numbers, but it works.
                 Vector3 treePosition = new Vector3((mapSize / 2) * -1 + x, (mapSize / 2) * -1 + y + offsetY - constantOffset  + 0.5f, ((mapSize / 2) * -1 + y - offsetY - 0.5f)*0.1f);
                 Vector3Int positionRoundedDown = new Vector3Int((int)Math.Floor(treePosition.x), (int)Math.Floor(treePosition.y), 0); //Checks the adjacent tiles so trees don't spawn on water
                 Vector3Int positionRoundedUp = new Vector3Int((int)Math.Ceiling(treePosition.x), (int)Math.Ceiling(treePosition.y), 0);
@@ -151,6 +152,7 @@ public class TerrainGenerator : MonoBehaviour
                     GameObject placedTree = GameObject.Instantiate(spawnObject, treePosition, Quaternion.identity, parentObject);
                     occupiedTiles.Add(y * mapSize + x); //Indexes the placed objects so it doesn't cause objects piling on the same tile
                     placedTree.GetComponent<ObjectData>().id = y * mapSize + x;
+                    //This formula sets the position things that might destroy the water and object checks, do not touch
                     placedTree.transform.position = new Vector3(placedTree.transform.position.x + 0.5f + offsetX, placedTree.transform.position.y + 0.5f + offsetY, (placedTree.transform.position.y + 0.5f + offsetY) * 0.1f);
                 }
             }

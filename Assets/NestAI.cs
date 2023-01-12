@@ -19,6 +19,7 @@ public class NestAI : MonoBehaviour
 
     }
 
+    //NOTE: DO NOT CHANGE THIS CODE, I HOTFIXED THIS AT 00:00 AND IT MIGHT BREAK IF TOUCHED
     public IEnumerator spawnEnemies(float cooldown, List<GameObject> enemyTypes)
     {
         TerrainGenerator terrainGenerator = GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>();
