@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea75ab0b09848341b8ede87d2d9ea14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSize: 103
+  mapSize: 100
   tilemap: {fileID: 793584996}
   ground: {fileID: 11400000, guid: 20e507cb63927ca489b7c59cae0d4129, type: 2}
   water: {fileID: 11400000, guid: 2b4e7944b3ac0784d9b1ce52e18ee963, type: 2}
@@ -179,9 +179,14 @@ MonoBehaviour:
   treeNoise: 0.116
   treeThreshold: 0.628
   treeOffset: 0.13
+  nestDensity: 0.852
+  nestDistance: 80
+  nestAmount: 0.666
   treePrefab: {fileID: 2668615662889740532, guid: e99f2d532f139b648ab493d8247d26ab, type: 3}
   treeGroup: {fileID: 886473610}
   bushObject: {fileID: 1027983698613110178, guid: 364de05dedf6aa94db164fb45abc119d, type: 3}
+  nestObject: {fileID: 390032032621341780, guid: 6df396d6a2110494593d3ca9f9e9742c, type: 3}
+  nestGroup: {fileID: 1346335912}
   bushRange: 0.771
   bushNoise: 0.892
   bushOffset: 0.096
@@ -420,6 +425,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1346335912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1346335913}
+  - component: {fileID: 1346335914}
+  m_Layer: 0
+  m_Name: NestGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1346335913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346335912}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1346335914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346335912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ad1fb8c97643d48aaa6bd2549a52d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnSpeed: 2
+  enemyTypes:
+  - {fileID: 5505045686717455731, guid: c254faff387805a4f9bf17a523faa8d8, type: 3}
 --- !u!1 &1524302395
 GameObject:
   m_ObjectHideFlags: 0
