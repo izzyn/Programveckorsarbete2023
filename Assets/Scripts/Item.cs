@@ -9,7 +9,12 @@ using UnityEngine;
 
         ItemType itemType;
         int amount;
-        
+        private Sprite sprite;
+
+        public Sprite GetSprite => sprite;
+
+
+
         public int GetAmount => amount;
         public void SetAmount(int amount) => this.amount = amount;
     }

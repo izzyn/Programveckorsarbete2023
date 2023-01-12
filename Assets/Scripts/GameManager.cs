@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     public int nightLength = 90;
 
     public static bool isNight;
-    public static Item scrap = new Item(ItemType.Scrap);
-    public static Item wood = new Item(ItemType.Wood);
+    public static Item scrap = new Item(ItemType.Scrap); //1
+    public static Item wood = new Item(ItemType.Wood);//2
 
 
 
