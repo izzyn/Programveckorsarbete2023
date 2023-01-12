@@ -49,8 +49,8 @@ public class PlayerMovement : MonoBehaviour
         
         //Move the player to new position for it's frame
         rigidBody.MovePosition(transform.position + moveDir * (walkSpeed/200f));
-        
-        
+
+
     }
 
 }
