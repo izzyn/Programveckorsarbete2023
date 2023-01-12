@@ -5,8 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public static int scrapAmount;
-    public static int woodAmount;
+    public item scrap = new item();
+    public item wood = new item();
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,5 +19,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+    public class item
+    {
+        int amount;
+        public int GetAmount => amount;
+        public void SetAmount(int amount) => this.amount = amount;
     }
 }
