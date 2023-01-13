@@ -4,8 +4,9 @@ public class WoodItem: Item
 {
     public WoodItem(int amount) : base( amount)
     {
-        
-        SetSprite(Resources.Load("Assets/Textures/Wood") as Texture2D);
+        name = "Wood";
+        itemType = ItemType.Wood;
+     SetSprite(Resources.Load<Sprite>("Wood"));
     }
     
     

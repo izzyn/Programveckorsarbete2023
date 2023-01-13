@@ -27,19 +27,40 @@ public static class Inventory
 {
     public static List<Item> inventoryList = new List<Item>();
 
-    public static int selectedSlot;
+    //What slot is selected in hand
+    public static int selectedSlot = 0;
+    
+    //Input a itemType get how many of that itemtype exist in inventory
     public static int CheckAmountOfItem(ItemType itemType)
     {
-        throw new NotImplementedException();
+        int itemAmount = 0;
+        foreach (Item item in inventoryList)
+        {
+            if(item.GetItemType() == itemType)
+            {
+                itemAmount =+ item.GetAmount();
+            }
+        }
+        return itemAmount;
         
     }
+    
+    //Input a itemType and amount and return a boolean (true or false) if a certain amount of a specific itemtype exists in inventory
     public static bool DoesInventoryContain(ItemType itemType, int amount)
     {
         throw new NotImplementedException();
     }
-    public static void AddItem(Item item)
+    
+    //Simple add item to inventory, return if it was successful, can be unsuccessful if inventory is full
+    public static bool AddItem(Item item)
     {
-        inventoryList.Add(item);
+        if (DoesItemFit(item))
+        {
+            inventoryList.Add(item);
+            return true;
+        }
+
+        return false;
     }
     
     public static void RemoveAmountOfItem(ItemType itemType, int amount)

@@ -18,7 +18,7 @@ public class Crafting_Script : MonoBehaviour
     //wall
     private int scrapRequired =10;
     private int woodRequired = 10;
-
+    private int stoneRequired = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,13 +30,15 @@ public class Crafting_Script : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            if(GameManager.scrap.GetAmount>=scrapRequired)
+            if(Inventory.CheckAmountOfItem(ItemType.Scrap)>=scrapRequired)
             {
-                if (GameManager.wood.GetAmount>=woodRequired)
+                if (Inventory.CheckAmountOfItem(ItemType.Wood)>=woodRequired)
                 {
+                    if(Inventory.CheckAmountOfItem(ItemType.Stone)>=stoneRequired)
                     print("craft compleate");
-                    GameManager.wood.SetAmount(GameManager.wood.GetAmount -woodRequired);
-                    GameManager.scrap.SetAmount(GameManager.scrap.GetAmount - scrapRequired);
+                    Inventory.RemoveAmountOfItem(ItemType.Scrap, scrapRequired);
+                    Inventory.RemoveAmountOfItem(ItemType.Wood, woodRequired);
+                    Inventory.RemoveAmountOfItem(ItemType.Stone, stoneRequired);
                 }
             }
         }
