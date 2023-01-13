@@ -14,8 +14,9 @@ public class GameManager : MonoBehaviour
     public static bool isNight;
     public static Item scrap; //= new Item(ItemType.Scrap);
     public static Item wood; //= new Item(ItemType.Wood);
+    
 
-    public static List<Item> inventoryList = new List<Item>();
+    
 
 
     // Start is called before the first frame update
@@ -44,5 +45,32 @@ public class GameManager : MonoBehaviour
         Invoke("MakeDay", nightLength);
     }
 
-   
+  
+}
+
+public class Inventory
+{
+    public List<Item> inventoryList = new List<Item>();
+    
+    public int CheckAmountOfItem(ItemType itemType)
+    {
+        throw new NotImplementedException();
+        
+    }
+    public bool DoesInventoryContain(ItemType itemType, int amount)
+    {
+        throw new NotImplementedException();
+    }
+    public void AddItem(Item item)
+    {
+        inventoryList.Add(item);
+    }
+    
+    public void RemoveAmountOfItem(ItemType itemType, int amount)
+    {
+        throw new NotImplementedException();
+    }
+    
+    
+    
 }
