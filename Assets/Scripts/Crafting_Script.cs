@@ -28,16 +28,6 @@ public class Crafting_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            GameManager.scrap.SetAmount(GameManager.scrap.GetAmount + 1);
-            print(GameManager.scrap.GetAmount + "scrap");
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            GameManager.wood.SetAmount(GameManager.wood.GetAmount + 1);
-            print(GameManager.wood.GetAmount+"wood");
-        }
         if (Input.GetKeyDown(KeyCode.K))
         {
             if(GameManager.scrap.GetAmount>=scrapRequired)

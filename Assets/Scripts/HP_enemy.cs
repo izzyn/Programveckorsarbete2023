@@ -16,7 +16,11 @@ public class HP_enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(HP<=0)
+        {
+            print("im ded");
+            transform.position = new Vector3(0, 0, 0);
+        }
     }
    
    
