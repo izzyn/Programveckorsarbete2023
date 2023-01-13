@@ -44,29 +44,29 @@ public class GameManager : MonoBehaviour
 
         Invoke("MakeDay", nightLength);
     }
-
-  
+    
 }
 
-public class Inventory
+public static class Inventory
 {
-    public List<Item> inventoryList = new List<Item>();
-    
-    public int CheckAmountOfItem(ItemType itemType)
+    public static List<Item> inventoryList = new List<Item>();
+
+    public static int selectedSlot;
+    public static int CheckAmountOfItem(ItemType itemType)
     {
         throw new NotImplementedException();
         
     }
-    public bool DoesInventoryContain(ItemType itemType, int amount)
+    public static bool DoesInventoryContain(ItemType itemType, int amount)
     {
         throw new NotImplementedException();
     }
-    public void AddItem(Item item)
+    public static void AddItem(Item item)
     {
         inventoryList.Add(item);
     }
     
-    public void RemoveAmountOfItem(ItemType itemType, int amount)
+    public static void RemoveAmountOfItem(ItemType itemType, int amount)
     {
         throw new NotImplementedException();
     }
