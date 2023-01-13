@@ -28,20 +28,4 @@ public class GameManager : MonoBehaviour
     {
         
     }
-
-    public void MakeDay()
-    {
-        isNight = false;
-
-        Invoke("MakeNight", dayLength);
-    }
-
-    void MakeNight()
-    {
-        isNight = true;
-
-        Invoke("MakeDay", nightLength);
-    }
-
-   
 }
