@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,16 +9,29 @@ using UnityEngine;
             this.amount = amount;
         }
 
+        //Self explanatory fields
+        protected  String name;
         protected ItemType itemType;
         private int amount;
         protected Sprite sprite;
 
+        //The is saved and used as a list of items needed to craft the item, if list is empty then the item is not craftable
         protected List<Item> recipe = new List<Item>();
-
-        public Sprite GetSprite => sprite; 
-        protected void SetSprite(Texture2D texture)
+        
+        public List<Item> GetRecipe()
         {
-            sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
+            return recipe;
+        }
+        
+        public String GetName()
+        {
+            return name;
+        }
+
+        public Sprite GetSprite() => sprite; 
+        protected void SetSprite(Sprite texture)
+        {
+            sprite = texture;
         }
 
 

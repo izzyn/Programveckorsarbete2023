@@ -6,7 +6,7 @@
         
         public ScrapItem(int amount) : base( amount)
         {
-        
-            SetSprite(Resources.Load("Assets/Textures/Scrap") as Texture2D);
+            name = "Scrap";
+           SetSprite(Resources.Load<Sprite>("Scrap"));
         }
     }

@@ -6,6 +6,7 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class ItemTest : MonoBehaviour
 {
+    private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +17,15 @@ public class ItemTest : MonoBehaviour
     void Update()
     {
         ExampleItem item = new ExampleItem(10);
-        print("Item Amount");
-        Item sak = item;
-       
+        print("Item Amount: " + item.GetAmount());
+        print("Recipe: ");
+        foreach(Item rItem in item.GetRecipe())
+        {
+            print(rItem.GetAmount() + " " + rItem.GetName());
+        }
+        print(item.ToString());
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = item.GetSprite();
+
     }
 }
