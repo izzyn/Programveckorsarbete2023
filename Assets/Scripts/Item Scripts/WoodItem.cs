@@ -1,20 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class WoodItem
+public class WoodItem: Item
 {
-
-   
-    // Start is called before the first frame update
-    void Start()
+    public WoodItem(int amount) : base( amount)
     {
         
+        SetSprite(Resources.Load("Assets/Textures/Wood") as Texture2D);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+    
+    
+    
+    
 }
