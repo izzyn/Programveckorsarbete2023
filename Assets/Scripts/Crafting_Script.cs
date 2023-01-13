@@ -30,13 +30,13 @@ public class Crafting_Script : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            if(GameManager.scrap.GetAmount>=scrapRequired)
+            if(GameManager.scrap.GetAmount()>=scrapRequired)
             {
-                if (GameManager.wood.GetAmount>=woodRequired)
+                if (GameManager.wood.GetAmount()>=woodRequired)
                 {
                     print("craft compleate");
-                    GameManager.wood.SetAmount(GameManager.wood.GetAmount -woodRequired);
-                    GameManager.scrap.SetAmount(GameManager.scrap.GetAmount - scrapRequired);
+                    GameManager.wood.SetAmount(GameManager.wood.GetAmount() -woodRequired);
+                    GameManager.scrap.SetAmount(GameManager.scrap.GetAmount() - scrapRequired);
                 }
             }
         }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
     public abstract class Item
@@ -11,6 +12,8 @@ using UnityEngine;
         private int amount;
         protected Sprite sprite;
 
+        protected List<Item> recipe = new List<Item>();
+
         public Sprite GetSprite => sprite; 
         protected void SetSprite(Texture2D texture)
         {
@@ -19,7 +22,7 @@ using UnityEngine;
 
 
 
-        public int GetAmount => amount;
+        public int GetAmount() => amount;
         public void SetAmount(int amount) => this.amount = amount;
 
         public virtual void TriggerLeftClickEvent()
@@ -35,6 +38,7 @@ using UnityEngine;
     
     public enum ItemType
     {
+        Example,
         Scrap,
         Wood
 
