@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DayNightCycle : MonoBehaviour
 {
-    public int dayCount = 0;
     public int dayLength = 60;
     public int nightLength = 90;
     public bool isNight = false;
@@ -25,7 +24,7 @@ public class DayNightCycle : MonoBehaviour
         Invoke("MakeNight", dayLength);
 
         isNight = false;
-        dayCount++;
+        GameManager.dayCount++;
     }
 
     void MakeNight()
