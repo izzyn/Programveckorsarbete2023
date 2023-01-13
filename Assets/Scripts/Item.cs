@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
     public abstract class Item
@@ -34,9 +35,16 @@ using UnityEngine;
         }
 
         public Sprite GetSprite() => sprite; 
-        protected void SetSprite(Sprite texture)
+        protected void SetSprite(Sprite sprite)
         {
-            sprite = texture;
+            if(sprite != null) this.sprite = sprite;
+            else
+            {
+                Debug.Log("Texture error: " + this.GetName());
+                this.sprite = Resources.Load<Sprite>("Error");
+            }
+            
+            
         }
 
 
@@ -61,6 +69,7 @@ using UnityEngine;
         Scrap,
         Wood,
         Stone,
-        Berry
+        Berry,
+        Spear
 
     }

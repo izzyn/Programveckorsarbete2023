@@ -4,8 +4,9 @@ public class SpearItem : Item
 {
     public SpearItem(int amount) : base(amount)
     {
-
-        SetSprite(Resources.Load("Assets/Textures/Spear") as Texture2D);
+        itemType = ItemType.Spear;
+        SetSprite(Resources.Load<Sprite>("Spear"));
+        name = "Spear";
     }
 
     public override void TriggerRightClickEvent()
