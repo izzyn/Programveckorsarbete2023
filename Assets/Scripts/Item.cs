@@ -15,6 +15,7 @@ using UnityEngine;
         protected ItemType itemType;
         private int amount;
         protected Sprite sprite;
+        protected int stackSize = 64;
 
         //The is saved and used as a list of items needed to craft the item, if list is empty then the item is not craftable
         protected List<Item> recipe = new List<Item>();
@@ -37,14 +38,16 @@ using UnityEngine;
         public Sprite GetSprite() => sprite; 
         protected void SetSprite(Sprite sprite)
         {
-            if(sprite != null) this.sprite = sprite;
-            else
+            if (sprite.Equals(null))
             {
                 Debug.Log("Texture error: " + this.GetName());
                 this.sprite = Resources.Load<Sprite>("Error");
             }
-            
-            
+            else 
+                this.sprite = sprite;
+
+
+
         }
 
 

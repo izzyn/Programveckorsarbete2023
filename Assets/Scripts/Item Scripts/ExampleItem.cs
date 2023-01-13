@@ -11,6 +11,7 @@ public class ExampleItem:Item
         //Sets the sprite/texture of the item
         SetSprite(Resources.Load<Sprite>("Example"));
         
+        //How you set an item stack size, default is 64 if none is set
         //How you add a recipe to the item
         ScrapItem scrap = new ScrapItem(1);
         WoodItem wood = new WoodItem(1);

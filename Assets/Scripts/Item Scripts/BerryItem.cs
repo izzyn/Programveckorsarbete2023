@@ -8,7 +8,7 @@ public class BerryItem:Item
     {
         //Sets the sprite/texture of the item
         SetSprite(Resources.Load<Sprite>("Berry"));
-
+        stackSize = 16;
         itemType = ItemType.Berry;
         //add name to item
         name = "Berry";

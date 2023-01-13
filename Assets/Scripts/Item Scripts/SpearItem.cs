@@ -7,6 +7,7 @@ public class SpearItem : Item
         itemType = ItemType.Spear;
         SetSprite(Resources.Load<Sprite>("Spear"));
         name = "Spear";
+        stackSize = 1;
     }
 
     public override void TriggerRightClickEvent()
