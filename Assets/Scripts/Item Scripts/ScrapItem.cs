@@ -1,13 +1,11 @@
+using UnityEngine;
 
-    using UnityEngine;
-
-    public class ScrapItem: Item
+public class ScrapItem: Item
+{
+    public ScrapItem(int amount) : base( amount)
     {
-        
-        public ScrapItem(int amount) : base( amount)
-        {
-            name = "Scrap";
-            itemType = ItemType.Scrap;
-           SetSpriteFromName("Scrap");
-        }
+        name = "Scrap";
+        itemType = ItemType.Scrap;
+        SetSpriteFromName("Scrap");
     }
+}

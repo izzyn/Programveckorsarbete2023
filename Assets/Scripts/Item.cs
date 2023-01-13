@@ -44,13 +44,17 @@ using UnityEngine;
         public Sprite GetSprite() => sprite; 
         protected void SetSprite(Sprite sprite)
         {
-            if (sprite == null)
+
+            try
             {
-                Debug.Log("Texture error: " + this.GetName());
+                this.sprite = sprite;
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine("Texture error: " + this.GetName());
                 this.sprite = Resources.Load<Sprite>("Error");
             }
-            else 
-                this.sprite = sprite;
+                
 
 
 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ItemUsable:Item
@@ -11,13 +12,16 @@ public class ItemUsable:Item
     
     protected void SetInUseSprite(Sprite sprite)
     {
-        if (sprite == null)
+        try
         {
-            Debug.Log("Texture error: " + this.GetName());
+            inUseSprite = sprite;
+        }
+        catch (NullReferenceException e)
+        {
+            Console.WriteLine("Texture error: " + this.GetName());
+            
             this.sprite = Resources.Load<Sprite>("Error");
         }
-        else 
-            inUseSprite = sprite;
     }
     
     public void SetInUseSpriteFromName(string name)

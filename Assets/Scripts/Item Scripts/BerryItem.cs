@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class BerryItem:Item
 {
-    private ItemType itemType = ItemType.Example;
-    
     public BerryItem(int amount) : base( amount)
     {
         //Sets the sprite/texture of the item

@@ -1,13 +1,15 @@
 
 using UnityEngine;
 
-public class ExampleItem:Item
+public class ExampleItem:Item //Replace ExampleItem with the name of your item + the word Item(for less confusion)
+
 {
 
-    public ExampleItem(int amount) : base( amount)
+    public ExampleItem(int amount) : base( amount) //Replace "ExampleItem" with the same name + the word Item as the one above.
     {
         //Assign Item Label/ItemType/Reference type/Enum
         itemType = ItemType.Example;
+        
         //Sets the sprite/texture of the item(Have to be placed in) ---- or a better way is to use option bellow
         SetSprite(Resources.Load<Sprite>("Textures/Items/Example"));
         
@@ -25,7 +27,7 @@ public class ExampleItem:Item
         recipe.Add(scrap);
         recipe.Add(wood);
         
-        //add name to item
+        //add a display name to item
         name = "Example Item";
     }
     
