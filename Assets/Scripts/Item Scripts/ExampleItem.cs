@@ -1,12 +1,13 @@
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class ExampleItem:Item
 {
-    private ItemType itemType = ItemType.Example;
-    
+
     public ExampleItem(int amount) : base( amount)
     {
+        //Assign Item Label/ItemType/Reference type/Enum
+        itemType = ItemType.Example;
         //Sets the sprite/texture of the item
         SetSprite(Resources.Load<Sprite>("Example"));
         

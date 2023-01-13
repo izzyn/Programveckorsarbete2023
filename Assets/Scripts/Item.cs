@@ -23,6 +23,11 @@ using UnityEngine;
             return recipe;
         }
         
+        public ItemType GetItemType()
+        {
+            return itemType;
+        }
+        
         public String GetName()
         {
             return name;
@@ -54,6 +59,8 @@ using UnityEngine;
     {
         Example,
         Scrap,
-        Wood
+        Wood,
+        Stone,
+        Berry
 
     }
