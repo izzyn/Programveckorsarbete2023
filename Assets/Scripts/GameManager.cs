@@ -5,49 +5,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static int dayCount;
 
-    [SerializeField]
-    public int dayLength = 60;
-    [SerializeField]
-    public int nightLength = 90;
 
-    public static bool isNight;
     public static Item scrap; //= new Item(ItemType.Scrap);
     public static Item wood; //= new Item(ItemType.Wood);
-    
-
-    
-
-
-    // Start is called before the first frame update
-    void Start()
+    public void SavePlayer()
     {
-        WoodItem woodItem = new WoodItem( 3);
-        
-        
+        SaveSystem.SavePlayer(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void LoadPlayer()
     {
-        
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        dayCount = data.dayCount;
     }
-
-
-    public void MakeDay()
-    {
-        isNight = false;
-
-        Invoke("MakeNight", dayLength);
-    }
-
-    void MakeNight()
-    {
-        isNight = true;
-
-        Invoke("MakeDay", nightLength);
-    }
-    
 }
 
 public static class Inventory
