@@ -40,6 +40,6 @@ using UnityEngine;
     {
         Example,
         Scrap,
-        Wood
-
+        Wood,
+        Stone
     }

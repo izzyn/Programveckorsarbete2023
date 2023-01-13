@@ -25,7 +25,7 @@ public class Spear_code : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             enemy.HP -= dmg_Spear;
-            print("hurt");
+
         }
     }
 }
