@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
         
     }
 
+
     public void MakeDay()
     {
         isNight = false;
@@ -77,7 +78,4 @@ public static class Inventory
     {
         throw new NotImplementedException();
     }
-    
-    
-    
 }
