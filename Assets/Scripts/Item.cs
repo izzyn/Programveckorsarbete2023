@@ -1,7 +1,8 @@
 using UnityEngine;
+
     public abstract class Item
     {
-        public Item(ItemType type)
+        public Item(ItemType type, int amount)
         {
             this.itemType = type;
             this.amount = amount;
@@ -17,6 +18,15 @@ using UnityEngine;
 
         public int GetAmount => amount;
         public void SetAmount(int amount) => this.amount = amount;
+
+        public void TriggerLeftClickEvent()
+        {
+            
+        }
+        public void TriggerRightClickEvent()
+        {
+            
+        }
     }
     
     public enum ItemType

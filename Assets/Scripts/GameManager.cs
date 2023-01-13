@@ -70,6 +70,11 @@ public static class Inventory
     {
         throw new NotImplementedException();
     }
+
+    public static bool DoesItemFit(Item item)
+    {
+        throw new NotImplementedException();
+    }
     
     
     
