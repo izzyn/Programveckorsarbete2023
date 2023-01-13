@@ -8,6 +8,6 @@
         {
             name = "Scrap";
             itemType = ItemType.Scrap;
-           SetSprite(Resources.Load<Sprite>("Scrap"));
+           SetSpriteFromName("Scrap");
         }
     }

@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 
-public class SpearItem : Item
+public class SpearItem : ItemUsable
 {
     public SpearItem(int amount) : base(amount)
     {
         itemType = ItemType.Spear;
-        SetSprite(Resources.Load<Sprite>("Spear"));
+        SetSpriteFromName("Spear");
+        SetInUseSpriteFromName("Spear");
         name = "Spear";
         stackSize = 1;
     }

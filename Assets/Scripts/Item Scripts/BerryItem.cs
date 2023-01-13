@@ -7,7 +7,7 @@ public class BerryItem:Item
     public BerryItem(int amount) : base( amount)
     {
         //Sets the sprite/texture of the item
-        SetSprite(Resources.Load<Sprite>("Berry"));
+        SetSpriteFromName("Berry");
         stackSize = 16;
         itemType = ItemType.Berry;
         //add name to item
