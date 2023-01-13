@@ -1,5 +1,5 @@
 using UnityEngine;
-    public class Item
+    public abstract class Item
     {
         public Item(ItemType type)
         {
@@ -7,7 +7,7 @@ using UnityEngine;
             this.amount = amount;
         }
 
-        ItemType itemType;
+        protected ItemType itemType;
         int amount;
         private Sprite sprite;
 
