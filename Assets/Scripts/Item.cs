@@ -2,28 +2,32 @@ using UnityEngine;
 
     public abstract class Item
     {
-        public Item(ItemType type, int amount)
+        public Item( int amount)
         {
-            this.itemType = type;
             this.amount = amount;
         }
 
         protected ItemType itemType;
-        int amount;
-        private Sprite sprite;
+        private int amount;
+        protected Sprite sprite;
 
-        public Sprite GetSprite => sprite;
+        public Sprite GetSprite => sprite; 
+        protected void SetSprite(Texture2D texture)
+        {
+            sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
+        }
 
 
 
         public int GetAmount => amount;
         public void SetAmount(int amount) => this.amount = amount;
 
-        public void TriggerLeftClickEvent()
+        public virtual void TriggerLeftClickEvent()
         {
             
         }
-        public void TriggerRightClickEvent()
+
+        public virtual void TriggerRightClickEvent()
         {
             
         }

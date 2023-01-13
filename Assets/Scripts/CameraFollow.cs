@@ -36,4 +36,5 @@ public class CameraFollow : MonoBehaviour
     {
         camera.position = cameraTarget;
     }
+    
 }
