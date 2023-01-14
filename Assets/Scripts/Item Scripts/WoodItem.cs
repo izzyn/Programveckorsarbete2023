@@ -6,7 +6,7 @@ public class WoodItem: Item
     {
         name = "Wood";
         itemType = ItemType.Wood;
-     SetSprite(Resources.Load<Sprite>("Wood"));
+        SetSpriteFromName("Wood");
     }
     
     

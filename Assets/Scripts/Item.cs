@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
     public abstract class Item
@@ -14,10 +15,17 @@ using UnityEngine;
         protected ItemType itemType;
         private int amount;
         protected Sprite sprite;
+        protected int stackSize = 64;
+        
+        
 
         //The is saved and used as a list of items needed to craft the item, if list is empty then the item is not craftable
         protected List<Item> recipe = new List<Item>();
-        
+
+        public int GetStackSize()
+        {
+            return stackSize;
+        }
         public List<Item> GetRecipe()
         {
             return recipe;
@@ -34,9 +42,27 @@ using UnityEngine;
         }
 
         public Sprite GetSprite() => sprite; 
-        protected void SetSprite(Sprite texture)
+        protected void SetSprite(Sprite sprite)
         {
-            sprite = texture;
+
+            try
+            {
+                this.sprite = sprite;
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine("Texture error: " + this.GetName());
+                this.sprite = Resources.Load<Sprite>("Error");
+            }
+                
+
+
+
+        }
+
+        protected void SetSpriteFromName(String fileName)
+        {
+            SetSprite(Resources.Load<Sprite>("Textures/Items/" + fileName));
         }
 
 
@@ -61,6 +87,7 @@ using UnityEngine;
         Scrap,
         Wood,
         Stone,
-        Berry
+        Berry,
+        Spear
 
     }

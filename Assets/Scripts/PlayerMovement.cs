@@ -11,11 +11,12 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rigidBody;
 
-    private bool isColliding;
+    
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        GameManager.player = gameObject;
     }
 
     // Update is called once per frame
