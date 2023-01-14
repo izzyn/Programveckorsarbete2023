@@ -87,6 +87,8 @@ public class TerrainGenerator : MonoBehaviour
         gg.center = new Vector3(0.5f, 0.5f, 0);
         // Updates internal size from the above values
         gg.SetDimensions(mapSize, mapSize, 1);
+        gg.collision.diameter = 1f;
+        gg.nodeSize = 0.5f; 
         gg.is2D = true;
         gg.collision.use2D = true;
         gg.collision.mask += LayerMask.GetMask("Obstacle");

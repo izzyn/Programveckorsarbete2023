@@ -6,6 +6,7 @@ using System.Linq;
 
 public class NestAI : MonoBehaviour
 {
+    public Transform player;
     List<GameObject> createdEnemies = new List<GameObject>();
     int mapsize;
     List<int> availableSpawns = new List<int>();
@@ -50,7 +51,10 @@ public class NestAI : MonoBehaviour
                 Vector2 enemyPosition = DeSimplifyVector(availableSpawns[UnityEngine.Random.Range(0, availableSpawns.Count)]);
                 if (enemyPosition.x >= ((mapsize / 2f)*-1) + 0.5f && enemyPosition.x <= mapsize / 2 - 0.5f && enemyPosition.y >= ((mapsize / 2f) * -1) + 0.5f && enemyPosition.y <= mapsize / 2 - 0.5f)
                 {
-                    GameObject.Instantiate(selectedEnemy, new Vector3(enemyPosition.x, enemyPosition.y, enemyPosition.y * 0.1f), Quaternion.identity);
+                    GameObject enemy = GameObject.Instantiate(selectedEnemy, new Vector3(enemyPosition.x, enemyPosition.y, enemyPosition.y * 0.1f), Quaternion.identity);
+                    enemy.GetComponent<AIScript>().target = player;
+                    enemy.GetComponent<AIScript>().initiateSeeking();
+
                 }
             }
             else

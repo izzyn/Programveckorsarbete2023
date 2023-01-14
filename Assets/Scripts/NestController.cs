@@ -5,6 +5,8 @@ using UnityEngine;
 public class NestController : MonoBehaviour
 {
     [SerializeField]
+    Transform player;
+    [SerializeField]
     float spawnSpeed;
     [SerializeField]
     List<GameObject> enemyTypes = new List<GameObject>();
@@ -17,6 +19,7 @@ public class NestController : MonoBehaviour
     {
         foreach(Transform child in gameObject.transform)
         {
+            child.gameObject.GetComponent<NestAI>().player = player;
             StartCoroutine(child.gameObject.GetComponent<NestAI>().spawnEnemies(spawnSpeed, enemyTypes));
         }
     }
