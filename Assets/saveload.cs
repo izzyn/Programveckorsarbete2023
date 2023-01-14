@@ -5,5 +5,12 @@ using UnityEngine;
 
 public class Saveload : MonoBehaviour
 {
-    
+    private void Start()
+    {
+        GameManager.LoadPlayer();
+    }
+    private void Update()
+    {
+        
+    }
 }
