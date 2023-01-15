@@ -19,6 +19,7 @@ public class NestAI : MonoBehaviour
     
 
     //NOTE: DO NOT CHANGE THIS CODE, I HOTFIXED THIS AT 00:00 AND IT MIGHT BREAK IF TOUCHED
+    //Note 2: it's sane now
     public IEnumerator spawnEnemies(float cooldown, List<GameObject> enemyTypes)
     {
         TerrainGenerator terrainGenerator = GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>();
@@ -64,7 +65,7 @@ public class NestAI : MonoBehaviour
     }
     int SimplifyVector(Vector2 vector)
     {
-        return (int)((vector.x - 0.5f) + (mapsize/2)) + mapsize * (int)(-vector.y - 0.5f + (mapsize/2));
+        return (int)((vector.x) + (mapsize/2)) + mapsize * (int)(-vector.y + (mapsize/2));
     }
     Vector2 DeSimplifyVector(int simplifiedVector)
     {
