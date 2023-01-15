@@ -13,10 +13,7 @@ public class NestAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int id = SimplifyVector(new Vector2(-50.5f, 0.5f));
-        Debug.Log(id);
-        Debug.Log(DeSimplifyVector(id));
-
+        Debug.Log(SimplifyVector((Vector2)transform.position));
 
     }
     
@@ -32,15 +29,14 @@ public class NestAI : MonoBehaviour
         {
             for (int x = 0; x < 3; x++)
             {
-                int tryLocation = ((y + (((gameObject.GetComponent<ObjectData>().id - (gameObject.GetComponent<ObjectData>().id % mapsize)) / mapsize)) - 1) * mapsize) + (x + (gameObject.GetComponent<ObjectData>().id % mapsize));
+                int tryLocation = SimplifyVector(new Vector2(transform.position.x + x -1, transform.position.y + y -1));
                 if ((x != 1 || y != 1) && tryLocation % mapsize != 0 && Mathf.Abs((x + (gameObject.GetComponent<ObjectData>().id % mapsize) - gameObject.GetComponent<ObjectData>().id % mapsize)) <= 3) //Makes it so the units can't spawn ontop of the nest
                 {
                     totalSpawnLocations.Add(tryLocation);
                 }
             }
         }
-        availableSpawns = totalSpawnLocations.Where(x => !terrainGenerator.GetWaterLoggedTiles.Contains(x-1)).ToList(); //Removes all the waterlogged tiles from the available spawn locations
-        Debug.Log(availableSpawns.Count);
+        availableSpawns = totalSpawnLocations.Where(x => !terrainGenerator.GetWaterLoggedTiles.Contains(x)).ToList(); //Removes all the waterlogged tiles from the available spawn locations
 
         while (gameObject != null)
         {
@@ -52,8 +48,6 @@ public class NestAI : MonoBehaviour
                 if (enemyPosition.x >= ((mapsize / 2f)*-1) + 0.5f && enemyPosition.x <= mapsize / 2 - 0.5f && enemyPosition.y >= ((mapsize / 2f) * -1) + 0.5f && enemyPosition.y <= mapsize / 2 - 0.5f)
                 {
                     GameObject enemy = GameObject.Instantiate(selectedEnemy, new Vector3(enemyPosition.x, enemyPosition.y, enemyPosition.y * 0.1f), Quaternion.identity);
-                    enemy.GetComponent<AIScript>().target = player;
-                    enemy.GetComponent<AIScript>().initiateSeeking();
 
                 }
             }
@@ -70,10 +64,10 @@ public class NestAI : MonoBehaviour
     }
     int SimplifyVector(Vector2 vector)
     {
-        return (int)((vector.x + 0.5f) + (mapsize/2)) + mapsize * (int)(-vector.y + 0.5f + (mapsize/2));
+        return (int)((vector.x - 0.5f) + (mapsize/2)) + mapsize * (int)(-vector.y - 0.5f + (mapsize/2));
     }
     Vector2 DeSimplifyVector(int simplifiedVector)
     {
-        return new Vector2((((simplifiedVector % mapsize) - mapsize/2)) - 0.5f,-(mapsize/2) +0.5f + ((simplifiedVector - (simplifiedVector % mapsize))/mapsize));
+        return new Vector2((((simplifiedVector % mapsize) - mapsize/2)) + 0.5f,(mapsize/2) - 0.5f - ((simplifiedVector - (simplifiedVector % mapsize))/mapsize));
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Unity.Mathematics;
 using System.Linq;
-using Pathfinding;
 
 public class TerrainGenerator : MonoBehaviour
 {
@@ -64,35 +63,18 @@ public class TerrainGenerator : MonoBehaviour
     public List<int> GetOccupiedTiles => occupiedTiles; //Getter for the occupied tile grid
     List<int> waterLoggedTiles = new List<int>();
     public List<int> GetWaterLoggedTiles => waterLoggedTiles;
-    GridGraph gg;
     // Start is called before the first frame update
     void Start()
     {
-        AstarData data = AstarPath.active.data;
-        Debug.Log(data);
         // This creates a Grid Graph
-        gg = data.AddGraph(typeof(GridGraph)) as GridGraph;
         GenerateTerrain(seed);
-        Physics.SyncTransforms();
-        StartCoroutine(waitGenerate());
     }
     IEnumerator waitGenerate()
     {
         yield return new WaitForSeconds(0.5f);
-        AstarPath.active.Scan();    
     }
     void GenerateTerrain(int presetSeed = 0)
     {
-        // Setup a grid graph with some values
-        gg.center = new Vector3(0.5f, 0.5f, 0);
-        // Updates internal size from the above values
-        gg.SetDimensions(mapSize, mapSize, 1);
-        gg.collision.diameter = 1f;
-        gg.nodeSize = 0.5f; 
-        gg.is2D = true;
-        gg.collision.use2D = true;
-        gg.collision.mask += LayerMask.GetMask("Obstacle");
-        // Scans all graphs, do not call gg.Scan(), that is an internal method
         int seed;
         tilemap.ClearAllTiles(); //Resets the map
         if(presetSeed < 100)
@@ -114,7 +96,7 @@ public class TerrainGenerator : MonoBehaviour
                 {
                     waterTileMap.SetTile(tilePosition, water); //sets the tiles
                     tilemap.SetTile(tilePosition, water); //sets the tiles
-                    waterLoggedTiles.Add(y * mapSize + x);
+                    waterLoggedTiles.Add((mapSize * mapSize - mapSize) - y * mapSize + x);
                 }
                 else
                 {
@@ -173,11 +155,11 @@ public class TerrainGenerator : MonoBehaviour
 
                 float originDistance = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(treePosition.x), 2) + Mathf.Pow(Mathf.Abs(treePosition.y), 2)); //Gets the distance from 0, 0 (doesn't need subtraction since the co-ordinates are 0, 0)
 
-                if (noiseNumber > threshold &&  !waterLoggedTiles.Contains(y * mapSize + x)  && !occupiedTiles.Contains(y*mapSize + x) && originDistance >= distance * 0.01f * (mapSize/2))
+                if (noiseNumber > threshold &&  !waterLoggedTiles.Contains((mapSize * mapSize - mapSize) - y * mapSize + x)  && !occupiedTiles.Contains((mapSize * mapSize - mapSize) - y * mapSize + x) && originDistance >= distance * 0.01f * (mapSize/2))
                 {
                     GameObject placedTree = GameObject.Instantiate(spawnObject, treePosition, Quaternion.identity, parentObject);
-                    occupiedTiles.Add(y * mapSize + x); //Indexes the placed objects so it doesn't cause objects piling on the same tile
-                    placedTree.GetComponent<ObjectData>().id = y * mapSize + x;
+                    occupiedTiles.Add((mapSize*mapSize - mapSize) - y * mapSize + x); //Indexes the placed objects so it doesn't cause objects piling on the same tile
+                    placedTree.GetComponent<ObjectData>().id = (mapSize * mapSize - mapSize) - y * mapSize + x;
                     //This formula sets the position things that might destroy the water and object checks, do not touch
                     placedTree.transform.position = new Vector3(placedTree.transform.position.x + 0.5f + offsetX, placedTree.transform.position.y + 0.5f + offsetY, (placedTree.transform.position.y + 0.5f + offsetY) * 0.1f);
                 }
