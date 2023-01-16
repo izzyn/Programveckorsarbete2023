@@ -89,6 +89,7 @@ using UnityEngine;
         Wood,
         Stone,
         Berry,
-        Spear
+        Spear,
+        Axe
 
     }
