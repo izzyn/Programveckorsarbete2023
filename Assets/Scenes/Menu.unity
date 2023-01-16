@@ -531,8 +531,8 @@ RectTransform:
   m_Father: {fileID: 1067389297}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0.000015258789, y: -0.0000038146973}
   m_SizeDelta: {x: 26.7252, y: -16.4396}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1466,13 +1466,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 520621757}
+  - component: {fileID: 520621758}
   m_Layer: 5
   m_Name: Options Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &520621757
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1498,6 +1499,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -856.49207, y: -399.2934}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &520621758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520621756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec3b54205343e914b93cecc972e32609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OptionsMenu: {fileID: 520621756}
+  MainMenu: {fileID: 1107535486}
 --- !u!1 &525818371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,7 +2133,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2554,7 +2569,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1107535487
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3335,11 +3350,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 026042e9f4887494ea8d9c87648723da, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 055ee63225a4583468b5cfebd6c827bd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 02132a7cb0901944ca55f6ab91949f6b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

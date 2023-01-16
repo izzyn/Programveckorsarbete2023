@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static int dayCount;
+    public static int dayCount = 0;
 
     public static int highscore;
 
