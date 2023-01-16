@@ -8,7 +8,13 @@ public class GameManager : MonoBehaviour
 {
     public static int dayCount;
 
+    public static int highscore;
+
+    public static Item scrap; //= new Item(ItemType.Scrap);
+    public static Item wood; //= new Item(ItemType.Wood);
+
     public static GameObject player;
+
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
