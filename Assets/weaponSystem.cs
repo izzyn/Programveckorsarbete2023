@@ -29,6 +29,8 @@ public class weaponSystem : MonoBehaviour
         if(Input.GetKeyDown(AttackKey))
         {
             Item item = Inventory.GetSelectedItem();
+            item = new SpearItem(1);
+            if (item == null) return;
             dmg.TryGetValue(item.GetItemType(), out CurrentDamage);
             SpriteRenderer.sprite = ((ItemUsable)item).GetInUseSprite();
             if(item.GetItemType()==ItemType.Spear)
