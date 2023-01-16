@@ -19,7 +19,7 @@ public class CuttingDownTrees : MonoBehaviour
     {
         distance = Vector2.Distance(player.transform.position, tree.transform.position + new Vector3(0f, 0.5f, 0f));
 
-        if (distance < 0.5 && Input.GetKey(KeyCode.Mouse0))
+        if (distance < 0.5 && Input.GetKeyDown(KeyCode.Mouse0))
         {
             Debug.Log("sans");
             GameObject.Destroy(gameObject);
