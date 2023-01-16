@@ -8,16 +8,17 @@ public class HP_enemy : MonoBehaviour
     [SerializeField]
     public int HP;
     DMG_weapons dmg;
+    Dictionary<ItemType, int> damageReferance;
     // Start is called before the first frame update
     void Start()
     {
-        dmg = FindObjectOfType<DMG_weapons>();
+        damageReferance = FindObjectOfType<DMG_weapons>().dmg;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if()
+        
 
         if(HP<=0)
         {
@@ -29,7 +30,8 @@ public class HP_enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "weapon")
         {
-            HP-=dmg.dmg;
+
+            
 
         }
     }

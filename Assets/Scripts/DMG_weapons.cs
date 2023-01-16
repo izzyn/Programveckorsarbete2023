@@ -8,13 +8,14 @@ public class DMG_weapons : MonoBehaviour
     private int dmg_spear;
     [SerializeField]
     private int dmg_axe;
-    Dictionary<string, int> dmg = new Dictionary<string, int>();
+    [SerializeField]
+   public Dictionary<ItemType, int> dmg = new Dictionary<ItemType, int>();
 
     // Start is called before the first frame update
     void Start()
     {
-        dmg.Add("spear", dmg_spear);
-        dmg.Add("axe", dmg_axe);
+        dmg.Add(ItemType.Spear, dmg_spear);
+        dmg.Add(ItemType.Axe, dmg_axe);
     }
 
     // Update is called once per frame
