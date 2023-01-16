@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Vector3 pos = transform.position;
-        transform.position = new Vector3(pos.x, pos.y, pos.y*0.1f - transform.localScale.y*0.1f);
+        transform.position = new Vector3(rigidBody.position.x, rigidBody.position.y, rigidBody.position.y*0.1f - transform.localScale.y*0.1f);
         
         //Get what direction the player is moving in(8 directions, up down left, right and all diagonals in between)
         Vector3 moveDir = new Vector3();
