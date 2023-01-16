@@ -47,11 +47,12 @@ using UnityEngine;
 
             try
             {
+                Console.WriteLine("Sprite set to " + sprite.name);
                 this.sprite = sprite;
+                
             }
             catch (NullReferenceException e)
             {
-                Console.WriteLine("Texture error: " + this.GetName());
                 this.sprite = Resources.Load<Sprite>("Error");
             }
                 

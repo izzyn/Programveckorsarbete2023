@@ -8,8 +8,7 @@ public class ItemTest : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
 
-    [SerializeField, Range(0,5)]
-    private int Slider;
+    public Item item;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,25 +18,27 @@ public class ItemTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        List<Item> items = new List<Item>();
-        items.Add(new ExampleItem(10));
-        items.Add(new SpearItem(10));
-        items.Add(new BerryItem(10));
-        items.Add(new StoneItem(10));
-        items.Add(new ScrapItem(10));
-        items.Add(new WoodItem(10));
-        Item item = items[Slider];
-        print("Item Amount: " + item.GetAmount());
-        print("Recipe: ");
-        if(item.GetRecipe().Count == 0) print("No Recipe");
-        else
-        foreach(Item rItem in item.GetRecipe())
+
+        if (item != null)
         {
-            print(rItem.GetAmount() + " " + rItem.GetName());
+            print("Item Amount: " + item.GetAmount());
+            print("Recipe: ");
+            if (item.GetRecipe().Count == 0) print("No Recipe");
+            else
+                foreach (Item rItem in item.GetRecipe())
+                {
+                    print(rItem.GetAmount() + " " + rItem.GetName());
+                }
+
+            print(item.ToString());
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = item.GetSprite();
         }
-        print(item.ToString());
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = item.GetSprite();
+        else
+        { 
+            GetComponent<SpriteRenderer>().sprite = null;
+        }
+        
 
     }
 }

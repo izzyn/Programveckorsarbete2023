@@ -15,11 +15,11 @@ public class ItemUsable:Item
         try
         {
             inUseSprite = sprite;
+            Console.WriteLine(sprite.name);
         }
         catch (NullReferenceException e)
         {
-            Console.WriteLine("Texture error: " + this.GetName());
-            
+
             this.sprite = Resources.Load<Sprite>("Error");
         }
     }

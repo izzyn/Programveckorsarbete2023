@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
 public static class Inventory
 {
-   private static Item[] inventoryList = new Item[8];
+   public static Item[] inventoryList = new Item[8];
 
     //What slot is selected in hand
     public static int selectedSlot = 0;
@@ -36,6 +36,7 @@ public static class Inventory
         int itemAmount = 0;
         foreach (Item item in inventoryList)
         {
+            if(item != null)
             if(item.GetItemType() == itemType)
             {
                 itemAmount =+ item.GetAmount();
@@ -50,6 +51,7 @@ public static class Inventory
     {
         foreach (Item item in inventoryList)
         {
+            if(item != null)
             if(item.GetItemType() == itemType)
             {
                 amount -= item.GetAmount();
@@ -67,11 +69,16 @@ public static class Inventory
     public static int AddItem(Item item)
     {
         int amount = item.GetAmount();
-        if (DoesItemFit(item))
-        {
+        int index = 0;
             foreach (Item invIitem in inventoryList)
             {
-                if(invIitem.GetItemType() == item.GetItemType())
+                if (invIitem == null)
+                {
+                    inventoryList[index] = item;
+                    inventoryList[index].SetAmount(invIitem.GetStackSize());
+                    amount -= item.GetStackSize();
+                }
+                else if(invIitem.GetItemType() == item.GetItemType())
                 {
                     invIitem.SetAmount(invIitem.GetAmount() + amount);
                     if(invIitem.GetAmount() > invIitem.GetStackSize())
@@ -81,17 +88,44 @@ public static class Inventory
                     }
                     
                 }
+                index++;
             }
-            
-        }
 
+
+        
         return amount;
     }
     
     //Simple remove item from inventory, return if it was successful, can be unsuccessful if inventory is empty for example
     public static bool RemoveAmountOfItem(ItemType itemType, int amount)
     {
-        throw new NotImplementedException();
+        int index = 0;
+        foreach (Item item in inventoryList)
+        {
+            if(item != null)
+            if (item.GetItemType() == itemType)
+            {
+                if (amount >= item.GetStackSize())
+                {
+                    item.SetAmount(0);
+                    amount -= item.GetStackSize();
+                }
+                else
+                {
+                    item.SetAmount(item.GetAmount() - amount);
+                    amount = 0;
+                }
+            }
+            if(item != null)
+            if (item.GetAmount() == 0)
+            {
+             inventoryList[index] = null;   
+            }
+
+            index++;
+        }
+
+        return true;
     }
 
     
@@ -103,7 +137,7 @@ public static class Inventory
         {
             if(item.GetItemType() == invItem.GetItemType())
             {
-               
+               amount -= invItem.GetStackSize() - invItem.GetAmount();
             }
         }
         
@@ -112,6 +146,5 @@ public static class Inventory
             return true;
         }
         return false;
-        return true;
     }
 }
