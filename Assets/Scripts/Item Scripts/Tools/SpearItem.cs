@@ -11,9 +11,6 @@ public class SpearItem : ItemUsable
         stackSize = 1;
     }
 
-    public override void TriggerRightClickEvent()
-    {
-       
-    }
+   
 
 }
