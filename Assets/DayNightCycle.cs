@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DayNightCycle : MonoBehaviour
 {
+    public Text dayCounterText;
     public int dayLength = 60;
     public int nightLength = 90;
     public bool isNight = false;
+    public GameObject nightShading;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +27,10 @@ public class DayNightCycle : MonoBehaviour
         Invoke("MakeNight", dayLength);
 
         isNight = false;
-        GameManager.dayCount++;
+
+        dayCounterText.text = "day " + GameManager.dayCount;
+
+        nightShading.SetActive(false);
     }
 
     void MakeNight()
@@ -32,6 +38,9 @@ public class DayNightCycle : MonoBehaviour
         Invoke("MakeDay", nightLength);
 
         isNight = true;
-    }
 
+        GameManager.dayCount++;
+
+        nightShading.SetActive(true);
+    }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class weaponSystem : MonoBehaviour
 {
-    KeyCode AttackKey
+    KeyCode AttackKey = KeyCode.Mouse0;
     // Start is called before the first frame update
     void Start()
     {
