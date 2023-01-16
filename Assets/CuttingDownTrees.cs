@@ -21,7 +21,6 @@ public class CuttingDownTrees : MonoBehaviour
 
         if (distance < 0.5 && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Debug.Log("sans");
             GameObject.Destroy(gameObject);
         }
     }
