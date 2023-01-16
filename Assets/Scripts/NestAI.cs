@@ -13,7 +13,6 @@ public class NestAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(SimplifyVector((Vector2)transform.position));
 
     }
     

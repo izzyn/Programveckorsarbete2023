@@ -99,9 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd42bb527e10bb64a93674e5322780f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 1
-  wayPointDistance: 0.5
+  currentTile: 0
+  speed: 100
 --- !u!50 &-3249096163118144329
 Rigidbody2D:
   serializedVersion: 4
