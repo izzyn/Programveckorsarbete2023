@@ -153,4 +153,9 @@ public static class Inventory
         }
         return false;
     }
+
+    public static Item GetSelectedItem()
+    {
+        return inventoryList[selectedSlot];s
+    }
 }
