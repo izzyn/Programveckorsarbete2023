@@ -156,6 +156,6 @@ public static class Inventory
 
     public static Item GetSelectedItem()
     {
-        return inventoryList[selectedSlot];s
+        return inventoryList[selectedSlot];
     }
 }
