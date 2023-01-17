@@ -77,15 +77,16 @@ public static class Inventory
     {
         int amount = item.GetAmount();
         int index = 0;
-        Debug.Log("Adding item: " + item.GetItemType() + " amount: " + amount);
-            foreach (Item invIitem in inventoryList)
+       // Debug.Log("Adding item: " + item.GetItemType() + " amount: " + amount);
+            foreach (Item invItem in inventoryList)
             {
                 
                
-                if (invIitem == null)
+                if (invItem == null  && amount > 0)
                 {
-                    Debug.Log("Adding item to slot: " + index);
+                   // Debug.Log("Adding item to slot: " + index);
                     inventoryList[index] = item;
+                    Debug.Log(inventoryList[index].GetItemType());
                     if (amount > item.GetStackSize())
                     {
                         inventoryList[index].SetAmount(item.GetStackSize());
@@ -93,25 +94,29 @@ public static class Inventory
                     }
                     else
                     {
+                        //Debug.Log("Set amount to ZERO");
                         amount = 0;
                     }
 
                 }
-                else if(invIitem.GetItemType() == item.GetItemType())
+                else if(invItem != null && amount > 0)
+                if(invItem.GetItemType() == item.GetItemType())
                 {
-                    invIitem.SetAmount(invIitem.GetAmount() + amount);
-                    if(invIitem.GetAmount() > invIitem.GetStackSize())
+                    invItem.SetAmount(invItem.GetAmount() + amount);
+                    if(invItem.GetAmount() > invItem.GetStackSize())
                     { 
-                        amount = invIitem.GetAmount() - invIitem.GetStackSize();
-                        invIitem.SetAmount(invIitem.GetStackSize());
+                        amount = invItem.GetAmount() - invItem.GetStackSize();
+                        invItem.SetAmount(invItem.GetStackSize());
                     }else
                     {
                         amount = 0;
                     }
                     
                 }
-                if (item.GetAmount() <= 0)
+                if(invItem != null)
+                if (invItem.GetAmount() <= 0)
                 {
+                    Debug.Log("Set " + index + " to null");
                     inventoryList[index] = null;   
                 }
                 index++;
