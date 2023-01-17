@@ -9,7 +9,7 @@ public class BerryItem:Item
         stackSize = 16;
         itemType = ItemType.Berry;
         //add name to item
-        name = "Berry";
+        itemName = "Berry";
     }
     
 

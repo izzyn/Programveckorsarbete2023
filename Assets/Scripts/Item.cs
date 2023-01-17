@@ -8,10 +8,11 @@ using UnityEngine;
         public Item( int amount)
         {
             this.amount = amount;
+            
         }
 
         //Self explanatory fields
-        protected  String name;
+        protected  String itemName;
         protected ItemType itemType;
         private int amount;
         protected Sprite sprite;
@@ -38,7 +39,7 @@ using UnityEngine;
         
         public String GetName()
         {
-            return name;
+            return itemName;
         }
 
         public Sprite GetSprite() => sprite; 

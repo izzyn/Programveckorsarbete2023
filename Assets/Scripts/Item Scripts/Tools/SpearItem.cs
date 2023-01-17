@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿
 
 public class SpearItem : ItemUsable
 {
@@ -7,7 +7,7 @@ public class SpearItem : ItemUsable
         itemType = ItemType.Spear;
         SetSpriteFromName("Spear");
         SetInUseSpriteFromName("Spear");
-        name = "Spear";
+        itemName = "Spear";
         stackSize = 1;
     }
 

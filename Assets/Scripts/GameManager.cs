@@ -77,56 +77,69 @@ public static class Inventory
     {
         int amount = item.GetAmount();
         int index = 0;
-       // Debug.Log("Adding item: " + item.GetItemType() + " amount: " + amount);
-            foreach (Item invItem in inventoryList)
+        // Debug.Log("Adding item: " + item.GetItemType() + " amount: " + amount);
+        foreach (Item invItem in inventoryList)
+        {
+
+            
+            if (invItem == null && amount > 0)
             {
-                
-               
-                if (invItem == null  && amount > 0)
+                // Debug.Log("Adding item to slot: " + index);
+                inventoryList[index] = item;
+                Debug.Log(Inventory.inventoryList[index].GetItemType());
+                if (amount > item.GetStackSize())
                 {
-                   // Debug.Log("Adding item to slot: " + index);
-                    inventoryList[index] = item;
-                    Debug.Log(inventoryList[index].GetItemType());
-                    if (amount > item.GetStackSize())
+                    inventoryList[index].SetAmount(item.GetStackSize());
+                    amount -= item.GetStackSize();
+                }
+                else
+                {
+                    //Debug.Log("Set amount to ZERO");
+                    amount = 0;
+                }
+                Debug.Log(Inventory.inventoryList[index].GetItemType() + "1");
+            }
+            else if (invItem != null && amount > 0)
+                if (invItem.GetItemType() == item.GetItemType())
+                {
+                    Debug.Log(Inventory.inventoryList[index].GetItemType() + "2");
+                    invItem.SetAmount(invItem.GetAmount() + amount);
+                    if (invItem.GetAmount() > invItem.GetStackSize())
                     {
-                        inventoryList[index].SetAmount(item.GetStackSize());
-                        amount -= item.GetStackSize();
+                        amount = invItem.GetAmount() - invItem.GetStackSize();
+                        invItem.SetAmount(invItem.GetStackSize());
                     }
                     else
                     {
-                        //Debug.Log("Set amount to ZERO");
                         amount = 0;
                     }
 
                 }
-                else if(invItem != null && amount > 0)
-                if(invItem.GetItemType() == item.GetItemType())
-                {
-                    invItem.SetAmount(invItem.GetAmount() + amount);
-                    if(invItem.GetAmount() > invItem.GetStackSize())
-                    { 
-                        amount = invItem.GetAmount() - invItem.GetStackSize();
-                        invItem.SetAmount(invItem.GetStackSize());
-                    }else
-                    {
-                        amount = 0;
-                    }
-                    
-                }
-                if(invItem != null)
+            
+            if(index == 0) Debug.Log(Inventory.inventoryList[index].GetItemType() + "3");
+    
+            if (invItem != null)
                 if (invItem.GetAmount() <= 0)
                 {
                     Debug.Log("Set " + index + " to null");
-                    inventoryList[index] = null;   
+                    inventoryList[index] = null;
                 }
-                index++;
+            
+            if(index == 0)Debug.Log(Inventory.inventoryList[0].GetItemType() + " :   " + amount);
+
+            
+            if(amount <= 0)
+            {
+                break;
             }
+            index++;
+            
+        }
 
-
-        
         return amount;
     }
     
+
     //Simple remove item from inventory, return if it was successful, can be unsuccessful if inventory is empty for example
     public static bool RemoveAmountOfItem(ItemType itemType, int amount)
     {

@@ -4,7 +4,7 @@ public class WoodItem: Item
 {
     public WoodItem(int amount) : base( amount)
     {
-        name = "Wood";
+        itemName = "Wood";
         itemType = ItemType.Wood;
         SetSpriteFromName("Wood");
     }

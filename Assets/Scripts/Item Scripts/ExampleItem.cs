@@ -28,7 +28,7 @@ public class ExampleItem:Item //Replace ExampleItem with the name of your item +
         recipe.Add(wood);
         
         //add a display name to item
-        name = "Example Item";
+        itemName = "Example Item";
     }
     
 

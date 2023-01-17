@@ -7,7 +7,7 @@ public class AxeItem : ItemUsable
         itemType = ItemType.Axe;
         SetSpriteFromName("Axe");
         SetInUseSpriteFromName("Axe");
-        name = "Axe";
+        itemName = "Axe";
         stackSize = 1;
     }
 

@@ -6,6 +6,6 @@ public class StoneItem:Item
     {
         SetSpriteFromName("Stone");
         itemType = ItemType.Stone;
-        name = "Stone";
+        itemName = "Stone";
     }
 }

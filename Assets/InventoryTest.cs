@@ -17,12 +17,21 @@ public class InventoryTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             for (int i = 0; i < 8; i++)
             {
                 Inventory.inventoryList[i] = null;
-                
+
+            }
+            return;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                Debug.Log(Inventory.inventoryList[i].GetName());
             }
             return;
         }
