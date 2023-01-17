@@ -26,10 +26,17 @@ public class InventoryTest : MonoBehaviour
             }
             return;
         }
-            
-        AddWood(1);
-        Debug.Log("Added Wood");
         
+        if (Input.GetKey(KeyCode.L))
+        {
+           AddWood(5);
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            
+        }
+
         for (int i = 0; i < 8; i++)
         {
             item[i].item = Inventory.inventoryList[i];

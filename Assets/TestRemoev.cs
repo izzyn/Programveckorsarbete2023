@@ -14,7 +14,7 @@ public class TestRemoev : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Item item = new SpearItem(1);
-        SpriteRenderer.sprite = ((SpearItem)item).GetInUseSprite();
+        Item item = new WoodItem(1);
+        SpriteRenderer.sprite = ((WoodItem)item).GetSprite();
     }
 }
