@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Threading;
 
 public class AIScript : MonoBehaviour
 {
@@ -13,23 +14,43 @@ public class AIScript : MonoBehaviour
     int currentNode;
     [SerializeField]
     int speed;
+    bool good = true;
+    bool onCooldown = false;
+    [SerializeField]
+    GameObject attackCollider;
     private void Start()
     {
         mapSize = GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>().GetMapSize;
         obstacleTiles = GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>().GetWaterLoggedTiles;
         rb = gameObject.GetComponent<Rigidbody2D>();
-        test = PathFinding();
+        StartCoroutine(updatePath());
+    }
+    IEnumerator updatePath()
+    {
+        int tempPos = 0;
+        while (true)
+        {
+            int playerPos = SimplifyVector(GameObject.FindWithTag("Player").transform.position);
+            if(tempPos != playerPos)
+            {
+                int thisPosition = SimplifyVector(gameObject.transform.position);
+                Thread thread = new Thread(() => PathFinding(playerPos, thisPosition));
+                thread.Start();
+            }
+            tempPos = playerPos;
+            yield return new WaitForSeconds(2f);
+        }
 
     }
     //Does A*
     //Keep in mind, things like distance are calculated using an ID system for position as opposed to X and Y where X = id%the size of the map and Y = (id - x)/map size
     //The formula for Y is shortened due to integer rounding making the need to subtract the x formula redundant
-    public Vector2[] PathFinding()
+    public void PathFinding(int target, int origin)
     {
-        float t1 = Time.realtimeSinceStartup;
+        currentNode = 0;
+        test = new Vector2[0];
         List<Vector2> path = new List<Vector2>();
-        GameObject player = GameObject.FindWithTag("Player");
-        int playerPosition = SimplifyVector((Vector2)player.transform.position);
+        int playerPosition = target;
         int playerX = playerPosition % mapSize;
         int playerY = playerPosition/mapSize;
         int checkTileX; 
@@ -39,7 +60,7 @@ public class AIScript : MonoBehaviour
         float[] shortTargetDistance = new float[8];
         float[] shortEnemyDistance = new float[8];
         List<int> checkTiles = new List<int>();
-        checkTiles.Add(SimplifyVector((Vector2)transform.position));
+        checkTiles.Add(origin);
         int startTileX = checkTiles[0] % mapSize;
         int startTileY = checkTiles[0] / mapSize;
         //xctargetDistance[checkTiles[0]] = Mathf.Min(Mathf.Abs(playerX - startTileX), Mathf.Abs(playerY - startTileY)) * Mathf.Sqrt(2) + Mathf.Abs(playerX - startTileX - (playerY - startTileY));
@@ -54,6 +75,11 @@ public class AIScript : MonoBehaviour
             if (checkTiles.Contains(playerPosition))
             {
                 break;
+            }
+            if(checkTiles.Count == 0)
+            {
+                good = false;
+                return;
             }
             List<int> walkableTiles = getWalkablePositions(checkTiles[currentTileIndex]);
             int abc = 0;
@@ -109,8 +135,6 @@ public class AIScript : MonoBehaviour
                 */
             currentTileIndex = tempIndex; 
         }
-        float t2 = Time.realtimeSinceStartup;
-
         while (true)
         {
             List<int> walkableTiles = getWalkablePositions(backwardsSearchTile);
@@ -121,7 +145,7 @@ public class AIScript : MonoBehaviour
             {
                 float segLength = Mathf.Sqrt(Mathf.Abs(walkableTiles[i] % mapSize - backwardsSearchTile % mapSize) + Mathf.Abs(walkableTiles[i] / mapSize - backwardsSearchTile / mapSize));
                 float newValue = enemyDistnace[walkableTiles[i]] + segLength;
-                if ((newValue < tempValue || tempValue == -1 || (newValue - tempValue < 0.01f  && new Vector2(startTileX - (walkableTiles[i] % mapSize), startTileY - (walkableTiles[i] / mapSize)).magnitude + segLength < new Vector2(startTileX - (tempIndex % mapSize), startTileY - (tempIndex / mapSize)).magnitude + tempSegLength)) && (enemyDistnace[walkableTiles[i]] != 0 || walkableTiles[i] == SimplifyVector((Vector2)(gameObject.transform.position))))
+                if ((newValue < tempValue || tempValue == -1 || (newValue - tempValue < 0.01f  && new Vector2(startTileX - (walkableTiles[i] % mapSize), startTileY - (walkableTiles[i] / mapSize)).magnitude + segLength < new Vector2(startTileX - (tempIndex % mapSize), startTileY - (tempIndex / mapSize)).magnitude + tempSegLength)) && (enemyDistnace[walkableTiles[i]] != 0 || walkableTiles[i] == origin))
                 {
                     tempIndex = walkableTiles[i];
                     tempValue = newValue;
@@ -129,20 +153,30 @@ public class AIScript : MonoBehaviour
                 }
             }
             path.Add(DeSimplifyVector(tempIndex));
-            if (tempIndex == SimplifyVector((Vector2)(gameObject.transform.position)))
+            if (tempIndex == origin)
             {
                 break;
             }
             backwardsSearchTile = tempIndex;
         }
-        float t3 = Time.realtimeSinceStartup;
-
 
         path.Reverse();
-        return path.ToArray();
+        test = path.ToArray();
 
     }
-
+    IEnumerator Attack() //Attacks
+    {
+        rb.velocity = Vector2.zero;
+        rb.isKinematic = true;
+        onCooldown = true;
+        yield return new WaitForSeconds(0.2f);
+        GameObject checkCollision = GameObject.Instantiate(attackCollider, gameObject.transform.position + ((GameObject.FindGameObjectWithTag("Player").transform.position - gameObject.transform.position) * (1 / (GameObject.FindGameObjectWithTag("Player").transform.position - gameObject.transform.position).magnitude)), Quaternion.identity, gameObject.transform);
+        yield return new WaitForSeconds(1f);
+        rb.isKinematic = false;
+        Destroy(checkCollision);
+        yield return new WaitForSeconds(2f);
+        onCooldown = false;
+    }
     private void FixedUpdate()
     {
         if(test.Length > 0)
@@ -153,6 +187,35 @@ public class AIScript : MonoBehaviour
             {
                 currentNode++;
             }
+        }
+        else
+        {
+            rb.isKinematic = true;
+            rb.velocity = Vector2.zero;
+            rb.isKinematic = false;
+        }
+    }
+    private void Update()
+    {
+        Vector2 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+        if(Vector2.Distance(playerPosition, gameObject.transform.position) < 1.2f && !onCooldown)
+        {
+            Debug.Log("yes");
+            StartCoroutine(Attack());
+        }
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.y * 0.1f);
+        if (!good)
+        {
+            Destroy(gameObject);
+        }
+        if(rb.velocity.x > 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+
         }
     }
     public List<int> getWalkablePositions(int tile)

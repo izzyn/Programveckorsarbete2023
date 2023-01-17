@@ -20,7 +20,7 @@ public class NestController : MonoBehaviour
         foreach(Transform child in gameObject.transform)
         {
             child.gameObject.GetComponent<NestAI>().player = player;
-            StartCoroutine(child.gameObject.GetComponent<NestAI>().spawnEnemies(spawnSpeed, enemyTypes));
+            StartCoroutine(child.gameObject.GetComponent<NestAI>().spawnEnemies(spawnSpeed + Random.Range(0f, spawnSpeed), enemyTypes));
         }
     }
 
