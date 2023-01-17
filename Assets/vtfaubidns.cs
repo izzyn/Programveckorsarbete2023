@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class vtfaubidns : MonoBehaviour
@@ -14,6 +15,8 @@ public class vtfaubidns : MonoBehaviour
     void Update()
     {
         Item item = new SpearItem(1);
-        print(item.GetAmount());
+        print(item);
+        
+        
     }
 }

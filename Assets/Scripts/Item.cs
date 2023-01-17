@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
-    public abstract class Item : MonoBehaviour
+    public abstract class Item : ScriptableObject
     {
         public Item( int amount)
         {
