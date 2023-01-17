@@ -81,14 +81,21 @@ public static class Inventory
             foreach (Item invIitem in inventoryList)
             {
                 
-               //if(amount !<= 0)
+               
                 if (invIitem == null)
                 {
                     Debug.Log("Adding item to slot: " + index);
                     inventoryList[index] = item;
-                    if(amount < item.GetStackSize())
-                    inventoryList[index].SetAmount(item.GetStackSize());
-                    amount -= item.GetStackSize();
+                    if (amount > item.GetStackSize())
+                    {
+                        inventoryList[index].SetAmount(item.GetStackSize());
+                        amount -= item.GetStackSize();
+                    }
+                    else
+                    {
+                        amount = 0;
+                    }
+
                 }
                 else if(invIitem.GetItemType() == item.GetItemType())
                 {
@@ -102,6 +109,10 @@ public static class Inventory
                         amount = 0;
                     }
                     
+                }
+                if (item.GetAmount() <= 0)
+                {
+                    inventoryList[index] = null;   
                 }
                 index++;
             }
@@ -132,10 +143,10 @@ public static class Inventory
                 }
             }
             if(item != null)
-            if (item.GetAmount() == 0)
-            {
-             inventoryList[index] = null;   
-            }
+                if (item.GetAmount() <= 0)
+                {
+                    inventoryList[index] = null;   
+                }
 
             index++;
         }
