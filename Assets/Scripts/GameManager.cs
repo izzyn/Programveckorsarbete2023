@@ -78,6 +78,7 @@ public static class Inventory
         int index = 0;
             foreach (Item invIitem in inventoryList)
             {
+                if(amount !<= 0)
                 if (invIitem == null)
                 {
                     inventoryList[index] = item;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TestRemoev : MonoBehaviour
 {
+    public SpriteRenderer SpriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,7 @@ public class TestRemoev : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Item item = new SpearItem(1);
+        SpriteRenderer.sprite = ((SpearItem)item).GetInUseSprite();
     }
 }
