@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
 using UnityEngine;
 
-[ExecuteInEditMode]
+
 public class ItemTest : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
@@ -21,16 +21,14 @@ public class ItemTest : MonoBehaviour
 
         if (item != null)
         {
-            print("Item Amount: " + item.GetAmount());
-            print("Recipe: ");
-            if (item.GetRecipe().Count == 0) print("No Recipe");
+            if (item.GetRecipe().Count == 0) ;
             else
                 foreach (Item rItem in item.GetRecipe())
                 {
-                    print(rItem.GetAmount() + " " + rItem.GetName());
+                   // print(rItem.GetAmount() + " " + rItem.GetName());
                 }
 
-            print(item.ToString());
+           //print(item.ToString());
             spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.sprite = item.GetSprite();
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+
 public class InventoryTest : MonoBehaviour
 {
     
@@ -17,7 +17,7 @@ public class InventoryTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.K))
+        if (Input.GetKey(KeyCode.R))
         {
             for (int i = 0; i < 8; i++)
             {
@@ -27,14 +27,16 @@ public class InventoryTest : MonoBehaviour
             return;
         }
         
-        if (Input.GetKey(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L))
         {
            AddWood(5);
+           print("Added 5 wood");
         }
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            
+            RemoveWood(3);
+            print("Removed 3 wood");
         }
 
         for (int i = 0; i < 8; i++)
@@ -47,9 +49,6 @@ public class InventoryTest : MonoBehaviour
         {
             Debug.Log(Inventory.inventoryList[0].GetAmount());
             Debug.Log(Inventory.inventoryList[1].GetAmount());
-        }else
-        {
-            Debug.Log("No Item");
         }
         
     }

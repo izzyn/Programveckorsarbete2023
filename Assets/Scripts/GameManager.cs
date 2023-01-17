@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -76,13 +77,17 @@ public static class Inventory
     {
         int amount = item.GetAmount();
         int index = 0;
+        Debug.Log("Adding item: " + item.GetItemType() + " amount: " + amount);
             foreach (Item invIitem in inventoryList)
             {
-                if(amount !<= 0)
+                
+               //if(amount !<= 0)
                 if (invIitem == null)
                 {
+                    Debug.Log("Adding item to slot: " + index);
                     inventoryList[index] = item;
-                    inventoryList[index].SetAmount(invIitem.GetStackSize());
+                    if(amount < item.GetStackSize())
+                    inventoryList[index].SetAmount(item.GetStackSize());
                     amount -= item.GetStackSize();
                 }
                 else if(invIitem.GetItemType() == item.GetItemType())
@@ -92,6 +97,9 @@ public static class Inventory
                     { 
                         amount = invIitem.GetAmount() - invIitem.GetStackSize();
                         invIitem.SetAmount(invIitem.GetStackSize());
+                    }else
+                    {
+                        amount = 0;
                     }
                     
                 }
