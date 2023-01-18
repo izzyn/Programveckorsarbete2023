@@ -10,7 +10,6 @@ public class GameStartScript : MonoBehaviour
         print("Registering Items");
         //Example Item
         new ExampleItem();
-        
         //Items
         new WoodItem();
         new StoneItem();

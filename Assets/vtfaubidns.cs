@@ -12,7 +12,7 @@ public class vtfaubidns : MonoBehaviour
     void Update()
     {
         Item item = Register.GetItemFromType(ItemType.Berry);
-        print(item);
+        print(item.GetItemType());
         
         
     }

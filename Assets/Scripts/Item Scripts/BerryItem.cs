@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BerryItem:Item
 {
-    public BerryItem() : base( )
+    protected override void SetupItem()
     {
         //Sets the sprite/texture of the item
         SetSpriteFromName("Berry");
@@ -10,12 +10,6 @@ public class BerryItem:Item
         itemType = ItemType.Berry;
         //add name to item
         itemName = "Berry";
-    }
-    
-
-    //Overriding this method will let you make something happen when u rightclick with it in hand. (ps. there is another method for leftclick)
-    public override void TriggerRightClickEvent()
-    {
-       
+        Debug.Log("Berry Item Created");
     }
 }

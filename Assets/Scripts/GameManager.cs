@@ -46,7 +46,9 @@ public static class Register
     
     public static Item GetItemFromType(ItemType type)
     {
-        return itemDictionary[type];
+        itemDictionary.TryGetValue(type, out Item item);
+        
+        return item;
     }
 }
 
