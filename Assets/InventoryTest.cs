@@ -31,7 +31,7 @@ public class InventoryTest : MonoBehaviour
         {
             for (int i = 0; i < 8; i++)
             {
-                Debug.Log(Inventory.inventoryList[i].GetName());
+               // Debug.Log(Inventory.inventoryList[i].GetName());
             }
             return;
         }
@@ -50,7 +50,7 @@ public class InventoryTest : MonoBehaviour
 
         for (int i = 0; i < 8; i++)
         {
-            item[i].item = Inventory.inventoryList[i];
+          //  item[i].item = Inventory.inventoryList[i];
         }
         
         
@@ -64,8 +64,8 @@ public class InventoryTest : MonoBehaviour
 
     public void AddWood(int amount)
     {
-        Item wood = new WoodItem().SetAmount(amount);
-        Inventory.AddItem(wood);
+      //  Item wood = new WoodItem().SetAmount(amount);
+        //Inventory.AddItem(wood);
     }
     
     public void RemoveWood(int amount)

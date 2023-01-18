@@ -7,22 +7,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private void Start()
-    {
-        print("Registering Items");
-        //Example Item
-        new ExampleItem();
-        
-        //Items
-        new WoodItem();
-        new StoneItem();
-        new ScrapItem();
-        new BerryItem();
-        
-        //Tools
-        new AxeItem();
-        new SpearItem();
-    }
 
 
     public static int dayCount = 0;
@@ -55,7 +39,7 @@ public static class Register
 
 public static class Inventory
 {
-   public static Item[] inventoryList = new Item[8];
+   public static ItemStack[] inventoryList = new ItemStack[8];
 
     //What slot is selected in hand
     public static int selectedSlot = 0;
@@ -65,10 +49,10 @@ public static class Inventory
     {
         
         int itemAmount = 0;
-        foreach (Item item in inventoryList)
+        foreach (ItemStack item in inventoryList)
         {
             if(item != null)
-            if(item.GetItemType() == itemType)
+            if(item.GetItem().GetItemType() == itemType)
             {
                 itemAmount =+ item.GetAmount();
             }
@@ -80,10 +64,10 @@ public static class Inventory
     //Input a itemType and amount and return a boolean (true or false) if a certain amount of a specific itemtype exists in inventory
     public static bool DoesInventoryContain(ItemType itemType, int amount)
     {
-        foreach (Item item in inventoryList)
+        foreach (ItemStack item in inventoryList)
         {
             if(item != null)
-            if(item.GetItemType() == itemType)
+            if(item.GetItem().GetItemType() == itemType)
             {
                 amount -= item.GetAmount();
             }
@@ -97,12 +81,12 @@ public static class Inventory
     }
     
     //Simple add item to inventory, returns amount of items that could not be added or got left over
-    public static int AddItem(Item item)
+    public static int AddItem(ItemStack item)
     {
         int amount = item.GetAmount();
         int index = 0;
         // Debug.Log("Adding item: " + item.GetItemType() + " amount: " + amount);
-        foreach (Item invItem in inventoryList)
+        foreach (ItemStack invItem in inventoryList)
         {
 
             
@@ -110,28 +94,28 @@ public static class Inventory
             {
                 // Debug.Log("Adding item to slot: " + index);
                 inventoryList[index] = item;
-                Debug.Log(Inventory.inventoryList[index].GetItemType());
-                if (amount > item.GetStackSize())
+                Debug.Log(Inventory.inventoryList[index].GetItem().GetItemType());
+                if (amount > item.GetItem().GetStackSize())
                 {
-                    inventoryList[index].SetAmount(item.GetStackSize());
-                    amount -= item.GetStackSize();
+                    inventoryList[index].SetAmount(item.GetItem().GetStackSize());
+                    amount -= item.GetItem().GetStackSize();
                 }
                 else
                 {
                     //Debug.Log("Set amount to ZERO");
                     amount = 0;
                 }
-                Debug.Log(Inventory.inventoryList[index].GetItemType() + "1");
+                Debug.Log(Inventory.inventoryList[index].GetItem().GetItemType() + "1");
             }
             else if (invItem != null && amount > 0)
-                if (invItem.GetItemType() == item.GetItemType())
+                if (invItem.GetItem().GetItemType() == item.GetItem().GetItemType())
                 {
-                    Debug.Log(Inventory.inventoryList[index].GetItemType() + "2");
+                    Debug.Log(Inventory.inventoryList[index].GetItem().GetItemType() + "2");
                     invItem.SetAmount(invItem.GetAmount() + amount);
-                    if (invItem.GetAmount() > invItem.GetStackSize())
+                    if (invItem.GetAmount() > invItem.GetItem().GetStackSize())
                     {
-                        amount = invItem.GetAmount() - invItem.GetStackSize();
-                        invItem.SetAmount(invItem.GetStackSize());
+                        amount = invItem.GetAmount() - invItem.GetItem().GetStackSize();
+                        invItem.SetAmount(invItem.GetItem().GetStackSize());
                     }
                     else
                     {
@@ -140,7 +124,7 @@ public static class Inventory
 
                 }
             
-            if(index == 0) Debug.Log(Inventory.inventoryList[index].GetItemType() + "3");
+            if(index == 0) Debug.Log(Inventory.inventoryList[index].GetItem().GetItemType() + "3");
     
             if (invItem != null)
                 if (invItem.GetAmount() <= 0)
@@ -149,7 +133,7 @@ public static class Inventory
                     inventoryList[index] = null;
                 }
             
-            if(index == 0)Debug.Log(Inventory.inventoryList[0].GetItemType() + " :   " + amount);
+            if(index == 0)Debug.Log(Inventory.inventoryList[0].GetItem().GetItemType() + " :   " + amount);
 
             
             if(amount <= 0)
@@ -168,15 +152,15 @@ public static class Inventory
     public static bool RemoveAmountOfItem(ItemType itemType, int amount)
     {
         int index = 0;
-        foreach (Item item in inventoryList)
+        foreach (ItemStack item in inventoryList)
         {
             if(item != null)
-            if (item.GetItemType() == itemType)
+            if (item.GetItem().GetItemType() == itemType)
             {
-                if (amount >= item.GetStackSize())
+                if (amount >= item.GetItem().GetStackSize())
                 {
                     item.SetAmount(0);
-                    amount -= item.GetStackSize();
+                    amount -= item.GetItem().GetStackSize();
                 }
                 else
                 {
@@ -198,14 +182,14 @@ public static class Inventory
 
     
     //Check if item fits in inventory
-    public static bool DoesItemFit(Item item)
+    public static bool DoesItemFit(ItemStack item)
     {
         int amount = item.GetAmount();
-        foreach (Item invItem in inventoryList)
+        foreach (ItemStack invItem in inventoryList)
         {
-            if(item.GetItemType() == invItem.GetItemType())
+            if(item.GetItem().GetItemType() == invItem.GetItem().GetItemType())
             {
-               amount -= invItem.GetStackSize() - invItem.GetAmount();
+               amount -= invItem.GetItem().GetStackSize() - invItem.GetAmount();
             }
         }
         
@@ -216,7 +200,7 @@ public static class Inventory
         return false;
     }
 
-    public static Item GetSelectedItem()
+    public static ItemStack GetSelectedItemStack()
     {
         return inventoryList[selectedSlot];
     }
