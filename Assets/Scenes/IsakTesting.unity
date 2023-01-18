@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea75ab0b09848341b8ede87d2d9ea14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSize: 149
+  mapSize: 150
   waterTileMap: {fileID: 1283890813}
   tilemap: {fileID: 793584996}
   ground: {fileID: 11400000, guid: 20e507cb63927ca489b7c59cae0d4129, type: 2}
