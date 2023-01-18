@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Idle
+    m_Hash: 1008081451
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: SmelterEnemy_0
+      m_Hash: 312181853
+      m_Sprite: {fileID: -1992738994, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -1992738994, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_1
+      m_Hash: 631026891
+      m_Sprite: {fileID: -446148694, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -446148694, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_2
+      m_Hash: 1016456561
+      m_Sprite: {fileID: 113938663, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 113938663, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_3
+      m_Hash: 194172391
+      m_Sprite: {fileID: 460393931, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 460393931, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_4
+      m_Hash: 368459844
+      m_Sprite: {fileID: -2105226887, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -2105226887, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 5
+  - m_Name: Move
+    m_Hash: 252483654
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: SmelterEnemy_5
+      m_Hash: 586248402
+      m_Sprite: {fileID: -759257126, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -759257126, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_6
+      m_Hash: 1006117224
+      m_Sprite: {fileID: 1593400560, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1593400560, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_7
+      m_Hash: 218042878
+      m_Sprite: {fileID: 249991930, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 249991930, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_8
+      m_Hash: 473959535
+      m_Sprite: {fileID: 67782631, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 67782631, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_9
+      m_Hash: 726088953
+      m_Sprite: {fileID: 748536002, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 748536002, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_10
+      m_Hash: 952653997
+      m_Sprite: {fileID: 230452712, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 230452712, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_11
+      m_Hash: 265250875
+      m_Sprite: {fileID: 284091003, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 284091003, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_12
+      m_Hash: 382089601
+      m_Sprite: {fileID: -163395924, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -163395924, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_13
+      m_Hash: 566298903
+      m_Sprite: {fileID: 1373127637, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1373127637, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_14
+      m_Hash: 1067818164
+      m_Sprite: {fileID: -953795751, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -953795751, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 10
+  - m_Name: Attack
+    m_Hash: 7088141
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: SmelterEnemy_15
+      m_Hash: 144878626
+      m_Sprite: {fileID: 771964592, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 771964592, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_16
+      m_Hash: 296484248
+      m_Sprite: {fileID: 1630193667, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1630193667, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_17
+      m_Hash: 648858894
+      m_Sprite: {fileID: 687673084, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 687673084, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_18
+      m_Hash: 907268255
+      m_Sprite: {fileID: 748375048, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 748375048, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_19
+      m_Hash: 18145289
+      m_Sprite: {fileID: -556353775, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -556353775, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_20
+      m_Hash: 333777774
+      m_Sprite: {fileID: 484139934, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 484139934, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_21
+      m_Hash: 618806264
+      m_Sprite: {fileID: 1749118372, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1749118372, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_22
+      m_Hash: 1038838338
+      m_Sprite: {fileID: 293583128, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 293583128, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    - m_Name: SmelterEnemy_23
+      m_Hash: 183261908
+      m_Sprite: {fileID: 766954730, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 766954730, guid: eb1d6313d1db31e4e8aa0f2cb4dd7bd8, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 9
+  - m_Name: New Category
+    m_Hash: 259530823
+    m_CategoryList: []
+    m_OverrideEntries: []
+    m_FromMain: 0
+    m_EntryOverrideCount: 0
+  m_PrimaryLibraryGUID: 
