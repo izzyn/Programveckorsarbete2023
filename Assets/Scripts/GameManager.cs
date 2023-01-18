@@ -7,8 +7,27 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private void Start()
+    {
+        print("Registering Items");
+        //Example Item
+        new ExampleItem();
+        
+        //Items
+        new WoodItem();
+        new StoneItem();
+        new ScrapItem();
+        new BerryItem();
+        
+        //Tools
+        new AxeItem();
+        new SpearItem();
+    }
+
+
     public static int dayCount = 0;
 
+   
     public static int highscore;
 
     public static Item scrap; //= new Item(ItemType.Scrap);
@@ -16,6 +35,23 @@ public class GameManager : MonoBehaviour
 
     public static GameObject player;
 }
+
+public static class Register
+{
+    private static Dictionary<ItemType, Item> itemDictionary = new Dictionary<ItemType, Item>();
+    public static void RegisterItem(Item item)
+    {
+        itemDictionary.Add(item.GetItemType(), item);
+    }
+    
+    public static Item GetItemFromType(ItemType type)
+    {
+        itemDictionary.TryGetValue(type, out Item item);
+        
+        return item;
+    }
+}
+
 
 public static class Inventory
 {

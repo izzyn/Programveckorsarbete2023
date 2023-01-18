@@ -5,7 +5,7 @@ public class ExampleItem:Item //Replace ExampleItem with the name of your item +
 
 {
 
-    public ExampleItem() //Replace "ExampleItem" with the same name + the word Item as the one above.
+    public ExampleItem(): base() //Replace "ExampleItem" with the same name + the word Item as the one above.
     {
         //Assign Item Label/ItemType/Reference type/Enum
         itemType = ItemType.Example;

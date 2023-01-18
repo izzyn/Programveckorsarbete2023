@@ -9,8 +9,16 @@ public abstract class Item
         public Item()
         {
             
-            
+            this.SetupItem();
+            Register.RegisterItem(this);
+            Debug.Log("Registerd: " + this.itemName);
         }
+
+
+        protected abstract void SetupItem();
+
+
+
 
         //Self explanatory fields
         protected  String itemName;
