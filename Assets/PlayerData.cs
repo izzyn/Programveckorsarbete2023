@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerData
 {
 
-    public int dayCount;
+    public int highscore;
     //public 'datatype (int, bool, float or string)' 'variable name';
 
     public PlayerData(GameManager player)
     {
-        dayCount = GameManager.dayCount;
+        highscore = GameManager.highscore;
+
         //'variable name' = GameManager.'variable name'
     }
 }

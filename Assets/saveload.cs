@@ -3,14 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Saveload : MonoBehaviour
+public class saveload : MonoBehaviour
 {
+    public GameObject saveLoad;
+
     private void Start()
     {
-        GameManager.LoadPlayer();
+
     }
-    private void Update()
+    public void SavePlayer()
     {
-        
+        SaveSystem.SavePlayer(saveLoad.GetComponent<GameManager>());
+    }
+
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        GameManager.highscore = data.highscore;
     }
 }

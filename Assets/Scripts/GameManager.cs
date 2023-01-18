@@ -15,18 +15,6 @@ public class GameManager : MonoBehaviour
     public static Item wood; //= new Item(ItemType.Wood);
 
     public static GameObject player;
-
-    public void SavePlayer()
-    {
-        SaveSystem.SavePlayer(this);
-    }
-
-    public static void LoadPlayer()
-    {
-        PlayerData data = SaveSystem.LoadPlayer();
-
-        dayCount = data.dayCount;
-    }
 }
 
 public static class Inventory
