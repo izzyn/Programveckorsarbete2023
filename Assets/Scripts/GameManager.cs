@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     private void Start()
     {
+        print("Registering Items");
         //Example Item
         new ExampleItem();
         
