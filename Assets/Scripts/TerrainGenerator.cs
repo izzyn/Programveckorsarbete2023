@@ -104,6 +104,18 @@ public class TerrainGenerator : MonoBehaviour
                 }
             }
         }
+        for(int y = 0; y < mapSize+30; y++)
+        {
+            for(int x = 0; x < mapSize+30; x++)
+            {
+                Vector3Int checkPosition = new Vector3Int(((mapSize+30) / 2) * -1 + x, ((mapSize+30) / 2) * -1 + y, 0);
+                if (tilemap.GetTile(checkPosition) != ground)
+                {
+                    waterTileMap.SetTile(checkPosition, water); //sets the tiles
+                    tilemap.SetTile(checkPosition, water); //sets the tiles
+                }
+            }
+        }
         int attempts = 0;
         while(nestGroup.transform.childCount < 1 && attempts < 100)
         {
