@@ -161,6 +161,7 @@ public class AIScript : MonoBehaviour
         }
 
         path.Reverse();
+        path.RemoveAt(0);
         test = path.ToArray();
 
     }
