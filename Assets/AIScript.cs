@@ -206,8 +206,7 @@ public class AIScript : MonoBehaviour
         Vector2 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         if(Vector2.Distance(playerPosition, gameObject.transform.position) < 1.2f && !onCooldown)
         {
-            Debug.Log("yes");
-            StartCoroutine(Attack());
+                StartCoroutine(Attack());
         }
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.y * 0.1f);
         if (!good)
