@@ -2,7 +2,7 @@
 
 public class SpearItem : ItemUsable
 {
-    public SpearItem(int amount) : base(amount)
+    protected override void SetupItem()
     {
         itemType = ItemType.Spear;
         SetSpriteFromName("Spear");

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WoodItem: Item
 {
-    public WoodItem(int amount) : base( amount)
+    protected override void SetupItem()
     {
         itemName = "Wood";
         itemType = ItemType.Wood;

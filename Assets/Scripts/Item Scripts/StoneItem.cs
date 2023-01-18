@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class StoneItem:Item
 {
-    public StoneItem(int amount) : base( amount)
+    protected override void SetupItem()
     {
-        SetSpriteFromName("Stone");
-        itemType = ItemType.Stone;
         itemName = "Stone";
+        itemType = ItemType.Stone;
+        SetSpriteFromName("Stone");
+        
     }
 }

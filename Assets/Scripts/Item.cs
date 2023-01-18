@@ -2,19 +2,28 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using Object = System.Object;
 
-    public abstract class Item
+public abstract class Item
     {
-        public Item( int amount)
+        public Item()
         {
-            this.amount = amount;
             
+            this.SetupItem();
+            Register.RegisterItem(this);
+            Debug.Log("Registerd: " + this.itemName);
         }
+
+
+        protected abstract void SetupItem();
+
+
+
 
         //Self explanatory fields
         protected  String itemName;
         protected ItemType itemType;
-        private int amount;
+        private int amount = 1;
         protected Sprite sprite;
         protected int stackSize = 64;
         
@@ -70,7 +79,11 @@ using UnityEngine;
 
 
         public int GetAmount() => amount;
-        public void SetAmount(int amount) => this.amount = amount;
+        public Item SetAmount(int amount)
+        { 
+            this.amount = amount;
+            return this;
+        }
 
         public virtual void TriggerLeftClickEvent()
         {

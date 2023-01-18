@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using System.Threading;
 
 public class AIScript : MonoBehaviour
 {
+    private Animator animator;
     public int currentTile;
     int mapSize;
     List<int> obstacleTiles;
@@ -20,6 +22,7 @@ public class AIScript : MonoBehaviour
     GameObject attackCollider;
     private void Start()
     {
+        animator = GetComponent<Animator>();
         mapSize = GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>().GetMapSize;
         obstacleTiles = GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>().GetWaterLoggedTiles;
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -170,6 +173,7 @@ public class AIScript : MonoBehaviour
         rb.velocity = Vector2.zero;
         rb.isKinematic = true;
         onCooldown = true;
+        SetParameter("Attack"); // Pontus animation
         yield return new WaitForSeconds(0.2f);
         GameObject checkCollision = GameObject.Instantiate(attackCollider, gameObject.transform.position + ((GameObject.FindGameObjectWithTag("Player").transform.position - gameObject.transform.position) * (1 / (GameObject.FindGameObjectWithTag("Player").transform.position - gameObject.transform.position).magnitude)), Quaternion.identity, gameObject.transform);
         yield return new WaitForSeconds(1f);
@@ -198,6 +202,7 @@ public class AIScript : MonoBehaviour
     }
     private void Update()
     {
+        
         Vector2 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         if(Vector2.Distance(playerPosition, gameObject.transform.position) < 1.2f && !onCooldown)
         {
@@ -217,6 +222,16 @@ public class AIScript : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
 
+        }
+        
+        //Pontus Animations---------------------------------------------------------------------------------------------------------##########################################
+        
+        if(rb.velocity != Vector2.zero)
+        {
+            SetParameter("Moving");
+        }else if(!onCooldown)
+        {
+            ClearParam();
         }
     }
     public List<int> getWalkablePositions(int tile)
@@ -264,5 +279,34 @@ public class AIScript : MonoBehaviour
     Vector2 DeSimplifyVector(int simplifiedVector)
     {
         return new Vector2((((simplifiedVector % mapSize) - mapSize / 2)) + 0.5f, (mapSize / 2) - 0.5f - ((simplifiedVector - (simplifiedVector % mapSize)) / mapSize));
+    }
+
+
+
+    private void SetParameter(string name)
+    {
+        String[] array = { "Moving", "Attack", "Death" };
+        foreach (String s in array)
+        {
+            if (s == name)
+            {
+                animator.SetBool(s, true);
+            }
+            else
+            {
+                animator.SetBool(s, false);
+            }
+        }
+        
+        
+        
+        
+    }
+
+    private void ClearParam()
+    {
+        String[] array = { "Moving", "Attack", "Death" };
+        foreach (String s in array) animator.SetBool(s, false);
+        
     }
 }

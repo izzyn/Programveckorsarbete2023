@@ -6,14 +6,6 @@ public class ItemDrop : MonoBehaviour
 {
     public float despawnTime = 60;
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -27,7 +19,7 @@ public class ItemDrop : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Inventory.AddItem(new WoodItem(1));
+        Inventory.AddItem(new WoodItem().SetAmount(1));
         GameObject.Destroy(gameObject);
     }
 }

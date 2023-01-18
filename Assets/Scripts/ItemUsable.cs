@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ItemUsable:Item
 {
-    public ItemUsable(int amount) : base( amount)
+    public ItemUsable() : base( )
     {
    
     }
@@ -33,6 +33,11 @@ public class ItemUsable:Item
     public Sprite GetInUseSprite()
     {
         return inUseSprite;
+    }
+
+    protected override void SetupItem()
+    {
+        
     }
 
 }

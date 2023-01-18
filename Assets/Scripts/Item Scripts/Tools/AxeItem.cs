@@ -2,7 +2,7 @@
 
 public class AxeItem : ItemUsable
 {
-    public AxeItem(int amount) : base(amount)
+    protected override void SetupItem()
     {
         itemType = ItemType.Axe;
         SetSpriteFromName("Axe");
