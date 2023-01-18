@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Tree
+  - Enemy
+  - weapon
+  - Enemy
+  - itemDrop
   layers:
   - Default
   - TransparentFX
@@ -13,9 +17,9 @@ TagManager:
   - Water
   - UI
   - Sprites
-  - 
-  - 
-  - 
+  - Obstacle
+  - Enemy
+  - Player
   - 
   - 
   - 

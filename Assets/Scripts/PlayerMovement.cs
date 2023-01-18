@@ -11,18 +11,19 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rigidBody;
 
-    private bool isColliding;
+    
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        GameManager.player = gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 pos = transform.position;
-        transform.position = new Vector3(pos.x, pos.y, pos.y*0.1f - transform.localScale.y*0.1f);
+        transform.position = new Vector3(rigidBody.position.x, rigidBody.position.y, rigidBody.position.y*0.1f - transform.localScale.y*0.1f);
         
         //Get what direction the player is moving in(8 directions, up down left, right and all diagonals in between)
         Vector3 moveDir = new Vector3();
@@ -49,8 +50,8 @@ public class PlayerMovement : MonoBehaviour
         
         //Move the player to new position for it's frame
         rigidBody.MovePosition(transform.position + moveDir * (walkSpeed/200f));
-        
-        
+
+
     }
 
 }
