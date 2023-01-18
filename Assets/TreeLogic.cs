@@ -20,8 +20,10 @@ public class TreeLogic : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("weapon"))
+        if (collision.gameObject.CompareTag("weapon"))
+        {
             Instantiate(log, gameObject.transform.position + new Vector3(0f, 0.3f, 0f), Quaternion.identity);
             GameObject.Destroy(gameObject);
+        }
     }
 }

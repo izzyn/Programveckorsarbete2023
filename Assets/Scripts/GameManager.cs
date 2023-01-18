@@ -41,7 +41,7 @@ public static class Register
     private static Dictionary<ItemType, Item> itemDictionary = new Dictionary<ItemType, Item>();
     public static void RegisterItem(Item item)
     {
-        itemDictionary.Add(item.GetItemType(), item);
+        //itemDictionary.Add(item.GetItemType(), item);
     }
     
     public static Item GetItemFromType(ItemType type)
