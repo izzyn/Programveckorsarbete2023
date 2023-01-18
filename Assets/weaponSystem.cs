@@ -25,7 +25,7 @@ public class weaponSystem : MonoBehaviour
         dmg.Add(ItemType.Spear, dmg_spear);
         dmg.Add(ItemType.Axe, dmg_axe);
         anim = gameObject.GetComponent<Animator>();
-        
+        Inventory.AddItem(new AxeItem());
     }
 
     // Update is called once per frame
