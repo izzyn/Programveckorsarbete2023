@@ -1,5 +1,7 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,7 +17,7 @@ public class weaponSystem : MonoBehaviour
     [SerializeField]
     public Dictionary<ItemType, int> dmg = new Dictionary<ItemType, int>();
 
-    KeyCode AttackKey = KeyCode.Space;
+    KeyCode AttackKey = KeyCode.Mouse0;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,21 +35,14 @@ public class weaponSystem : MonoBehaviour
 
         if(Input.GetKeyDown(AttackKey))
         {
-            print("test 1");
             Item item = Inventory.GetSelectedItem();
-            print("test 2");
-            item = new AxeItem(1);
-            print("test 3");
-            if (item.GetItemType() == null)
+            if (item == null)
             {
-                print("test retuen");
+                print("null return");
                 return; 
             }
-            print("test 4");
             dmg.TryGetValue(item.GetItemType(), out CurrentDamage);
-            print("test 5");
             SpriteRenderer.sprite = ((ItemUsable)item).GetInUseSprite();
-            print("test 6");
             if (item.GetItemType()==ItemType.Spear)
             {
            
@@ -55,11 +50,13 @@ public class weaponSystem : MonoBehaviour
             if (item.GetItemType() == ItemType.Axe)
             {
                 print("axe");
-                anim.SetInteger("WeaponID",0);
-                anim.SetBool("axe",true);
-                anim.SetBool("axe", false);
+                anim.SetBool("axe", true);   
             }
-
+            if(anim.GetBool("axe")==true)
+            {
+                anim.SetBool("axe", true);
+                
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -73,5 +70,14 @@ public class weaponSystem : MonoBehaviour
         {
             return;
         }
+        
     }
+        public void AlertObservers(string message)
+    {
+        if(message.Equals("axeAttack"))
+        {
+            anim.SetBool("axe", false);
+        }
+    }
+
 }
