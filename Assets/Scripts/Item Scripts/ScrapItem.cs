@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ScrapItem: Item
 {
-    public ScrapItem() : base()
+    protected override void SetupItem()
     {
         itemName = "Scrap";
         itemType = ItemType.Scrap;

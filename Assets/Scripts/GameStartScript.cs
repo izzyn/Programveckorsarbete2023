@@ -12,13 +12,13 @@ public class GameStartScript : MonoBehaviour
         new ExampleItem();
         //Items
         new WoodItem();
-        new StoneItem();
+        new StoneItem(); // Inte denna
         new ScrapItem();
-        new BerryItem();
+        new BerryItem();// Inte denna
         
         //Tools
-        new AxeItem();
-        new SpearItem();
+        new AxeItem();// Inte denna
+        new SpearItem();// Inte denna
     }
 
     // Update is called once per frame

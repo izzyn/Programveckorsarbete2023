@@ -35,4 +35,9 @@ public class ItemUsable:Item
         return inUseSprite;
     }
 
+    protected override void SetupItem()
+    {
+        
+    }
+
 }

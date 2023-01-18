@@ -11,7 +11,7 @@ public class vtfaubidns : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Item item = Register.GetItemFromType(ItemType.Berry);
+        Item item = Register.GetItemFromType(ItemType.Example);
         print(item.GetItemType());
         
         
