@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class ScoreCounter : MonoBehaviour
 {
+    public saveload saveload;
+
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            GameManager.dayCount = 0;
             if (GameManager.dayCount > GameManager.highscore)
             {
                 GameManager.highscore = GameManager.dayCount;
             }
+            GameManager.dayCount = 0;
+
+            saveload.SavePlayer();
         }
     }
 }

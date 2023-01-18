@@ -154,8 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayCounterText: {fileID: 537755793}
-  dayLength: 60
-  nightLength: 30
+  dayLength: 10
+  nightLength: 5
   isNight: 0
   nightShading: {fileID: 678435810}
 --- !u!4 &210563235
@@ -402,6 +402,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 578485224}
+  - component: {fileID: 578485225}
   m_Layer: 0
   m_Name: Nests
   m_TagString: Untagged
@@ -424,6 +425,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &578485225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578485223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ad1fb8c97643d48aaa6bd2549a52d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 7615142288888206763}
+  spawnSpeed: 1
+  enemyTypes:
+  - {fileID: 5505045686717455731, guid: c254faff387805a4f9bf17a523faa8d8, type: 3}
 --- !u!1 &641141477
 GameObject:
   m_ObjectHideFlags: 0
