@@ -8,8 +8,7 @@ public abstract class Item
     {
         public Item()
         {
-            
-            
+            Register.RegisterItem(this);
         }
 
         //Self explanatory fields
