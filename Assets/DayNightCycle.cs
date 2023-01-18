@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class DayNightCycle : MonoBehaviour
 {
+    [SerializeField]
+    private bool fadeIn = false;
+    [SerializeField]
+    private bool fadeOut = false;
+    [SerializeField]
+    private CanvasGroup canvasGroup;
     public Text dayCounterText;
     public int dayLength = 60;
     public int nightLength = 90;
@@ -19,7 +25,29 @@ public class DayNightCycle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (fadeIn)
+        {
+            if (canvasGroup.alpha < 0.95f)
+            {
+                canvasGroup.alpha += Time.deltaTime;
+                if(canvasGroup.alpha >= 0.95f)
+                {
+                    fadeIn = false;
+                }
+            }
+        }
+
+        if (fadeOut)
+        {
+            if (canvasGroup.alpha >= 0)
+            {
+                canvasGroup.alpha -= Time.deltaTime;
+                if (canvasGroup.alpha == 0)
+                {
+                    fadeOut = false;
+                }
+            }
+        }
     }
 
     void MakeDay()
@@ -30,7 +58,7 @@ public class DayNightCycle : MonoBehaviour
 
         dayCounterText.text = "day " + GameManager.dayCount;
 
-        nightShading.SetActive(false);
+        fadeOut = true;
     }
 
     void MakeNight()
@@ -41,6 +69,6 @@ public class DayNightCycle : MonoBehaviour
 
         GameManager.dayCount++;
 
-        nightShading.SetActive(true);
+        fadeIn = true;
     }
 }

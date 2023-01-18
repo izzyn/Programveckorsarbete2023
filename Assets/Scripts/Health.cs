@@ -5,4 +5,14 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float HP;
+
+    
+
+    private void Update()
+    {
+        if (HP <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
