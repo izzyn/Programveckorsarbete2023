@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6690742781611440087}
   - component: {fileID: 6690742781611440080}
   - component: {fileID: 6690742781611440081}
-  - component: {fileID: 3725077059492182877}
   m_Layer: 0
   m_Name: weapons
   m_TagString: Untagged
@@ -48,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce2938d956afc14789f9c0ac137c779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg_spear: 0
-  dmg_axe: 0
+  dmg_spear: 1
+  dmg_axe: 1
 --- !u!212 &6690742781611440087
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -148,17 +147,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.89027995, y: 0.7867737}
   m_EdgeRadius: 0
---- !u!114 &3725077059492182877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6690742781611440084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 727291b6c37be52488ea8cb95cfa8f13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmg_spear: 1
-  dmg_axe: 1

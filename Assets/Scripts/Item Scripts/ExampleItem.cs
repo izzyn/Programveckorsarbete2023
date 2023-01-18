@@ -5,7 +5,7 @@ public class ExampleItem:Item //Replace ExampleItem with the name of your item +
 
 {
 
-    public ExampleItem(int amount) : base( amount) //Replace "ExampleItem" with the same name + the word Item as the one above.
+    public ExampleItem() //Replace "ExampleItem" with the same name + the word Item as the one above.
     {
         //Assign Item Label/ItemType/Reference type/Enum
         itemType = ItemType.Example;
@@ -21,8 +21,8 @@ public class ExampleItem:Item //Replace ExampleItem with the name of your item +
         stackSize = 8;
         
         //How you add a recipe to the item
-        ScrapItem scrap = new ScrapItem(1);
-        WoodItem wood = new WoodItem(1);
+        ScrapItem scrap = (ScrapItem)new ScrapItem().SetAmount(10);
+        WoodItem wood = new WoodItem();
         
         recipe.Add(scrap);
         recipe.Add(wood);

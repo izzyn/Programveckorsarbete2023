@@ -14,7 +14,7 @@ public class vtfaubidns : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Item item = new SpearItem(1);
+        Item item = new SpearItem();
         print(item);
         
         

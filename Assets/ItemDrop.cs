@@ -19,7 +19,7 @@ public class ItemDrop : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Inventory.AddItem(new WoodItem(1));
+        Inventory.AddItem(new WoodItem().SetAmount(1));
         GameObject.Destroy(gameObject);
     }
 }

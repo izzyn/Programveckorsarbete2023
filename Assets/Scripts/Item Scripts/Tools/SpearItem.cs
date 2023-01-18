@@ -2,7 +2,7 @@
 
 public class SpearItem : ItemUsable
 {
-    public SpearItem(int amount) : base(amount)
+    public SpearItem() : base()
     {
         itemType = ItemType.Spear;
         SetSpriteFromName("Spear");

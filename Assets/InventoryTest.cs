@@ -64,7 +64,7 @@ public class InventoryTest : MonoBehaviour
 
     public void AddWood(int amount)
     {
-        WoodItem wood = new WoodItem(amount);
+        Item wood = new WoodItem().SetAmount(amount);
         Inventory.AddItem(wood);
     }
     
