@@ -2,7 +2,7 @@
 
 public class AxeItem : ItemUsable
 {
-    public AxeItem(int amount) : base(amount)
+    public AxeItem() : base()
     {
         itemType = ItemType.Axe;
         SetSpriteFromName("Axe");

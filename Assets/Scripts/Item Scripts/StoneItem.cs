@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class StoneItem:Item
 {
-    public StoneItem(int amount) : base( amount)
+    public StoneItem() : base()
     {
         SetSpriteFromName("Stone");
         itemType = ItemType.Stone;

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BerryItem:Item
 {
-    public BerryItem(int amount) : base( amount)
+    public BerryItem() : base( )
     {
         //Sets the sprite/texture of the item
         SetSpriteFromName("Berry");

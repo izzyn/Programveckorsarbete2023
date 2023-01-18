@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ItemUsable:Item
 {
-    public ItemUsable(int amount) : base( amount)
+    public ItemUsable() : base( )
     {
    
     }
