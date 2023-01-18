@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 public class PlayGame : MonoBehaviour
 {
-    [SerializeField]
-    string sceneToLoad;
+    public string sceneToLoad;
     // Start is called before the first frame update
     void Start()
     {

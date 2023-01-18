@@ -9,7 +9,7 @@ public class saveload : MonoBehaviour
 
     private void Start()
     {
-
+        LoadPlayer();
     }
     public void SavePlayer()
     {
