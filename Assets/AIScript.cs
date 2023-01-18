@@ -211,11 +211,11 @@ public class AIScript : MonoBehaviour
         }
         if(rb.velocity.x > 0)
         {
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
         }
         else
         {
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
 
         }
     }

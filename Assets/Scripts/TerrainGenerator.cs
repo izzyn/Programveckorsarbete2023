@@ -69,10 +69,6 @@ public class TerrainGenerator : MonoBehaviour
         // This creates a Grid Graph
         GenerateTerrain(seed);
     }
-    IEnumerator waitGenerate()
-    {
-        yield return new WaitForSeconds(0.5f);
-    }
     void GenerateTerrain(int presetSeed = 0)
     {
         int seed;

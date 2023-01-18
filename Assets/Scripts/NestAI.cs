@@ -45,7 +45,7 @@ public class NestAI : MonoBehaviour
                 yield return new WaitForSeconds(cooldown);
                 GameObject selectedEnemy = enemyTypes[UnityEngine.Random.Range(0, enemyTypes.Count)];
                 Vector2 enemyPosition = DeSimplifyVector(availableSpawns[UnityEngine.Random.Range(0, availableSpawns.Count)]);
-                if (enemyPosition.x >= ((mapsize / 2f)*-1) + 0.5f && enemyPosition.x <= mapsize / 2 - 0.5f && enemyPosition.y >= ((mapsize / 2f) * -1) + 0.5f && enemyPosition.y <= mapsize / 2 - 0.5f && GameObject.FindGameObjectsWithTag("Enemy").Length < 30)
+                if (enemyPosition.x >= ((mapsize / 2f)*-1) + 0.5f && enemyPosition.x <= mapsize / 2 - 0.5f && enemyPosition.y >= ((mapsize / 2f) * -1) + 0.5f && enemyPosition.y <= mapsize / 2 - 0.5f && GameObject.FindGameObjectsWithTag("Enemy").Length < 20)
                 {
                     GameObject enemy = GameObject.Instantiate(selectedEnemy, new Vector3(enemyPosition.x, enemyPosition.y, enemyPosition.y * 0.1f), Quaternion.identity);
 
