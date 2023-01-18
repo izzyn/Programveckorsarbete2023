@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Tree
   - Enemy
+  - weapon
+  - Enemy
+  - itemDrop
   layers:
   - Default
   - TransparentFX
