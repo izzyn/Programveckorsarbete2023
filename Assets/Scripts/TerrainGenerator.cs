@@ -100,6 +100,7 @@ public class TerrainGenerator : MonoBehaviour
                 }
             }
         }
+        //Generates the boundry around the map
         for(int y = 0; y < mapSize+30; y++)
         {
             for(int x = 0; x < mapSize+30; x++)
@@ -127,6 +128,7 @@ public class TerrainGenerator : MonoBehaviour
         }
         if(attempts >= 100) //To prevent infinite loops, it automatically stops after 100 iterations
         {
+            //Does nothing at the moment
             generationFail();
         }
         else

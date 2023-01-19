@@ -19,6 +19,7 @@ public class NestController : MonoBehaviour
     {
         foreach(Transform child in gameObject.transform)
         {
+            //Makes all nests start spawnign enemy at a random ófsseted time
             child.gameObject.GetComponent<NestAI>().player = player;
             StartCoroutine(child.gameObject.GetComponent<NestAI>().spawnEnemies(spawnSpeed + Random.Range(0f, spawnSpeed), enemyTypes));
         }
