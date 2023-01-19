@@ -1029,7 +1029,7 @@ GameObject:
   - component: {fileID: 967526664}
   - component: {fileID: 967526663}
   m_Layer: 5
-  m_Name: Menu Text
+  m_Name: End Run Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1075,7 +1075,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Menu
+  m_text: End Run
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1694,13 +1694,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 210563236}
+        m_TargetAssemblyTypeName: ScoreCounter, Assembly-CSharp
+        m_MethodName: GameOver
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1719,7 +1719,7 @@ GameObject:
   - component: {fileID: 2194437154395481482}
   - component: {fileID: 6470463034727742225}
   m_Layer: 5
-  m_Name: Play
+  m_Name: End Run Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1809,7 +1809,7 @@ GameObject:
   - component: {fileID: 5735786882850198414}
   - component: {fileID: 5735786882850198412}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Resume Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
