@@ -15,7 +15,7 @@ public class ItemStack
             this.item = item;
         }
 
-        public Item GetItem() => item;
+        public Item GetItem() => this.item;
         public ItemStack SetItem(Item item)
         {
             this.item = item;
@@ -26,5 +26,10 @@ public class ItemStack
         { 
             this.amount = amount;
             return this;
+        }
+
+        public bool isValid()
+        {
+            return !(amount == 0 || item == null);
         }
     }

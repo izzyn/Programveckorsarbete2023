@@ -22,10 +22,10 @@ public class ExampleItem:Item //Replace ExampleItem with the name of your item +
         
         //How you add a recipe to the item
         //ScrapItem scrap = (ScrapItem)new ScrapItem().SetAmount(10);
-        WoodItem wood = new WoodItem();
+        //WoodItem wood = new WoodItem();
         
       //  recipe.Add(scrap);
-        recipe.Add(wood);
+       // recipe.Add(wood);
         
         //add a display name to item
         itemName = "Example Item";

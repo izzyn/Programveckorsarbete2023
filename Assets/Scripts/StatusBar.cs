@@ -17,6 +17,10 @@ public class StatusBar : MonoBehaviour
     private Transform bar;
     [SerializeField]
     private Transform barFill;
+
+    private Animator animator;
+
+    private Health health;
     
     
     
@@ -27,14 +31,17 @@ public class StatusBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = GameManager.player.GetComponent<Health>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        barFill.localScale = new Vector3(fillPercentage * bar.localScale.x,  bar.localScale.y, 1);
-        barFill.localPosition = new Vector2(fillPercentage * (bar.localPosition.x/test), 0);
+        fillPercentage = health.HP/health.maxHP;
+        animator.SetFloat("Fill", fillPercentage);
+       // barFill.localScale = new Vector3(fillPercentage * bar.localScale.x,  bar.localScale.y, 1);
+       // barFill.localPosition = new Vector2(fillPercentage * (bar.localPosition.x/test), 0);
         
     }
 
