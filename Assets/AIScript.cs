@@ -175,7 +175,7 @@ public class AIScript : MonoBehaviour
         onCooldown = true;
         SetParameter("Attack"); // Pontus animation
         yield return new WaitForSeconds(0.2f);
-        GameObject checkCollision = GameObject.Instantiate(attackCollider, gameObject.transform.position + ((GameManager.player.transform.position - gameObject.transform.position) * (1 / (GameManager.player.transform.position - gameObject.transform.position).magnitude)), Quaternion.identity, gameObject.transform);
+        GameObject checkCollision = GameObject.Instantiate(attackCollider, gameObject.transform.position + ((GameManager.player.transform.position - gameObject.transform.position) * (0.5f / (GameManager.player.transform.position - gameObject.transform.position).magnitude)), Quaternion.identity, gameObject.transform);
         yield return new WaitForSeconds(1f);
         rb.isKinematic = false;
         Destroy(checkCollision);
