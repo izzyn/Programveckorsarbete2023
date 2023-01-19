@@ -74,7 +74,7 @@ public class weaponSystem : MonoBehaviour
         {
             Health HP = collision.gameObject.GetComponent<Health>();
             HP.HP -= CurrentDamage;
-            print(HP.HP);
+            print(HP.HP);   
         }
         else
         {
