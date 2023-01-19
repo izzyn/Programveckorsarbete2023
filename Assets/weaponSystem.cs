@@ -37,7 +37,7 @@ public class weaponSystem : MonoBehaviour
         if(Input.GetKeyDown(AttackKey))
         {
             timer = 80;
-            Item item = Inventory.GetSelectedItem();
+            ItemStack item = Inventory.GetSelectedItemStack();
             //if (item == null)
             //{
                // print("null return");

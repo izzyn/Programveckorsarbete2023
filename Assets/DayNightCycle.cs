@@ -27,10 +27,10 @@ public class DayNightCycle : MonoBehaviour
     {
         if (fadeIn)
         {
-            if (canvasGroup.alpha < 0.95f)
+            if (canvasGroup.alpha < 0.9f)
             {
                 canvasGroup.alpha += Time.deltaTime;
-                if(canvasGroup.alpha >= 0.95f)
+                if(canvasGroup.alpha >= 0.9f)
                 {
                     fadeIn = false;
                 }

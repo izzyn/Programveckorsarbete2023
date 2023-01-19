@@ -154,10 +154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60d28f90756be6438102c5a93bb938d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeIn: 0
+  fadeOut: 0
   canvasGroup: {fileID: 678435814}
   dayCounterText: {fileID: 537755793}
-  dayLength: 5
-  nightLength: 5
+  dayLength: 20
+  nightLength: 20
   isNight: 0
   nightShading: {fileID: 678435810}
 --- !u!4 &210563235
@@ -188,7 +190,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveload: {fileID: 210563237}
-  playGame: {fileID: 6470463034727742225}
 --- !u!114 &210563237
 MonoBehaviour:
   m_ObjectHideFlags: 0
