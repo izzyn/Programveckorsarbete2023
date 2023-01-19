@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     static int hp = 5;
     public static int reduceHp(int value) => hp -= value;
-    public static int restoreHP() => hp = 5000;
+    public static int restoreHP() => hp = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +23,10 @@ public class PlayerHealth : MonoBehaviour
         {
             lossObject.GetComponent<ScoreCounter>().GameOver();
         }
+    }
+
+    public int GetHP()
+    {
+        return hp;
     }
 }

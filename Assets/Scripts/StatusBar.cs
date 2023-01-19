@@ -20,7 +20,9 @@ public class StatusBar : MonoBehaviour
 
     private Animator animator;
 
-    private Health health;
+    private PlayerHealth health;
+
+    private bool done = false;
     
     
     
@@ -31,14 +33,20 @@ public class StatusBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = GameManager.player.GetComponent<Health>();
+        
         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        fillPercentage = health.HP/health.maxHP;
+        
+        
+            health = GameManager.player.GetComponent<PlayerHealth>();
+            
+        
+        fillPercentage = ((float)health.GetHP())/5f;
+        print(health.GetHP());
         animator.SetFloat("Fill", fillPercentage);
        // barFill.localScale = new Vector3(fillPercentage * bar.localScale.x,  bar.localScale.y, 1);
        // barFill.localPosition = new Vector2(fillPercentage * (bar.localPosition.x/test), 0);

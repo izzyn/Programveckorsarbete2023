@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 5
+  maxHP: 5
 --- !u!61 &5912970278457545848
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -228,4 +229,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa992f69d6c863b44b1b7b386d142435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 3
+  HP: 5
+  maxHP: 5

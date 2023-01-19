@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-
-=======
 using System;
->>>>>>> Stashed changes
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +6,6 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public float HP;
-<<<<<<< Updated upstream
-=======
-    
     public float maxHP;
 
 
@@ -20,12 +13,13 @@ public class Health : MonoBehaviour
     {
         HP = maxHP;
     }
->>>>>>> Stashed changes
+
 
     private void Update()
     {
         if (HP <= 0)
         {
+            print("Diede ");
             Destroy(gameObject);
         }
     }

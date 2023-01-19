@@ -33,7 +33,7 @@ public class AIScript : MonoBehaviour
         int tempPos = 0;
         while (true)
         {
-            int playerPos = SimplifyVector(GameObject.FindWithTag("Player").transform.position);
+            int playerPos = SimplifyVector(GameManager.player.transform.position);
             if(tempPos != playerPos)
             {
                 int thisPosition = SimplifyVector(gameObject.transform.position);
