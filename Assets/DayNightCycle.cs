@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class DayNightCycle : MonoBehaviour
 {
+    public float nightShadingDuration = 0.5f;
     [SerializeField]
     private bool fadeIn = false;
     [SerializeField]
     private bool fadeOut = false;
     [SerializeField]
-    private CanvasGroup canvasGroup;
+    private SpriteRenderer canvasGroup;
     public Text dayCounterText;
     public int dayLength = 60;
     public int nightLength = 90;
@@ -27,12 +28,16 @@ public class DayNightCycle : MonoBehaviour
     {
         if (fadeIn)
         {
-            if (canvasGroup.alpha < 0.9f)
+            if (canvasGroup.color.a < 0.8f)
             {
-                canvasGroup.alpha += Time.deltaTime;
-                if(canvasGroup.alpha >= 0.9f)
+                Color color = canvasGroup.color;
+                color.a += Time.deltaTime * nightShadingDuration;
+                canvasGroup.color = color;
+                if(canvasGroup.color.a >= 0.8f)
                 {
-                    canvasGroup.alpha = 0.9f;
+                    Color color2 = canvasGroup.color;
+                    color.a -= Time.deltaTime;
+                    canvasGroup.color = color;
                     fadeIn = false;
                 }
             }
@@ -42,11 +47,15 @@ public class DayNightCycle : MonoBehaviour
 
         if (fadeOut)
         {
-            if (canvasGroup.alpha >= 0)
+            if (canvasGroup.color.a >= 0)
             {
-                canvasGroup.alpha -= Time.deltaTime;
-                if (canvasGroup.alpha == 0)
+                Color color = canvasGroup.color;
+                color.a -= Time.deltaTime * nightShadingDuration;
+                canvasGroup.color = color;
+                print("Did this " + canvasGroup.color.a);
+                if (Mathf.Abs(canvasGroup.color.a)  <= 0.1f)
                 {
+                    
                     fadeOut = false;
                 }
             }
@@ -57,6 +66,7 @@ public class DayNightCycle : MonoBehaviour
     {
         Invoke("MakeNight", dayLength);
 
+        print("Made Day");
         isNight = false;
 
         dayCounterText.text = "day " + GameManager.dayCount;
@@ -67,7 +77,7 @@ public class DayNightCycle : MonoBehaviour
     void MakeNight()
     {
         Invoke("MakeDay", nightLength);
-
+        print("Made Night");
         isNight = true;
 
         GameManager.dayCount++;

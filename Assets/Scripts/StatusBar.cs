@@ -42,7 +42,7 @@ public class StatusBar : MonoBehaviour
     {
         
         
-            health = GameManager.player.GetComponent<PlayerHealth>();
+            health = GameManager.player.GetComponent<PlayerHealth>();   
             
         
         fillPercentage = ((float)health.GetHP())/5f;
