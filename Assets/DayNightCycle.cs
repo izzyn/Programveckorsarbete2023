@@ -32,9 +32,12 @@ public class DayNightCycle : MonoBehaviour
                 canvasGroup.alpha += Time.deltaTime;
                 if(canvasGroup.alpha >= 0.9f)
                 {
+                    canvasGroup.alpha = 0.9f;
                     fadeIn = false;
                 }
             }
+
+            
         }
 
         if (fadeOut)

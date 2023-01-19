@@ -2105,6 +2105,7 @@ MonoBehaviour:
   camera: {fileID: 2030094133}
   offset: {x: 0, y: 0}
   smoothTime: 2
+  cameraZPos: -10
 --- !u!114 &9160624013843680844
 MonoBehaviour:
   m_ObjectHideFlags: 0
