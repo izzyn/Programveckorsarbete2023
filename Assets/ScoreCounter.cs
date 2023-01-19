@@ -20,9 +20,9 @@ public class ScoreCounter : MonoBehaviour
         {
             GameManager.highscore = GameManager.dayCount;
         }
-        GameManager.dayCount = 0;
-
         saveload.SavePlayer();
+
+        GameManager.dayCount = 0;
 
         SceneManager.LoadScene("Menu");
     }

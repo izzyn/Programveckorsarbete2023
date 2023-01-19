@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 210563234}
   - component: {fileID: 210563236}
   - component: {fileID: 210563237}
+  - component: {fileID: 210563238}
   m_Layer: 0
   m_Name: DayNightCycle
   m_TagString: Untagged
@@ -203,6 +204,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveLoad: {fileID: 210563233}
+--- !u!114 &210563238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210563233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9fcb6b729d907b4399657c14dc67dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &421661304
 GameObject:
   m_ObjectHideFlags: 0

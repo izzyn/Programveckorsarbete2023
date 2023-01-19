@@ -32,28 +32,33 @@ public class weaponSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer= timer-1;
-
+        if (timer >= 0)
+        {
+            timer = timer - 1;
+        }
         if(Input.GetKeyDown(AttackKey))
         {
-            timer = 80;
-            ItemStack item = Inventory.GetSelectedItemStack();
-            //if (item == null)
-            //{
-               // print("null return");
+            if (timer <= 0)
+            {
+                timer = 80;
+                ItemStack item = Inventory.GetSelectedItemStack();
+                //if (item == null)
+                //{
+                // print("null return");
                 //return; 
-            //}
-            dmg.TryGetValue(ItemType.Axe, out CurrentDamage);
-            SpriteRenderer.sprite = Resources.Load<Sprite>("Textures/Tools/Axe");
-            if (ItemType.Axe == ItemType.Spear)
-            {
-           
-            }
-            if (ItemType.Axe == ItemType.Axe)
-            {
+                //}
+                dmg.TryGetValue(ItemType.Axe, out CurrentDamage);
+                SpriteRenderer.sprite = Resources.Load<Sprite>("Textures/Tools/Axe");
+                if (ItemType.Axe == ItemType.Spear)
+                {
 
-                print("axe");
-                anim.SetBool("axe", true);   
+                }
+                if (ItemType.Axe == ItemType.Axe)
+                {
+
+                    print("axe");
+                    anim.SetBool("axe", true);
+                }
             }
            if(timer <= 0)
             {
