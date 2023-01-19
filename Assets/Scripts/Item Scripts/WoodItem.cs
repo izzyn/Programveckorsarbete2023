@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WoodItem: Item
@@ -7,6 +8,8 @@ public class WoodItem: Item
         itemName = "Wood";
         itemType = ItemType.Wood;
         SetSpriteFromName("Wood");
+        
+        
     }
     
     

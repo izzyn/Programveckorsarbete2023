@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class ScoreCounter : MonoBehaviour
 {
     public saveload saveload;
-    public PlayGame playGame;
 
     void Update()
     {
@@ -20,7 +19,7 @@ public class ScoreCounter : MonoBehaviour
 
             saveload.SavePlayer();
 
-            SceneManager.LoadScene(playGame.sceneToLoad);
+            SceneManager.LoadScene("Menu");
         }
     }
 }

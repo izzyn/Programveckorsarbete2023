@@ -21,9 +21,8 @@ public abstract class Item
 
 
         //Self explanatory fields
-        protected  String itemName;
+        protected  string itemName;
         protected ItemType itemType;
-        private int amount = 1;
         protected Sprite sprite;
         protected int stackSize = 64;
         
@@ -46,7 +45,7 @@ public abstract class Item
             return itemType;
         }
         
-        public String GetName()
+        public string GetName()
         {
             return itemName;
         }
@@ -71,19 +70,12 @@ public abstract class Item
 
         }
 
-        protected void SetSpriteFromName(String fileName)
+        protected void SetSpriteFromName(string fileName)
         {
             SetSprite(Resources.Load<Sprite>("Textures/Items/" + fileName));
         }
 
-
-
-        public int GetAmount() => amount;
-        public Item SetAmount(int amount)
-        { 
-            this.amount = amount;
-            return this;
-        }
+        
 
         public virtual void TriggerLeftClickEvent()
         {
