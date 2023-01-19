@@ -25,14 +25,14 @@ public static class Register
     private static Dictionary<ItemType, Item> itemDictionary = new Dictionary<ItemType, Item>();
     public static void RegisterItem(Item item)
     {
-        //itemDictionary.Add(item.GetItemType(), item);
+            itemDictionary.Add(item.GetItemType(), item);
     }
     
     public static Item GetItemFromType(ItemType type)
     {
-        itemDictionary.TryGetValue(type, out Item item);
-        
-        return item;
+        Item output;
+        itemDictionary.TryGetValue(type, out output);
+        return output;
     }
 }
 
@@ -85,16 +85,16 @@ public static class Inventory
     {
         int amount = item.GetAmount();
         int index = 0;
-        // Debug.Log("Adding item: " + item.GetItemType() + " amount: " + amount);
         foreach (ItemStack invItem in inventoryList)
         {
 
             
             if (invItem == null && amount > 0)
             {
-                // Debug.Log("Adding item to slot: " + index);
                 inventoryList[index] = item;
-                Debug.Log(Inventory.inventoryList[index].GetItem().GetItemType());
+                
+                
+                
                 if (amount > item.GetItem().GetStackSize())
                 {
                     inventoryList[index].SetAmount(item.GetItem().GetStackSize());
@@ -102,15 +102,13 @@ public static class Inventory
                 }
                 else
                 {
-                    //Debug.Log("Set amount to ZERO");
                     amount = 0;
                 }
-                Debug.Log(Inventory.inventoryList[index].GetItem().GetItemType() + "1");
+               
             }
             else if (invItem != null && amount > 0)
                 if (invItem.GetItem().GetItemType() == item.GetItem().GetItemType())
                 {
-                    Debug.Log(Inventory.inventoryList[index].GetItem().GetItemType() + "2");
                     invItem.SetAmount(invItem.GetAmount() + amount);
                     if (invItem.GetAmount() > invItem.GetItem().GetStackSize())
                     {
@@ -124,7 +122,6 @@ public static class Inventory
 
                 }
             
-            if(index == 0) Debug.Log(Inventory.inventoryList[index].GetItem().GetItemType() + "3");
     
             if (invItem != null)
                 if (invItem.GetAmount() <= 0)
@@ -133,7 +130,7 @@ public static class Inventory
                     inventoryList[index] = null;
                 }
             
-            if(index == 0)Debug.Log(Inventory.inventoryList[0].GetItem().GetItemType() + " :   " + amount);
+            
 
             
             if(amount <= 0)

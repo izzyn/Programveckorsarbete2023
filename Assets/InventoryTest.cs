@@ -31,7 +31,7 @@ public class InventoryTest : MonoBehaviour
         {
             for (int i = 0; i < 8; i++)
             {
-               // Debug.Log(Inventory.inventoryList[i].GetName());
+               Debug.Log(Inventory.inventoryList[i].GetItem().GetName());
             }
             return;
         }
@@ -42,6 +42,12 @@ public class InventoryTest : MonoBehaviour
            print("Added 5 wood");
         }
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ItemStack wood = new ItemStack(Register.GetItemFromType(ItemType.Scrap), 10);
+            Inventory.AddItem(wood);
+        }
+
         if (Input.GetKeyDown(KeyCode.K))
         {
             RemoveWood(3);
@@ -50,7 +56,10 @@ public class InventoryTest : MonoBehaviour
 
         for (int i = 0; i < 8; i++)
         {
-          //  item[i].item = Inventory.inventoryList[i];
+            if (Inventory.inventoryList[i] != null) 
+                item[i].item = Inventory.inventoryList[i].GetItem();
+            else
+                item[i].item = null;
         }
         
         
@@ -64,8 +73,8 @@ public class InventoryTest : MonoBehaviour
 
     public void AddWood(int amount)
     {
-      //  Item wood = new WoodItem().SetAmount(amount);
-        //Inventory.AddItem(wood);
+        ItemStack wood = new ItemStack(Register.GetItemFromType(ItemType.Wood), amount);
+        Inventory.AddItem(wood);
     }
     
     public void RemoveWood(int amount)

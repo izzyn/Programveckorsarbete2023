@@ -12,7 +12,7 @@ public class ItemTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -23,13 +23,13 @@ public class ItemTest : MonoBehaviour
         {
             if (item.GetRecipe().Count == 0) ;
             else
-                foreach (Item rItem in item.GetRecipe())
+                foreach (ItemStack rItem in item.GetRecipe())
                 {
                    // print(rItem.GetAmount() + " " + rItem.GetName());
                 }
 
            //print(item.ToString());
-            spriteRenderer = GetComponent<SpriteRenderer>();
+            
             spriteRenderer.sprite = item.GetSprite();
         }
         else

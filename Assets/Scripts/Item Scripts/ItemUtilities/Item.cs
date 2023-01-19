@@ -8,10 +8,11 @@ public abstract class Item
     {
         public Item()
         {
-            
+            Debug.Log("Init Item: " + this);
             this.SetupItem();
+            Debug.Log("Setup Register: " + this.itemName);
             Register.RegisterItem(this);
-            Debug.Log("Registerd: " + this.itemName);
+            Debug.Log("Registered: " + this.itemName);
         }
 
 
@@ -29,13 +30,13 @@ public abstract class Item
         
 
         //The is saved and used as a list of items needed to craft the item, if list is empty then the item is not craftable
-        protected List<Item> recipe = new List<Item>();
+        protected List<ItemStack> recipe = new List<ItemStack>();
 
         public int GetStackSize()
         {
             return stackSize;
         }
-        public List<Item> GetRecipe()
+        public List<ItemStack> GetRecipe()
         {
             return recipe;
         }

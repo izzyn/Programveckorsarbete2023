@@ -5,20 +5,23 @@ using UnityEngine;
 public class GameStartScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         print("Registering Items");
         //Example Item
-        new ExampleItem();
+        Item item = new ExampleItem();
+        print("Item Name: " + item.GetName());
         //Items
-        new WoodItem();
-        new StoneItem(); // Inte denna
+        Item item2 = new WoodItem();
+        print("Item Name: " + item.GetName());
+        Item item3 = new StoneItem();
+        print("Item Name: " + item.GetName());
         new ScrapItem();
-        new BerryItem();// Inte denna
+        new BerryItem();
         
         //Tools
-        new AxeItem();// Inte denna
-        new SpearItem();// Inte denna
+        new AxeItem();
+        new SpearItem();
     }
 
     // Update is called once per frame
