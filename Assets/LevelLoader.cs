@@ -13,6 +13,7 @@ public class LevelLoader : MonoBehaviour
     public void LoadLevel(int sceneIndex)
     {
         StartCoroutine(LoadAsynchronously(sceneIndex));
+        PlayerHealth.restoreHP();
     }
 
     IEnumerator LoadAsynchronously(int sceneIndex)

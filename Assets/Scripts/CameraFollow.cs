@@ -11,6 +11,9 @@ public class CameraFollow : MonoBehaviour
     private Vector2 offset;
     [SerializeField, Range(0.5f, 10f)]
     private float smoothTime = 2f;
+
+    [SerializeField]
+    private float cameraZPos = -10;
     
     private Rigidbody2D playerRigidbody;
 
@@ -27,13 +30,18 @@ public class CameraFollow : MonoBehaviour
     void FixedUpdate()
     {
         cameraTarget = Vector3.Slerp(camera.position,
-            new Vector3(playerRigidbody.position.x + offset.x, playerRigidbody.position.y + offset.y, camera.position.z),
+            new Vector3(playerRigidbody.position.x + offset.x, playerRigidbody.position.y + offset.y, cameraZPos),
             Time.deltaTime * smoothTime);
+
     }
+
+
+    
 
     //Every frame it moves the camera to the new position
     private void Update()
     {
+        cameraTarget.z = cameraZPos;
         camera.position = cameraTarget;
     }
     

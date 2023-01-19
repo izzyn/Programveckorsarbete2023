@@ -13,7 +13,7 @@ public class attackCheck : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-
+            PlayerHealth.reduceHp(1);
         }
     }
 

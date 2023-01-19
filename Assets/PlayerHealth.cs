@@ -7,8 +7,9 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     GameObject lossObject;
     [SerializeField]
-    static int hp;
+    static int hp = 5;
     public static int reduceHp(int value) => hp -= value;
+    public static int restoreHP() => hp = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(hp <= 0)
         {
-            lossObject.GetComponent<saveload>();
+            lossObject.GetComponent<ScoreCounter>().GameOver();
         }
     }
 }
