@@ -23,6 +23,28 @@ public class DayNightCycle : MonoBehaviour
         MakeDay();
     }
 
+    void MakeDay()
+    {
+        Invoke("MakeNight", dayLength);
+
+        isNight = false;
+
+        dayCounterText.text = "day " + GameManager.dayCount;
+
+        fadeOut = true;
+    }
+
+    void MakeNight()
+    {
+        Invoke("MakeDay", nightLength);
+
+        isNight = true;
+
+        GameManager.dayCount++;
+
+        fadeIn = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -60,28 +82,5 @@ public class DayNightCycle : MonoBehaviour
                 }
             }
         }
-    }
-
-    void MakeDay()
-    {
-        Invoke("MakeNight", dayLength);
-
-        print("Made Day");
-        isNight = false;
-
-        dayCounterText.text = "day " + GameManager.dayCount;
-
-        fadeOut = true;
-    }
-
-    void MakeNight()
-    {
-        Invoke("MakeDay", nightLength);
-        print("Made Night");
-        isNight = true;
-
-        GameManager.dayCount++;
-
-        fadeIn = true;
     }
 }
