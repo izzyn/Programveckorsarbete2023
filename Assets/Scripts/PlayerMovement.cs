@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public bool PlayerLeft = false;
+    public bool PlayerRight = false;
+    public bool PlayerUp = false;
+    public bool PlayerDown = false;
     private Animator anim;
     [SerializeField, Range(0f, 100f)] 
     private float walkSpeed = 5f;
@@ -43,7 +47,12 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.W))
         {
-            moveDir += Vector3.up;
+         PlayerLeft = false;
+        PlayerRight = false;
+        PlayerUp = true;
+        PlayerDown = false;
+
+    moveDir += Vector3.up;
             anim.SetBool("Backwalk", true);
             anim.SetBool("Idle", false);
             anim.SetBool("frontWalk", false);
@@ -57,6 +66,11 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.S))
         {
+            PlayerLeft = false;
+            PlayerRight = false;
+            PlayerUp = false;
+            PlayerDown = true;
+
             moveDir += Vector3.down;
             anim.SetBool("frontWalkl", true);
             anim.SetBool("Idle", false);
@@ -70,6 +84,10 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A))
         {
+            PlayerLeft = false;
+            PlayerRight = true;
+            PlayerUp = false;
+            PlayerDown = false;
             moveDir += Vector3.left;
             anim.SetBool("leftWalk",true);
             anim.SetBool("Idle", false);
@@ -83,7 +101,10 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.D))
         {
-            moveDir += Vector3.right;
+            PlayerLeft = true;
+            PlayerRight = false;
+            PlayerUp = false;
+            PlayerDown = false; moveDir += Vector3.right;
             anim.SetBool("rightWalk", true);
             anim.SetBool("Idle", false);
             anim.SetBool("frontWalk", false);
