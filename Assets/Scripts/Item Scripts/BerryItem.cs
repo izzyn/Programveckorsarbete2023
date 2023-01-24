@@ -1,5 +1,5 @@
 using UnityEngine;
-
+//Pontus
 public class BerryItem:Item
 {
     protected override void SetupItem()

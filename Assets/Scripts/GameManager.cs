@@ -14,12 +14,10 @@ public class GameManager : MonoBehaviour
    
     public static int highscore;
 
-    public static Item scrap; //= new Item(ItemType.Scrap);
-    public static Item wood; //= new Item(ItemType.Wood);
-
     public static GameObject player;
 }
 
+//Pontus
 public static class Register
 {
     private static Dictionary<ItemType, Item> itemDictionary = new Dictionary<ItemType, Item>();
@@ -37,6 +35,7 @@ public static class Register
 }
 
 
+//Pontus
 public static class Inventory
 {
    public static ItemStack[] inventoryList = new ItemStack[8];
