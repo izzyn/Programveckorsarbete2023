@@ -18,11 +18,15 @@ public class weaponSystem : MonoBehaviour
     [SerializeField]
     public Dictionary<ItemType, int> dmg = new Dictionary<ItemType, int>();
     [SerializeField]
-    private int timer;
+    private float timer;
     KeyCode AttackKey = KeyCode.Mouse0;
     // Start is called before the first frame update
     void Start()
     {
+        ItemStack stack = new ItemStack(Register.GetItemFromType(ItemType.Axe));
+        Inventory.AddItem(stack);
+        stack = new ItemStack(Register.GetItemFromType(ItemType.Spear));
+        Inventory.AddItem(stack);
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         dmg.Add(ItemType.Spear, dmg_spear);
@@ -34,6 +38,7 @@ public class weaponSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (playerMovement.PlayerLeft == true)
         {
             anim.SetInteger("PlayerDirection", 3);
@@ -52,41 +57,45 @@ public class weaponSystem : MonoBehaviour
         }
         if (Input.GetKeyDown(AttackKey))
         {
-            if (timer <= 1)
+            if (timer >= 1)
             {
-                timer = 80;
-                ItemStack item = Inventory.GetSelectedItemStack();
-                //if (item == null)
-                //{
-                // print("null return");
-                //return; 
-                //}
-                dmg.TryGetValue(ItemType.Axe, out CurrentDamage);
+              
+                ItemStack itemStack = Inventory.GetSelectedItemStack();
+                if (itemStack == null)
+                {
+                 print("null return");
+                return; 
+                }
+                
+
+                
+                Item item = itemStack.GetItem();
                 SpriteRenderer.sprite = Resources.Load<Sprite>("Textures/Tools/Axe");
-                if (ItemType.Axe == ItemType.Spear)
+                if (item.GetItemType() == ItemType.Spear)
                 {
-
+                    timer = 0;
+                    print("spear");
+                    anim.SetInteger("WeaponID", 1);
                 }
-                if (ItemType.Axe == ItemType.Axe)
+                if (item.GetItemType() == ItemType.Axe)
                 {
-
+                    timer = 0;
                     print("axe");
-                    anim.SetBool("axe", true);
+                    anim.SetInteger("WeaponID", 2);
                 }
             }
-           if(timer <= 0)
-            {
-                anim.SetBool("axe", false);
-            }
+         
         }
-    }
-    public void AlertObservers(string message)
-    {
-        if (message.Equals("axeAttack"))
+        if(timer <= 1)
         {
-            anim.SetBool("axe", false);
+            timer += Time.deltaTime;
+        }
+        if(timer >= 1)
+        {
+            anim.SetInteger("WeaponID", 0);
         }
     }
+   
         private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Enemy"))
