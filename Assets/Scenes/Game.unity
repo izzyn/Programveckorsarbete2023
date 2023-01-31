@@ -1335,7 +1335,7 @@ MonoBehaviour:
   spawnSpeed: 1
   enemyTypes:
   - {fileID: 5505045686717455731, guid: c254faff387805a4f9bf17a523faa8d8, type: 3}
---- !u!1 &641141477
+--- !u!1 &641141478
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
