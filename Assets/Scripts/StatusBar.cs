@@ -46,7 +46,6 @@ public class StatusBar : MonoBehaviour
             
         
         fillPercentage = ((float)health.GetHP())/5f;
-        print(health.GetHP());
         animator.SetFloat("Fill", fillPercentage);
        // barFill.localScale = new Vector3(fillPercentage * bar.localScale.x,  bar.localScale.y, 1);
        // barFill.localPosition = new Vector2(fillPercentage * (bar.localPosition.x/test), 0);

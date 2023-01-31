@@ -6,6 +6,7 @@ using System.Linq;
 
 public class NestAI : MonoBehaviour
 {
+    //Isak's kod
     public Transform player;
     List<GameObject> createdEnemies = new List<GameObject>();
     int mapsize;
@@ -42,7 +43,7 @@ public class NestAI : MonoBehaviour
         {
             if(availableSpawns.Count > 0)
             {
-                yield return new WaitForSeconds(cooldown);
+                yield return new WaitForSeconds(cooldown / ((Pollution.GetPolution * 0.01f) + 1));
                 GameObject selectedEnemy = enemyTypes[UnityEngine.Random.Range(0, enemyTypes.Count)];
                 Vector2 enemyPosition = DeSimplifyVector(availableSpawns[UnityEngine.Random.Range(0, availableSpawns.Count)]);
                 if (enemyPosition.x >= ((mapsize / 2f)*-1) + 0.5f && enemyPosition.x <= mapsize / 2 - 0.5f && enemyPosition.y >= ((mapsize / 2f) * -1) + 0.5f && enemyPosition.y <= mapsize / 2 - 0.5f && GameObject.FindGameObjectsWithTag("Enemy").Length < 20)

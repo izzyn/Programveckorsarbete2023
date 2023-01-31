@@ -105,8 +105,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTile: 0
-  speed: 1000
+  speed: 200
   attackCollider: {fileID: 6559883313164096545, guid: ea60d1303f9c10b459cb18ff73f438fd, type: 3}
+  distanceStart: 100
 --- !u!50 &-3249096163118144329
 Rigidbody2D:
   serializedVersion: 4

@@ -469,7 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7615142288888206763}
-  spawnSpeed: 1
+  spawnSpeed: 2
   enemyTypes:
   - {fileID: 5505045686717455731, guid: c254faff387805a4f9bf17a523faa8d8, type: 3}
 --- !u!1 &641141477
@@ -1553,6 +1553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1732837048}
   - component: {fileID: 1732837047}
+  - component: {fileID: 1732837049}
   m_Layer: 0
   m_Name: TerrainGenerator
   m_TagString: Untagged
@@ -1572,12 +1573,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea75ab0b09848341b8ede87d2d9ea14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSize: 150
+  mapSize: 50
   waterTileMap: {fileID: 641141481}
   tilemap: {fileID: 1670247926}
   ground: {fileID: 11400000, guid: 20e507cb63927ca489b7c59cae0d4129, type: 2}
   water: {fileID: 11400000, guid: 2b4e7944b3ac0784d9b1ce52e18ee963, type: 2}
-  waterThreshold: 0.814
+  waterThreshold: 0.742
   waterNoise: 0.114
   waterPointyness: 2
   waterGenerationDepth: 4
@@ -1611,6 +1612,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1732837049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732837046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b92ddc314574047853eb7a30f31634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1857718212
 PrefabInstance:
   m_ObjectHideFlags: 0

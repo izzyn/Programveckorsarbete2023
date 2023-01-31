@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NoiseFunctions : MonoBehaviour
 {
+    //Isak's kod
     // Start is called before the first frame update
     void Start()
     {

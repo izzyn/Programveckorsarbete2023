@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NestController : MonoBehaviour
 {
+    //Isak's kod
     [SerializeField]
     Transform player;
     [SerializeField]
@@ -20,8 +21,10 @@ public class NestController : MonoBehaviour
         foreach(Transform child in gameObject.transform)
         {
             //Makes all nests start spawnign enemy at a random ófsseted time
+            float tempSpawnSpeed = spawnSpeed;
             child.gameObject.GetComponent<NestAI>().player = player;
-            StartCoroutine(child.gameObject.GetComponent<NestAI>().spawnEnemies(spawnSpeed + Random.Range(0f, spawnSpeed), enemyTypes));
+            float spawningSpeed = Random.Range(tempSpawnSpeed / 2, tempSpawnSpeed * 2);
+            StartCoroutine(child.gameObject.GetComponent<NestAI>().spawnEnemies(spawningSpeed, enemyTypes));
         }
     }
 

@@ -8,6 +8,7 @@ using System.Linq;
 
 public class TerrainGenerator : MonoBehaviour
 {
+    //Isak's kod
     [SerializeField, Range(10, 1000)]
     int mapSize; //total map size
     public int GetMapSize => mapSize;
@@ -98,6 +99,7 @@ public class TerrainGenerator : MonoBehaviour
                 {
                     tilemap.SetTile(tilePosition, ground);
                 }
+
             }
         }
         //Generates the boundry around the map

@@ -7,6 +7,7 @@ using System.Threading;
 
 public class AIScript : MonoBehaviour
 {
+    //Isak's kod
     private Animator animator;
     public int currentTile;
     int mapSize;
@@ -20,14 +21,19 @@ public class AIScript : MonoBehaviour
     bool onCooldown = false;
     [SerializeField]
     GameObject attackCollider;
+    bool pathStarted;
+    [SerializeField]
+    float distanceStart;
+    IEnumerator pathUpdate;
     private void Start()
     {
+        //Gets all the necessary referances for the rest of the script to work
         animator = GetComponent<Animator>();
         mapSize = GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>().GetMapSize;
         obstacleTiles = GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>().GetWaterLoggedTiles;
         rb = gameObject.GetComponent<Rigidbody2D>();
-        StartCoroutine(updatePath());
     }
+    //Updates the path upon the player moving every n seconds
     IEnumerator updatePath()
     {
         int tempPos = 0;
@@ -36,6 +42,7 @@ public class AIScript : MonoBehaviour
             int playerPos = SimplifyVector(GameManager.player.transform.position);
             if(tempPos != playerPos)
             {
+                //Does multithreading using .Net magic
                 int thisPosition = SimplifyVector(gameObject.transform.position);
                 Thread thread = new Thread(() => PathFinding(playerPos, thisPosition));
                 thread.Start();
@@ -50,6 +57,7 @@ public class AIScript : MonoBehaviour
     //The formula for Y is shortened due to integer rounding making the need to subtract the x formula redundant
     public void PathFinding(int target, int origin)
     {
+        //Current place in the path (global variable because of multithreading)
         currentNode = 0;
         test = new Vector2[0];
         List<Vector2> path = new List<Vector2>();
@@ -73,6 +81,7 @@ public class AIScript : MonoBehaviour
         int backwardsSearchTile = playerPosition;
         int debug = currentTileIndex;
 
+        //Finds the nearest path
         while (true)
         {
             if (checkTiles.Contains(playerPosition))
@@ -84,6 +93,7 @@ public class AIScript : MonoBehaviour
                 good = false;
                 return;
             }
+            //Finds all walkable tiles around the tiles it should scan
             List<int> walkableTiles = getWalkablePositions(checkTiles[currentTileIndex]);
             int abc = 0;
                 for (int i = 0; i < walkableTiles.Count; i++)
@@ -93,8 +103,10 @@ public class AIScript : MonoBehaviour
                     //shortTargetDistance[i] = Mathf.Min(Mathf.Abs(playerX - checkTileX), Mathf.Abs(playerY - checkTileY)) * Mathf.Sqrt(2) + Mathf.Abs(playerX - checkTileX - (playerY - checkTileY));
                     Vector2 towardPlayerVector = new Vector2(playerX - checkTileX, playerY - checkTileY);
                     shortTargetDistance[i] = towardPlayerVector.magnitude;
+                    //Sets the templist of enemy distances
                     shortEnemyDistance[i] = enemyDistnace[checkTiles[currentTileIndex]] + Mathf.Sqrt(Mathf.Abs(checkTileX - (checkTiles[currentTileIndex] % mapSize)) + Mathf.Abs(checkTileY - (checkTiles[currentTileIndex] / mapSize)));
                     float sumDistance = shortEnemyDistance[i] + shortTargetDistance[i];
+                    //Checks if there is a better path to walk and if so, override the old path (Aswell as a clause for if no path has been associated to that tile yet)
                     if (sumDistance < targetDistance[walkableTiles[i]] + enemyDistnace[walkableTiles[i]] || targetDistance[walkableTiles[i]] + enemyDistnace[walkableTiles[i]] == 0)
                     {
                         if (!checkTiles.Contains(walkableTiles[i]))
@@ -186,7 +198,7 @@ public class AIScript : MonoBehaviour
     {
         if(test.Length > 0)
         {
-            rb.AddForce((test[currentNode] - (Vector2)transform.position).normalized * Time.deltaTime * speed);
+            rb.AddForce((test[currentNode] - (Vector2)transform.position).normalized * Time.deltaTime * speed * ((Pollution.GetPolution * 0.1f) + 1));
             rb.velocity *= Mathf.Pow(0.9f, Time.deltaTime);
             if (Vector2.Distance(test[currentNode], (Vector2)transform.position) < 0.2f && currentNode < test.Length - 1)
             {
@@ -202,9 +214,18 @@ public class AIScript : MonoBehaviour
     }
     private void Update()
     {
-        
         Vector2 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-        if(Vector2.Distance(playerPosition, gameObject.transform.position) < 1.2f && !onCooldown)
+        if (!pathStarted && Vector2.Distance(gameObject.transform.position, playerPosition) < distanceStart * ((Pollution.GetPolution * 0.1f) + 1))
+        {
+            pathStarted = true;
+            pathUpdate = updatePath();
+            StartCoroutine(pathUpdate);
+        }
+        if (pathUpdate != null && Vector2.Distance(gameObject.transform.position, playerPosition) > distanceStart * 2 * ((Pollution.GetPolution * 0.1f) + 1))
+        {
+            StopCoroutine(pathUpdate);
+        }
+        if (Vector2.Distance(playerPosition, gameObject.transform.position) < 1.2f && !onCooldown)
         {
                 StartCoroutine(Attack());
         }
@@ -271,6 +292,7 @@ public class AIScript : MonoBehaviour
         return walkablePositions;
 
     }
+    //Functions for converting things between Vector2 and an ID
     int SimplifyVector(Vector2 vector)
     {
         return (int)((vector.x) + (mapSize / 2)) + mapSize * (int)(-vector.y + (mapSize / 2));
