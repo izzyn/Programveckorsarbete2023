@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Pontus
 public class GameStartScript : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -9,17 +10,15 @@ public class GameStartScript : MonoBehaviour
     {
         print("Registering Items");
         //Example Item
-        Item item = new ExampleItem();
-        print("Item Name: " + item.GetName());
+        new ExampleItem();
         //Items
-        Item item2 = new WoodItem();
-        print("Item Name: " + item.GetName());
-        Item item3 = new StoneItem();
-        print("Item Name: " + item.GetName());
+        new WoodItem();
+        new StoneItem();
         new ScrapItem();
         new BerryItem();
         
-        //Tools
+        
+        //ToolsS
         new AxeItem();
         new SpearItem();
     }
@@ -27,6 +26,6 @@ public class GameStartScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 }

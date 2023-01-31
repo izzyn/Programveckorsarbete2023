@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Pontus
+//Fredrik
 public class Health : MonoBehaviour
 {
     public float HP;
@@ -12,6 +13,11 @@ public class Health : MonoBehaviour
     private void Start()
     {
         HP = maxHP;
+
+        float timer = 0;
+        
+        //Varje frame
+        timer += Time.deltaTime;
     }
 
 

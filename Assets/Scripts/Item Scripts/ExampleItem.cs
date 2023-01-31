@@ -2,7 +2,7 @@
 using UnityEngine;
 
 public class ExampleItem:Item //Replace ExampleItem with the name of your item + the word Item(for less confusion)
-
+//Pontus
 {
 
     protected override void SetupItem() //Replace "ExampleItem" with the same name + the word Item as the one above.

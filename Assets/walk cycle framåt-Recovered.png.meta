@@ -42,9 +42,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
-  spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMode: 2
+  spriteExtrude: 0
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -103,7 +103,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: "walk cycle fram\xE5t-Recovered_0"
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 10
+        width: 65
+        height: 130
+      alignment: 9
+      pivot: {x: 0.48537847, y: 0.36173183}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a469b64f1d2cda46a08f7570d8346aa
+      internalID: 1761194827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "walk cycle fram\xE5t-Recovered_1"
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 10
+        width: 65
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 216e9a087e670d048b7173805f9a8aca
+      internalID: 492198184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "walk cycle fram\xE5t-Recovered_2"
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 10
+        width: 65
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 075e1a8d836ebc74f9c89fcbddc1cf6c
+      internalID: -1046082986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "walk cycle fram\xE5t-Recovered_3"
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 10
+        width: 65
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95feb8e3d7f6c074e901c5df7c7b875e
+      internalID: -1095977975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +198,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "walk cycle fram\xE5t-Recovered_2": -1046082986
+      "walk cycle fram\xE5t-Recovered_3": -1095977975
+      "walk cycle fram\xE5t-Recovered_1": 492198184
+      "walk cycle fram\xE5t-Recovered_0": 1761194827
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
