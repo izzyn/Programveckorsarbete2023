@@ -13,6 +13,11 @@ public class Health : MonoBehaviour
     private void Start()
     {
         HP = maxHP;
+
+        float timer = 0;
+        
+        //Varje frame
+        timer += Time.deltaTime;
     }
 
 
