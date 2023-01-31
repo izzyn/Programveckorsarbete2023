@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class weaponSystem : MonoBehaviour
 {
+    public PlayerMovement playerMovement; 
     private Animator anim;
     SpriteRenderer SpriteRenderer;
     private int CurrentDamage;
@@ -22,6 +23,7 @@ public class weaponSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         dmg.Add(ItemType.Spear, dmg_spear);
         dmg.Add(ItemType.Axe, dmg_axe);
@@ -32,13 +34,25 @@ public class weaponSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer >= 0)
+        if (playerMovement.PlayerLeft == true)
         {
-            timer = timer - 1;
+            anim.SetInteger("PlayerDirection", 3);
         }
-        if(Input.GetKeyDown(AttackKey))
+        if (playerMovement.PlayerUp == true)
         {
-            if (timer <= 0)
+            anim.SetInteger("PlayerDirection", 1);
+        }
+        if (playerMovement.PlayerDown==true)
+        {
+            anim.SetInteger("PlayerDirection", 4);
+        }
+        if (playerMovement.PlayerRight==true)
+        {
+            anim.SetInteger("PlayerDirection", 2);
+        }
+        if (Input.GetKeyDown(AttackKey))
+        {
+            if (timer <= 1)
             {
                 timer = 80;
                 ItemStack item = Inventory.GetSelectedItemStack();
