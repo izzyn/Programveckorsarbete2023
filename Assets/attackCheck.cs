@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class attackCheck : MonoBehaviour
 {
+    //Isak's kod
+
     // Start is called before the first frame update
     void Start()
     {
@@ -11,8 +13,10 @@ public class attackCheck : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Checks if the collision is a player
         if(collision.gameObject.tag == "Player")
         {
+            //Self explanatory
             PlayerHealth.reduceHp(1);
         }
     }
