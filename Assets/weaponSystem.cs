@@ -39,13 +39,18 @@ public class weaponSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //weapon cooldown timer
+        if(timer <= 1)
+        {
+            timer += Time.deltaTime;
+        }
         if (timer >= 1)
         {
             anim.SetInteger("WeaponID", 0);
             anim.SetBool("attacking", false);
             isAttacking = false;
-
         }
+        //animation controls public
         if (anim.GetBool("attacking")==true)
         {
             isAttacking = true;
@@ -65,12 +70,14 @@ public class weaponSystem : MonoBehaviour
         if (playerMovement.PlayerRight==true)
         {
             anim.SetInteger("PlayerDirection", 2);
-        }
+        } 
+       //attack trigger 
         if (Input.GetKeyDown(AttackKey))
         {
+            //attack cooldown
             if (timer >= 1)
             {
-              
+              //item=null failsafe
                 ItemStack itemStack = Inventory.GetSelectedItemStack();
                 if (itemStack == null)
                 {
@@ -80,11 +87,12 @@ public class weaponSystem : MonoBehaviour
 
                 anim.SetBool("attacking", true);
                 
-
+                //select weapon to play animation
                 Item item = itemStack.GetItem();
                 SpriteRenderer.sprite = Resources.Load<Sprite>("Textures/Tools/Axe");
                 if (item.GetItemType() == ItemType.Spear)
                 {
+                    //spear animation+cooldown
                     timer = 0.8f;
                     print("spear");
                     anim.SetInteger("WeaponID", 1);
@@ -92,6 +100,7 @@ public class weaponSystem : MonoBehaviour
                 }
                 if (item.GetItemType() == ItemType.Axe)
                 {
+                    //axe animation+cooldown
                     timer = 0.7f;
                     print("axe");
                     anim.SetInteger("WeaponID", 2);
@@ -100,16 +109,14 @@ public class weaponSystem : MonoBehaviour
             }
          
         }
-        if(timer <= 1)
-        {
-            timer += Time.deltaTime;
-        }
+      
         
         
     }
    
         private void OnTriggerEnter2D(Collider2D collision)
     {
+        //dmg enemy
         if(collision.gameObject.CompareTag("Enemy"))
         {
             Health HP = collision.gameObject.GetComponent<Health>();
