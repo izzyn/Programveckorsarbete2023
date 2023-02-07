@@ -83,7 +83,7 @@ public class InventoryObject : MonoBehaviour
         {
            if(Inventory.inventoryList[i] != null)
            {
-               if(Inventory.inventoryList[i].GetAmount() != 0)
+               if(Inventory.inventoryList[i].GetAmount() != 0 && Inventory.inventoryList[i].GetAmount() != 1)
                textList[i].text = Inventory.inventoryList[i].GetAmount().ToString();
                else textList[i].text = "";
            }
