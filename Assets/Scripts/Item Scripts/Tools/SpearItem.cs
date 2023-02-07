@@ -1,4 +1,6 @@
-﻿
+﻿//Pontus
+
+using UnityEngine;
 
 public class SpearItem : ItemUsable
 {
@@ -9,6 +11,8 @@ public class SpearItem : ItemUsable
         SetInUseSpriteFromName("Spear");
         itemName = "Spear";
         stackSize = 1;
+        
+        
     }
 
    

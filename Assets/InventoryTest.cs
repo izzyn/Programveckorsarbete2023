@@ -65,8 +65,8 @@ public class InventoryTest : MonoBehaviour
         
         if(Inventory.inventoryList[0] != null && Inventory.inventoryList[1] != null)
         {
-            Debug.Log(Inventory.inventoryList[0].GetAmount());
-            Debug.Log(Inventory.inventoryList[1].GetAmount());
+          // Debug.Log(Inventory.inventoryList[0].GetAmount());
+           // Debug.Log(Inventory.inventoryList[1].GetAmount());
         }
         
     }

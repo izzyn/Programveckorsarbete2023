@@ -29,7 +29,7 @@ public class CameraFollow : MonoBehaviour
     //Every fixed update it makes a new position where the camera should move
     void FixedUpdate()
     {
-        cameraTarget = Vector3.Slerp(camera.position,
+        cameraTarget = Vector3.Lerp(camera.position,
             new Vector3(playerRigidbody.position.x + offset.x, playerRigidbody.position.y + offset.y, cameraZPos),
             Time.deltaTime * smoothTime);
 

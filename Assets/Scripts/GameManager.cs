@@ -86,11 +86,12 @@ public static class Inventory
         int index = 0;
         foreach (ItemStack invItem in inventoryList)
         {
-
+            Debug.Log(amount + " on index " + index);
+            if(invItem == null) Debug.Log( "Invitem is null on inedx " + index);
             
             if (invItem == null && amount > 0)
             {
-                inventoryList[index] = item;
+                inventoryList[index] = item.SetAmount(amount);
                 
                 
                 
@@ -113,6 +114,7 @@ public static class Inventory
                     {
                         amount = invItem.GetAmount() - invItem.GetItem().GetStackSize();
                         invItem.SetAmount(invItem.GetItem().GetStackSize());
+                        Debug.Log(amount + " of Items is in the thingyngyng");
                     }
                     else
                     {
@@ -147,32 +149,36 @@ public static class Inventory
     //Simple remove item from inventory, return if it was successful, can be unsuccessful if inventory is empty for example
     public static bool RemoveAmountOfItem(ItemType itemType, int amount)
     {
-        int index = 0;
-        foreach (ItemStack item in inventoryList)
+       
+        
+        for(int index = 7; index >= 0; index--)
         {
+            ItemStack item = inventoryList[index];
             if(item != null)
-            if (item.GetItem().GetItemType() == itemType)
-            {
-                if (amount >= item.GetItem().GetStackSize())
+                if (item.GetItem().GetItemType() == itemType)
                 {
-                    item.SetAmount(0);
-                    amount -= item.GetItem().GetStackSize();
+                    if (amount >= item.GetAmount())
+                    {
+                    
+                        amount -= item.GetAmount();
+                        item.SetAmount(0);
+                    }
+                    else
+                    {
+                        item.SetAmount(item.GetAmount() - amount);
+                        amount = 0;
+                    }
                 }
-                else
-                {
-                    item.SetAmount(item.GetAmount() - amount);
-                    amount = 0;
-                }
-            }
+            
+            
             if(item != null)
                 if (item.GetAmount() <= 0)
                 {
                     inventoryList[index] = null;   
                 }
 
-            index++;
+            if (amount <= 0) break;
         }
-
         return true;
     }
 

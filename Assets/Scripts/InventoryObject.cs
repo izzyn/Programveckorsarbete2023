@@ -40,7 +40,7 @@ public class InventoryObject : MonoBehaviour
             
         }
         
-        if(Input.mouseScrollDelta.y > 0)
+        if(Input.mouseScrollDelta.y < 0)
         {
             Inventory.selectedSlot++;
             if(Inventory.selectedSlot > 7)
@@ -60,7 +60,7 @@ public class InventoryObject : MonoBehaviour
                 }
             }
         }
-        if(Input.mouseScrollDelta.y < 0)
+        if(Input.mouseScrollDelta.y > 0)
         {
             Inventory.selectedSlot--;
             if(Inventory.selectedSlot < 0)

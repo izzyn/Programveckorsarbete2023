@@ -20,6 +20,8 @@ public class ExampleItem:Item //Replace ExampleItem with the name of your item +
         //How you set an item stack size, default is 64 if none is set
         stackSize = 8;
         
+        
+        //RECIPIES ARE STRETCH GOALS
         //How you add a recipe to the item
         //ScrapItem scrap = (ScrapItem)new ScrapItem().SetAmount(10);
         //WoodItem wood = new WoodItem();

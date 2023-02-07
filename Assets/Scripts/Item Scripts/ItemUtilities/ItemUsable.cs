@@ -6,7 +6,7 @@ public class ItemUsable:Item
 {
     public ItemUsable() : base( )
     {
-   
+        
     }
 
     protected Sprite inUseSprite;
