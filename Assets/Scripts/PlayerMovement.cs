@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public weaponSystem weaponSystem;
     public bool PlayerLeft = false;
     public bool PlayerRight = false;
     public bool PlayerUp = false;
@@ -19,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerDown = true;
+        //weaponSystem = GameObject.FindGameObjectWithTag("Player").GetComponent<weaponSystem>();
         anim = gameObject.GetComponent<Animator>();
         rigidBody = GetComponent<Rigidbody2D>();
         GameManager.player = gameObject;
@@ -41,81 +44,84 @@ public class PlayerMovement : MonoBehaviour
                     if(anim.GetBool("Backwalk") == false)
                     {
                         anim.SetBool("Idle", true);
+                        
                     }
                 }
             }
         }
-        if (Input.GetKey(KeyCode.W))
+        if (weaponSystem.isAttacking == false)
         {
-         PlayerLeft = false;
-        PlayerRight = false;
-        PlayerUp = true;
-        PlayerDown = false;
+            if (Input.GetKey(KeyCode.W))
+            {
+                PlayerLeft = false;
+                PlayerRight = false;
+                PlayerUp = true;
+                PlayerDown = false;
 
-    moveDir += Vector3.up;
-            anim.SetBool("Backwalk", true);
-            anim.SetBool("Idle", false);
-            anim.SetBool("frontWalk", false);
-            anim.SetBool("leftWalk", false);
-            anim.SetBool("rightWalk", false);
+                moveDir += Vector3.up;
+                anim.SetBool("Backwalk", true);
+                anim.SetBool("Idle", false);
+                anim.SetBool("frontWalk", false);
+                anim.SetBool("leftWalk", false);
+                anim.SetBool("rightWalk", false);
 
-        }
-        else
-        {
-            anim.SetBool("Backwalk", false);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            PlayerLeft = false;
-            PlayerRight = false;
-            PlayerUp = false;
-            PlayerDown = true;
+            }
+            else
+            {
+                anim.SetBool("Backwalk", false);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                PlayerLeft = false;
+                PlayerRight = false;
+                PlayerUp = false;
+                PlayerDown = true;
 
-            moveDir += Vector3.down;
-            anim.SetBool("frontWalkl", true);
-            anim.SetBool("Idle", false);
-            anim.SetBool("Backwalk", false);
-            anim.SetBool("leftWalk", false);
-            anim.SetBool("rightWalk", false);
+                moveDir += Vector3.down;
+                anim.SetBool("frontWalkl", true);
+                anim.SetBool("Idle", false);
+                anim.SetBool("Backwalk", false);
+                anim.SetBool("leftWalk", false);
+                anim.SetBool("rightWalk", false);
+            }
+            else
+            {
+                anim.SetBool("frontWalk", false);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                PlayerLeft = false;
+                PlayerRight = true;
+                PlayerUp = false;
+                PlayerDown = false;
+                moveDir += Vector3.left;
+                anim.SetBool("leftWalk", true);
+                anim.SetBool("Idle", false);
+                anim.SetBool("frontWalk", false);
+                anim.SetBool("Backwalk", false);
+                anim.SetBool("rightWalk", false);
+            }
+            else
+            {
+                anim.SetBool("leftWalk", false);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                PlayerLeft = true;
+                PlayerRight = false;
+                PlayerUp = false;
+                PlayerDown = false; moveDir += Vector3.right;
+                anim.SetBool("rightWalk", true);
+                anim.SetBool("Idle", false);
+                anim.SetBool("frontWalk", false);
+                anim.SetBool("leftWalk", false);
+                anim.SetBool("Backwalk", false);
+            }
+            else
+            {
+                anim.SetBool("rightWalk", false);
+            }
         }
-        else
-        {
-            anim.SetBool("frontWalk", false);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            PlayerLeft = false;
-            PlayerRight = true;
-            PlayerUp = false;
-            PlayerDown = false;
-            moveDir += Vector3.left;
-            anim.SetBool("leftWalk",true);
-            anim.SetBool("Idle", false);
-            anim.SetBool("frontWalk", false);
-            anim.SetBool("Backwalk", false);
-            anim.SetBool("rightWalk", false);
-        }
-        else
-        {
-            anim.SetBool("leftWalk", false);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            PlayerLeft = true;
-            PlayerRight = false;
-            PlayerUp = false;
-            PlayerDown = false; moveDir += Vector3.right;
-            anim.SetBool("rightWalk", true);
-            anim.SetBool("Idle", false);
-            anim.SetBool("frontWalk", false);
-            anim.SetBool("leftWalk", false);
-            anim.SetBool("Backwalk", false);
-        }
-        else
-        {
-            anim.SetBool("rightWalk", false);
-        }
-        
         //Normalize moveDir so movement isn't faster during diagonal movement
         moveDir.Normalize();
         

@@ -20,6 +20,7 @@ public class weaponSystem : MonoBehaviour
     [SerializeField]
     private float timer;
     KeyCode AttackKey = KeyCode.Mouse0;
+    public bool isAttacking =false;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +39,17 @@ public class weaponSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (timer >= 1)
+        {
+            anim.SetInteger("WeaponID", 0);
+            anim.SetBool("attacking", false);
+            isAttacking = false;
 
+        }
+        if (anim.GetBool("attacking")==true)
+        {
+            isAttacking = true;
+        }
         if (playerMovement.PlayerLeft == true)
         {
             anim.SetInteger("PlayerDirection", 3);
@@ -66,22 +77,25 @@ public class weaponSystem : MonoBehaviour
                  print("null return");
                 return; 
                 }
+
+                anim.SetBool("attacking", true);
                 
 
-                
                 Item item = itemStack.GetItem();
                 SpriteRenderer.sprite = Resources.Load<Sprite>("Textures/Tools/Axe");
                 if (item.GetItemType() == ItemType.Spear)
                 {
-                    timer = 0;
+                    timer = 0.8f;
                     print("spear");
                     anim.SetInteger("WeaponID", 1);
+                    
                 }
                 if (item.GetItemType() == ItemType.Axe)
                 {
-                    timer = 0;
+                    timer = 0.7f;
                     print("axe");
                     anim.SetInteger("WeaponID", 2);
+                    
                 }
             }
          
@@ -90,10 +104,8 @@ public class weaponSystem : MonoBehaviour
         {
             timer += Time.deltaTime;
         }
-        if(timer >= 1)
-        {
-            anim.SetInteger("WeaponID", 0);
-        }
+        
+        
     }
    
         private void OnTriggerEnter2D(Collider2D collision)

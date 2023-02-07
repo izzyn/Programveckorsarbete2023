@@ -2242,11 +2242,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869025769}
   m_CullTransparentMesh: 1
---- !u!4 &899215705 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6690742781611440085, guid: 25c1e6d4456901e46ab05ed2b915ef79, type: 3}
-  m_PrefabInstance: {fileID: 1857718212}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &911726591
 GameObject:
   m_ObjectHideFlags: 0
@@ -4183,15 +4178,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6690742781611440081, guid: 25c1e6d4456901e46ab05ed2b915ef79, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.4223855
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6690742781611440081, guid: 25c1e6d4456901e46ab05ed2b915ef79, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.2099673
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6690742781611440081, guid: 25c1e6d4456901e46ab05ed2b915ef79, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.56
+      value: 1.28
       objectReference: {fileID: 0}
     - target: {fileID: 6690742781611440084, guid: 25c1e6d4456901e46ab05ed2b915ef79, type: 3}
       propertyPath: m_Name
@@ -4844,6 +4839,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Menu
+--- !u!4 &6690742780912726033 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6690742781611440085, guid: 25c1e6d4456901e46ab05ed2b915ef79, type: 3}
+  m_PrefabInstance: {fileID: 1857718212}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6690742780912726034 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6690742781611440086, guid: 25c1e6d4456901e46ab05ed2b915ef79, type: 3}
+  m_PrefabInstance: {fileID: 1857718212}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce2938d956afc14789f9c0ac137c779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7615142288888206761
 GameObject:
   m_ObjectHideFlags: 0
@@ -4932,7 +4943,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 899215705}
+  - {fileID: 6690742780912726033}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4948,6 +4959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5c9e55a77b38947807ce23fc1b9b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSystem: {fileID: 6690742780912726034}
   PlayerLeft: 0
   PlayerRight: 0
   PlayerUp: 0
