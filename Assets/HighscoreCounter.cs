@@ -7,15 +7,9 @@ public class HighscoreCounter : MonoBehaviour
 {
     public TextMeshProUGUI highscoreCounterText;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
+        //displays the highscore inbetween the text highscore: and days which resultsin the text Highscore: x days
         highscoreCounterText.text = "Highscore: " + GameManager.highscore + " Days";
     }
 }
