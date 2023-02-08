@@ -26,6 +26,14 @@ public class InventoryTest : MonoBehaviour
             }
             return;
         }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Debug.Log(Inventory.CheckAmountOfItem(ItemType.Wood));
+            Debug.Log(Inventory.DoesInventoryContain(ItemType.Wood, 10));
+            ItemStack stack = new ItemStack(Register.GetItemFromType(ItemType.Wood), 32);
+            Debug.Log(Inventory.DoesItemFit(stack)); //Does not fit while stuff in first inventory space
+        }
         
         if (Input.GetKeyDown(KeyCode.G))
         {
