@@ -98,6 +98,7 @@ public abstract class Item
         Stone,
         Berry,
         Spear,
-        Axe
+        Axe,
+        SledgeHammer
 
     }

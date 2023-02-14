@@ -24,6 +24,7 @@ public static class RegisterItems
             //ToolsS
             new AxeItem();
             new SpearItem();
+            new SledgeHammerItem();
             hasExecuted = true;
         }
     }
