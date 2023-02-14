@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//fredrik
 public class saveload : MonoBehaviour
 {
     public GameObject saveLoad;
