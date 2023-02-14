@@ -6,7 +6,7 @@ using UnityEngine;
 public class InventoryTest : MonoBehaviour
 {
     
-    public ItemTest[] item = new ItemTest[8];
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,6 +25,14 @@ public class InventoryTest : MonoBehaviour
 
             }
             return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Debug.Log(Inventory.CheckAmountOfItem(ItemType.Wood));
+            Debug.Log(Inventory.DoesInventoryContain(ItemType.Wood, 10));
+            ItemStack stack = new ItemStack(Register.GetItemFromType(ItemType.Wood), 32);
+            Debug.Log(Inventory.DoesItemFit(stack)); //Does not fit while stuff in first inventory space
         }
         
         if (Input.GetKeyDown(KeyCode.G))
@@ -54,13 +62,6 @@ public class InventoryTest : MonoBehaviour
             print("Removed 3 wood");
         }
 
-        for (int i = 0; i < 8; i++)
-        {
-            if (Inventory.inventoryList[i] != null) 
-                item[i].item = Inventory.inventoryList[i].GetItem();
-            else
-                item[i].item = null;
-        }
         
         
         if(Inventory.inventoryList[0] != null && Inventory.inventoryList[1] != null)

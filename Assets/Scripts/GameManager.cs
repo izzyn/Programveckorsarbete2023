@@ -189,13 +189,14 @@ public static class Inventory
         int amount = item.GetAmount();
         foreach (ItemStack invItem in inventoryList)
         {
+            if(invItem != null)
             if(item.GetItem().GetItemType() == invItem.GetItem().GetItemType())
             {
                amount -= invItem.GetItem().GetStackSize() - invItem.GetAmount();
             }
         }
         
-        if(amount <= 0)
+        if(amount >= 0)
         {
             return true;
         }
