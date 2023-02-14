@@ -20,7 +20,7 @@ public class ItemDrop : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
        // Inventory.AddItem(new ItemStack(Register.GetItemFromType(ItemType.Wood)));
-        if(Inventory.AddItem(new ItemStack(Register.GetItemFromType(ItemType.Wood), 32)) == 0 )
+        if(Inventory.AddItem(new ItemStack(Register.GetItemFromType(ItemType.Wood))) == 0 )
         GameObject.Destroy(gameObject);
         
     }
