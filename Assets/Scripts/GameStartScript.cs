@@ -10,6 +10,7 @@ public class GameStartScript : MonoBehaviour
     void Awake()
     {
         RegisterItems.RegisterAllItems();
+        
        
     }
 

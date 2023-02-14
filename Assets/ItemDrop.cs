@@ -22,13 +22,6 @@ public class ItemDrop : MonoBehaviour
        // Inventory.AddItem(new ItemStack(Register.GetItemFromType(ItemType.Wood)));
         if(Inventory.AddItem(new ItemStack(Register.GetItemFromType(ItemType.Wood), 32)) == 0 )
         GameObject.Destroy(gameObject);
-
-
-        bool state = false;
-
-        if (state != !true)
-        {
-            
-        }
+        
     }
 }
