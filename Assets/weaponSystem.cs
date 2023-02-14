@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class weaponSystem : MonoBehaviour
 {
+    public bool IsAxe = false;
     public PlayerMovement playerMovement; 
     private Animator anim;
     SpriteRenderer SpriteRenderer;
@@ -55,6 +56,7 @@ public class weaponSystem : MonoBehaviour
         }
         if(timer>=1)
         {
+            IsAxe = false;
             isAttacking = false;
         }
 
@@ -101,25 +103,29 @@ public class weaponSystem : MonoBehaviour
                 if (item.GetItemType() == ItemType.Spear)
                 {
                     //spear animation+cooldown
+                    CurrentDamage = 1;
                     timer = 0.68f;
                     print("spear");
                     anim.SetInteger("WeaponID", 1);
-                    
+                    IsAxe = false;
                 }
                 if (item.GetItemType() == ItemType.Axe)
                 {
                     //axe animation+cooldown
+                  CurrentDamage = 1;
                     timer = 0.5f;
                     print("axe");
                     anim.SetInteger("WeaponID", 2);
-                    
+                    IsAxe = true;
                 }
                 if(item.GetItemType()==ItemType.SledgeHammer)
                 {
                     //hammer animaton+cooldown
+                 CurrentDamage = 3;
                     timer = 0;
                     print("hammer");
                     anim.SetInteger("WeaponID", 3);
+                    IsAxe = false;
                 }
             }
          
