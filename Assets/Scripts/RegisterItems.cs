@@ -20,7 +20,7 @@ public static class RegisterItems
             new ScrapItem();
             new BerryItem();
 
-
+    
             //ToolsS
             new AxeItem();
             new SpearItem();

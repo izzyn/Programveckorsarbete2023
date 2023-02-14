@@ -28,6 +28,9 @@ public class weaponSystem : MonoBehaviour
         Inventory.AddItem(stack);
         stack = new ItemStack(Register.GetItemFromType(ItemType.Spear));
         Inventory.AddItem(stack);
+
+        stack = new ItemStack(Register.GetItemFromType(ItemType.SledgeHammer));
+        Inventory.AddItem(stack);
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
         dmg.Add(ItemType.Spear, dmg_spear);
