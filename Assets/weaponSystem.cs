@@ -114,6 +114,13 @@ public class weaponSystem : MonoBehaviour
                     anim.SetInteger("WeaponID", 2);
                     
                 }
+                if(item.GetItemType()==ItemType.SledgeHammer)
+                {
+                    //hammer animaton+cooldown
+                    timer = 0;
+                    print("hammer");
+                    anim.SetInteger("WeaponID", 3);
+                }
             }
          
         }
