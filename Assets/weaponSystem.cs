@@ -48,8 +48,13 @@ public class weaponSystem : MonoBehaviour
         {
             anim.SetInteger("WeaponID", 0);
             anim.SetBool("attacking", false);
+            
+        }
+        if(timer>=1)
+        {
             isAttacking = false;
         }
+
         //animation controls public
         if (anim.GetBool("attacking")==true)
         {
@@ -93,7 +98,7 @@ public class weaponSystem : MonoBehaviour
                 if (item.GetItemType() == ItemType.Spear)
                 {
                     //spear animation+cooldown
-                    timer = 0.8f;
+                    timer = 0.68f;
                     print("spear");
                     anim.SetInteger("WeaponID", 1);
                     
@@ -101,7 +106,7 @@ public class weaponSystem : MonoBehaviour
                 if (item.GetItemType() == ItemType.Axe)
                 {
                     //axe animation+cooldown
-                    timer = 0.7f;
+                    timer = 0.5f;
                     print("axe");
                     anim.SetInteger("WeaponID", 2);
                     
