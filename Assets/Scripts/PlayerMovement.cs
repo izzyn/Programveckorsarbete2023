@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
                 PlayerDown = true;
 
                 moveDir += Vector3.down;
-                anim.SetBool("frontWalkl", true);
+                anim.SetBool("frontWalk", true);
                 anim.SetBool("Idle", false);
                 anim.SetBool("Backwalk", false);
                 anim.SetBool("leftWalk", false);

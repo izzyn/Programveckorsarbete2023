@@ -6,7 +6,7 @@ using UnityEngine;
 public class InventoryTest : MonoBehaviour
 {
     
-    public ItemTest[] item = new ItemTest[8];
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -62,13 +62,6 @@ public class InventoryTest : MonoBehaviour
             print("Removed 3 wood");
         }
 
-        for (int i = 0; i < 8; i++)
-        {
-            if (Inventory.inventoryList[i] != null) 
-                item[i].item = Inventory.inventoryList[i].GetItem();
-            else
-                item[i].item = null;
-        }
         
         
         if(Inventory.inventoryList[0] != null && Inventory.inventoryList[1] != null)

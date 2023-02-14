@@ -306,7 +306,7 @@ public class AIScript : MonoBehaviour
 
     private void SetParameter(string name)
     {
-        String[] array = { "Moving", "Attack", "Death" };
+        String[] array = { "Moving", "Attack", "Dead" };
         foreach (String s in array)
         {
             if (s == name)
@@ -326,7 +326,7 @@ public class AIScript : MonoBehaviour
 
     private void ClearParam()
     {
-        String[] array = { "Moving", "Attack", "Death" };
+        String[] array = { "Moving", "Attack", "Dead" };
         foreach (String s in array) animator.SetBool(s, false);
         
     }

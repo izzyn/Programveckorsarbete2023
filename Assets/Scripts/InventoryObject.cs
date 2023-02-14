@@ -93,5 +93,9 @@ public class InventoryObject : MonoBehaviour
            }
             
         }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Debug.Log("test");
+        }
     }
 }
