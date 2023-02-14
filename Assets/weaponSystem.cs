@@ -10,7 +10,7 @@ public class weaponSystem : MonoBehaviour
     public PlayerMovement playerMovement; 
     private Animator anim;
     SpriteRenderer SpriteRenderer;
-    private int CurrentDamage;
+    private int CurrentDamage=1;
     [SerializeField]
     private int dmg_spear= 1;
     [SerializeField]
