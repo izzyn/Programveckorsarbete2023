@@ -225,7 +225,7 @@ public class AIScript : MonoBehaviour
         {
             StopCoroutine(pathUpdate);
         }
-        if (Vector2.Distance(playerPosition, gameObject.transform.position) < 1.2f && !onCooldown)
+        if (Vector2.Distance(playerPosition, gameObject.transform.position) < 0.5f && !onCooldown)
         {
                 StartCoroutine(Attack());
         }
