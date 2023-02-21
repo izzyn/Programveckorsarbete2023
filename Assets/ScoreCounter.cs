@@ -16,6 +16,7 @@ public class ScoreCounter : MonoBehaviour
     }
     public void GameOver()
     {
+        Inventory.ClearList();
         if (GameManager.dayCount > GameManager.highscore)
         {
             GameManager.highscore = GameManager.dayCount;

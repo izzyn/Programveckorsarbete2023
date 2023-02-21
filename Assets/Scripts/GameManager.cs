@@ -41,6 +41,11 @@ public static class Inventory
     //What slot is selected in hand
     public static int selectedSlot = 0;
     
+    public static void ClearList()
+    {
+        inventoryList = new ItemStack[8];
+
+    }
     //Input a itemType get how many of that itemtype exist in inventory
     public static int CheckAmountOfItem(ItemType itemType)
     {

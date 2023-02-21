@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6690742781611440087}
   - component: {fileID: 6690742781611440080}
   - component: {fileID: 6690742781611440081}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: weapons
-  m_TagString: Untagged
+  m_TagString: weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6690742781611440084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce2938d956afc14789f9c0ac137c779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsAxe: 0
   playerMovement: {fileID: 0}
   dmg_spear: 1
   dmg_axe: 1
@@ -93,7 +94,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bf4c1686606b48943b9841523dd1c778, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4490e37cf487ce640a54e2e62cc9bbe4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -140,8 +141,8 @@ BoxCollider2D:
   m_Offset: {x: 0.09934649, y: 1.4732089}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.4223855, y: 0.2099673}
-    oldSize: {x: 1.28, y: 2.56}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 1.28, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
