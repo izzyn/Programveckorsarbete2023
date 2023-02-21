@@ -7,17 +7,13 @@ using UnityEngine;
 
 public class weaponSystem : MonoBehaviour
 {
+    //variables
+    //markus script
     public bool IsAxe = false;
     public PlayerMovement playerMovement; 
     private Animator anim;
     SpriteRenderer SpriteRenderer;
     private int CurrentDamage=1;
-    [SerializeField]
-    private int dmg_spear= 1;
-    [SerializeField]
-    private int dmg_axe =1;
-    [SerializeField]
-    public Dictionary<ItemType, int> dmg = new Dictionary<ItemType, int>();
     [SerializeField]
     private float timer;
     KeyCode AttackKey = KeyCode.Mouse0;
@@ -25,17 +21,18 @@ public class weaponSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //pontus script
         ItemStack stack = new ItemStack(Register.GetItemFromType(ItemType.Axe));
         Inventory.AddItem(stack);
         stack = new ItemStack(Register.GetItemFromType(ItemType.Spear));
         Inventory.AddItem(stack);
-
+        //pontus script
         stack = new ItemStack(Register.GetItemFromType(ItemType.SledgeHammer));
         Inventory.AddItem(stack);
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
-        dmg.Add(ItemType.Spear, dmg_spear);
-        dmg.Add(ItemType.Axe, dmg_axe);
+        
+        //markus script
         anim = gameObject.GetComponent<Animator>();
       //  Inventory.AddItem(new AxeItem());
     }
@@ -43,6 +40,7 @@ public class weaponSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //markus script
         //weapon cooldown timer
         if(timer <= 1)
         {
@@ -59,7 +57,7 @@ public class weaponSystem : MonoBehaviour
             IsAxe = false;
             isAttacking = false;
         }
-
+        //markus script
         //animation controls public
         if (anim.GetBool("attacking")==true)
         {
@@ -81,12 +79,15 @@ public class weaponSystem : MonoBehaviour
         {
             anim.SetInteger("PlayerDirection", 2);
         } 
-       //attack trigger 
+       //attack trigger
+       //markus script
         if (Input.GetKeyDown(AttackKey))
         {
+            //markus script
             //attack cooldown
             if (timer >= 1)
             {
+                
               //item=null failsafe
                 ItemStack itemStack = Inventory.GetSelectedItemStack();
                 if (itemStack == null)
@@ -96,12 +97,13 @@ public class weaponSystem : MonoBehaviour
                 }
 
                 anim.SetBool("attacking", true);
-                
+                //markus script
                 //select weapon to play animation
                 Item item = itemStack.GetItem();
                 SpriteRenderer.sprite = Resources.Load<Sprite>("Textures/Tools/Axe");
                 if (item.GetItemType() == ItemType.Spear)
                 {
+                    //markus script
                     //spear animation+cooldown
                     CurrentDamage = 1;
                     timer = 0.68f;
@@ -111,6 +113,7 @@ public class weaponSystem : MonoBehaviour
                 }
                 if (item.GetItemType() == ItemType.Axe)
                 {
+                    //markus script
                     //axe animation+cooldown
                   CurrentDamage = 1;
                     timer = 0.5f;
@@ -120,6 +123,7 @@ public class weaponSystem : MonoBehaviour
                 }
                 if(item.GetItemType()==ItemType.SledgeHammer)
                 {
+                    //markus script
                     //hammer animaton+cooldown
                  CurrentDamage = 3;
                     timer = 0;
@@ -138,6 +142,7 @@ public class weaponSystem : MonoBehaviour
         private void OnTriggerEnter2D(Collider2D collision)
     {
         //dmg enemy
+        //isaks script
         if(collision.gameObject.CompareTag("Enemy"))
         {
             Health HP = collision.gameObject.GetComponent<Health>();
