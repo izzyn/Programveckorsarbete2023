@@ -4972,7 +4972,7 @@ MonoBehaviour:
   PlayerRight: 0
   PlayerUp: 0
   PlayerDown: 0
-  walkSpeed: 30
+  walkSpeed: 20
 --- !u!61 &7615142288888206773
 BoxCollider2D:
   m_ObjectHideFlags: 0
